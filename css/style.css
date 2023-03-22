@@ -94,18 +94,17 @@ footer {
   justify-content: center;
 }
 
-#main-landing nav {
+#body-landing nav {
   display: flex;
   justify-content: space-between;
   margin: 2rem;
 }
 
-#main-landing nav img {
+#body-landing nav img {
   width: 5rem;
   height: auto;
 }
-
-#main-landing .login-button {
+#body-landing nav .login-button {
   background-color: var(--nexus-blue);
   text-align: center;
   border: 0;
