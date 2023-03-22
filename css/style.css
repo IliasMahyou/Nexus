@@ -5,6 +5,9 @@
 
 :root {
   --accent-color: #7496c1;
+  --color-2: #9eadfc;
+  --color-3: #34344d;
+  --color-4: #54526a;
 }
 
 nav {
@@ -43,4 +46,41 @@ main {
 
 figcaption {
   text-align: center;
+}
+
+/* Login-Page */
+
+#login-main {
+  display: flex;
+  justify-content: center;
+}
+
+#login-header {
+  display: flex;
+  justify-content: center;
+  padding: 6rem;
+}
+
+.logo-login {
+  width: 20rem;
+  height: auto;
+  margin: auto;
+}
+
+.login-form input {
+  background-color: var(--color-2);
+  border: 0;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  height: 2rem;
+  width: 20rem;
+}
+
+.login-form .submit-button {
+  margin: auto;
+  width: 40%;
+  cursor: pointer;
 }
