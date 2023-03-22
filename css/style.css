@@ -1,5 +1,8 @@
 :root {
-  --accent-color: #7496c1;
+  --nexus-light-blue: #9eacdf;
+  --nexus-blue: #7496c1;
+  --nexus-dark-purple: #34344d;
+  --nexus-purple: #54526a;
 }
 
 html,
@@ -44,7 +47,20 @@ nav ul li a {
   margin: 0rem 1.5rem 0 0;
 }
 
-header {
+main {
+  grid-area: main;
+}
+
+footer {
+  grid-area: footer;
+  background-color: lightgrey;
+  padding: 20px;
+  text-align: center;
+}
+
+/* HOMEPAGE */
+
+#header-home {
   grid-area: header;
   background-image: url("https://source.unsplash.com/random/?business,bank");
   background-position: center;
@@ -54,7 +70,7 @@ header {
   text-align: center;
 }
 
-header article {
+#header-home article {
   margin: 0;
   position: relative;
   text-align: center;
@@ -66,15 +82,16 @@ header article {
   width: 50%;
 }
 
-main {
-  grid-area: main;
-}
+/* LANDING PAGE */
 
-footer {
-  grid-area: footer;
-  background-color: lightgrey;
+#main-landing {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1700px;
+  margin: 0 auto;
   padding: 20px;
-  text-align: center;
+  gap: 20px;
+  justify-content: center;
 }
 
 #main-landing nav {
@@ -103,17 +120,18 @@ footer {
   text-align: center;
 }
 
-/* Login-Page */
+/* Login */
 
-#login-main {
+#main-login {
   display: flex;
   justify-content: center;
 }
 
-#login-header {
+#header-login {
   display: flex;
   justify-content: center;
   padding: 6rem;
+  grid-area: header;
 }
 
 .logo-login {
@@ -123,7 +141,7 @@ footer {
 }
 
 .login-form input {
-  background-color: var(--color-2);
+  background-color: var(--nexus-light-blue);
   border: 0;
   display: flex;
   justify-content: center;
