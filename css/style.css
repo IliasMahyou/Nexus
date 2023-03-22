@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --accent-color: #7496c1;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem;
+}
+
+.logo {
+  width: 5rem;
+  height: auto;
+}
+
+.login-button {
+  background-color: var(--accent-color);
+  text-align: center;
+  border: 0;
+  height: 3rem;
+  width: auto;
+  padding: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* Foto-Items-Main */
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1700px;
+  margin: 0 auto;
+  padding: 20px;
+  gap: 20px;
+  justify-content: center;
+}
+
+figcaption {
+  text-align: center;
+}
