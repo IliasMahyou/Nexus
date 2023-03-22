@@ -1,5 +1,8 @@
 :root {
-  --accent-color: #7496c1;
+  --nexus-light-blue: #9eacdf;
+  --nexus-blue: #7496c1;
+  --nexus-dark-purple: #34344d;
+  --nexus-purple: #54526a;
 }
 
 html,
@@ -44,28 +47,6 @@ nav ul li a {
     margin: 0rem 1.5rem 0 0;
 }
 
-header {
-    grid-area: header;
-    background-image: url("https://source.unsplash.com/random/?business,bank");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 50vh;
-    text-align: center;
-}
-
-header article {
-    margin: 0;
-    position: relative;
-    text-align: center;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    letter-spacing: 0.2rem;
-    width: 50%;
-}
-
 main {
     grid-area: main;
 }
@@ -77,33 +58,35 @@ footer {
     text-align: center;
 }
 
-/* Landing page */
 
-#nav-main nav {
-  display: flex;
-  justify-content: space-between;
-  margin: 2rem;
-}
+/* HOMEPAGE */
 
-#nav-main nav img {
-  width: 5rem;
-  height: auto;
-}
-
-#nav-main .login-button {
-  background-color: var(--accent-color);
+#header-home {
+  grid-area: header;
+  background-image: url("https://source.unsplash.com/random/?business,bank");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 50vh;
   text-align: center;
-  border: 0;
-  height: 3rem;
-  width: auto;
-  padding: 1rem;
-  border-radius: 10px;
-  cursor: pointer;
 }
 
-/* Foto-Items-Main */
+#header-home article {
+  margin: 0;
+  position: relative;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  letter-spacing: 0.2rem;
+  width: 50%;
+}
 
-#nav-main {
+
+/* LANDING PAGE */
+
+#main-landing {
   display: flex;
   flex-wrap: wrap;
   max-width: 1700px;
@@ -113,6 +96,28 @@ footer {
   justify-content: center;
 }
 
-#nav-main figure figcaption {
+#main-landing nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem;
+}
+
+#main-landing nav img {
+  width: 5rem;
+  height: auto;
+}
+
+#main-landing .login-button {
+  background-color: var(--nexus-blue);
+  text-align: center;
+  border: 0;
+  height: 3rem;
+  width: auto;
+  padding: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#main-landing figure figcaption {
   text-align: center;
 }
