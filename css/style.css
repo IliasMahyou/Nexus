@@ -121,3 +121,35 @@ footer {
 #main-landing figure figcaption {
   text-align: center;
 }
+
+/***Styles - AboutUs***/
+#main-about section {
+  width: 90%;
+}
+/*Groepssectie*/
+/*Groepssectie - titel*/
+#main-about section:first-child h1 {
+  text-align: center;
+  padding-bottom: 15px;
+}
+/*Groepssectie - groepsfoto*/
+#main-about section:first-child img {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+/*Ledensectie*/
+/*Ledensectie - titel*/
+#main-about section:nth-child(2) h2 {
+  margin-bottom: 20px;
+}
+/*Ledensectie - leden*/
+.member {
+  width: fit-content;
+  display: inline-block;
+  margin-left: 5%;
+}
+/*Ledensectie - Lidnamen*/
+.member h3 {
+  width: fit-content;
+}
