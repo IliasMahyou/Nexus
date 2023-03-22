@@ -1,8 +1,5 @@
 :root {
   --accent-color: #7496c1;
-  --color-2: #9eadfc;
-  --color-3: #34344d;
-  --color-4: #54526a;
 }
 
 html,
@@ -80,21 +77,19 @@ footer {
   text-align: center;
 }
 
-/* Landing page */
-
-#nav-main nav {
+#main-landing nav {
   display: flex;
   justify-content: space-between;
   margin: 2rem;
 }
 
-#nav-main nav img {
+#main-landing nav img {
   width: 5rem;
   height: auto;
 }
 
-#nav-main .login-button {
-  background-color: var(--accent-color);
+#main-landing .login-button {
+  background-color: var(--nexus-blue);
   text-align: center;
   border: 0;
   height: 3rem;
@@ -104,19 +99,7 @@ footer {
   cursor: pointer;
 }
 
-/* Foto-Items-Main */
-
-#nav-main {
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 1700px;
-  margin: 0 auto;
-  padding: 20px;
-  gap: 20px;
-  justify-content: center;
-}
-
-#nav-main figure figcaption {
+#main-landing figure figcaption {
   text-align: center;
 }
 
