@@ -1,37 +1,90 @@
-* {
-  margin: 0;
-  padding: 0;
+:root {
+  --nexus-light-blue: #9eacdf;
+  --nexus-blue: #7496c1;
+  --nexus-dark-purple: #34344d;
+  --nexus-purple: #54526a;
 }
 
-:root {
-  --accent-color: #7496c1;
+html,
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 0.1rem;
+}
+
+body {
+  display: grid;
+  grid-template-areas:
+    "nav    nav    nav    nav"
+    "header header header header"
+    "main   main   main   main"
+    "footer footer footer footer";
 }
 
 nav {
+  grid-area: nav;
   display: flex;
   justify-content: space-between;
-  margin: 2rem;
 }
 
-.logo {
-  width: 5rem;
-  height: auto;
+nav ul {
+  display: flex;
 }
 
-.login-button {
-  background-color: var(--accent-color);
-  text-align: center;
-  border: 0;
-  height: 3rem;
-  width: auto;
-  padding: 1rem;
-  border-radius: 10px;
-  cursor: pointer;
+nav ul li {
+  list-style: none;
 }
 
-/* Foto-Items-Main */
+nav ul li a {
+  display: block;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: black;
+  font-size: 0.8rem;
+  letter-spacing: 0.2rem;
+  margin: 0rem 1.5rem 0 0;
+}
 
 main {
+  grid-area: main;
+}
+
+footer {
+  grid-area: footer;
+  background-color: lightgrey;
+  padding: 20px;
+  text-align: center;
+}
+
+/* HOMEPAGE */
+
+#header-home {
+  grid-area: header;
+  background-image: url("https://source.unsplash.com/random/?business,bank");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 50vh;
+  text-align: center;
+}
+
+#header-home article {
+  margin: 0;
+  position: relative;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  letter-spacing: 0.2rem;
+  width: 50%;
+}
+
+/* LANDING PAGE */
+
+#main-landing {
   display: flex;
   flex-wrap: wrap;
   max-width: 1700px;
@@ -41,8 +94,105 @@ main {
   justify-content: center;
 }
 
-figcaption {
+#body-landing nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem;
+}
+
+#body-landing nav img {
+  width: 5rem;
+  height: auto;
+}
+#body-landing nav .login-button {
+  background-color: var(--nexus-blue);
   text-align: center;
+  border: 0;
+  height: 3rem;
+  width: auto;
+  padding: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#main-landing figure figcaption {
+  text-align: center;
+}
+
+/* Login */
+
+#main-login {
+  display: flex;
+  justify-content: center;
+}
+
+#header-login {
+  display: flex;
+  justify-content: center;
+  padding: 6rem;
+  grid-area: header;
+}
+
+.logo-login {
+  width: 20rem;
+  height: auto;
+  margin: auto;
+}
+
+.login-form input {
+  background-color: var(--nexus-light-blue);
+  border: 0;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  height: 2rem;
+  width: 20rem;
+}
+
+.login-form .submit-button {
+  margin: auto;
+  width: 40%;
+  cursor: pointer;
+}
+
+/* Login */
+
+#main-login {
+  display: flex;
+  justify-content: center;
+}
+
+#header-login {
+  display: flex;
+  justify-content: center;
+  padding: 6rem;
+  grid-area: header;
+}
+
+.logo-login {
+  width: 20rem;
+  height: auto;
+  margin: auto;
+}
+
+.login-form input {
+  background-color: var(--nexus-light-blue);
+  border: 0;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  height: 2rem;
+  width: 20rem;
+}
+
+.login-form .submit-button {
+  margin: auto;
+  width: 40%;
+  cursor: pointer;
 }
 
 /***Styles - AboutUs***/
