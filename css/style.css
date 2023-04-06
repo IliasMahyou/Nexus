@@ -27,6 +27,8 @@ nav {
   grid-area: nav;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 10px;
 }
 
 nav ul {
@@ -196,58 +198,124 @@ footer {
 }
 
 /***Styles - AboutUs***/
-#main-about section {
-  width: 90%;
-}
-/*Groepssectie*/
-/*Groepssectie - titel*/
-#main-about section:first-child h1 {
+
+#main-about {
+  grid-area: main;
+  margin: auto;
   text-align: center;
-  padding-bottom: 15px;
 }
-/*Groepssectie - groepsfoto*/
-#main-about section:first-child img {
-  width: 80%;
-  margin-left: 10%;
-  margin-right: 10%;
+
+#main-about h2 {
+  text-align: center;
 }
-/*Ledensectie*/
-/*Ledensectie - titel*/
-#main-about section:nth-child(2) h2 {
-  margin-bottom: 20px;
+
+#members {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+  padding-bottom: 40px;
+  gap: 20px;
 }
-/*Ledensectie - leden*/
-.member {
+
+.team-section img {
+  width: 60%;
+  height: auto;
+}
+
+.member img {
   width: fit-content;
-  display: inline-block;
-  margin-left: 5%;
-  transition: opacity 0.3s;
+  transition: 1s ease-in-out;
 }
-.member:hover {
+
+.member img:hover {
+  width: fit-content;
+  transition: 1s ease-in-out;
+  border-radius: 20%;
   opacity: 0.7;
 }
-/*Ledensectie - Lidnamen*/
 .member h3 {
-  width: fit-content;
-  transform: translateY(-30px);
+  transform: translateY(-50px);
   color: white;
   display: none;
-  margin-left: 7px;
-  width: fit-content;
 }
 .member:hover h3 {
+  margin: auto;
   display: block;
 }
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 25px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 3px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: var(--nexus-dark-purple);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--nexus-dark-purple);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(22px);
+  -ms-transform: translateX(22px);
+  transform: translateX(22px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
 /***Styles - Contact***/
 
 #main-contact {
-  
   justify-content: center;
   align-items: center;
   min-height: 50vh;
   padding-bottom: 200px;
 }
-#container-contact{
+#container-contact {
   justify-content: center;
   align-items: center;
   display: flex;
@@ -261,7 +329,6 @@ footer {
   margin-bottom: 2rem;
 }
 
-
 #main-contact form {
   width: 90%;
   max-width: 500px;
@@ -271,7 +338,9 @@ footer {
   box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
 }
 
-#main-contact label,#main-contact input,#main-contact textarea {
+#main-contact label,
+#main-contact input,
+#main-contact textarea {
   display: block;
   width: 100%;
   font-size: 1rem;
@@ -282,10 +351,11 @@ footer {
   color: white;
   font-weight: bold;
   margin-bottom: 0.5rem;
-  font-family:Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-#main-contact input,#main-contact textarea {
+#main-contact input,
+#main-contact textarea {
   padding-bottom: 0.5rem;
   padding-top: 0.5rem;
   border-radius: 5px;
@@ -293,7 +363,8 @@ footer {
   background-color: var(--nexus-light-blue);
 }
 
-#main-contact input:focus,#main-contact textarea:focus {
+#main-contact input:focus,
+#main-contact textarea:focus {
   outline: none;
   background-color: var(--nexus-blue);
 }
@@ -308,13 +379,12 @@ footer {
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 5px;
-  
+
   transition: all 0.3s ease;
 }
 
 #main-contact button[type="submit"]:hover {
   background-color: var(--nexus-dark-purple);
-
 }
 
 #contact-info {
@@ -324,10 +394,10 @@ footer {
   justify-content: center;
   background-color: var(--nexus-light-blue);
   padding: 50px 0;
-  border-radius: 0px 10px 10px  0px;
+  border-radius: 0px 10px 10px 0px;
   max-width: 500px;
   max-height: 550px;
-  
+
   box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
 }
 
@@ -339,7 +409,7 @@ footer {
   margin-top: 0;
 }
 
-#contact-info address{
+#contact-info address {
   color: var(--nexus-purple);
   font-size: 1rem;
   font-weight: bold;
@@ -347,13 +417,10 @@ footer {
   margin-top: 0;
   padding-left: 1%;
   padding-right: 1%;
-
-
 }
-#contact-info address a{
+#contact-info address a {
   text-decoration: none;
   color: var(--nexus-blue);
-  
 }
 
 #map {
@@ -364,13 +431,12 @@ footer {
 /***Styles - Contact***/
 
 #main-contact {
-  
   justify-content: center;
   align-items: center;
   min-height: 50vh;
   padding-bottom: 200px;
 }
-#container-contact{
+#container-contact {
   justify-content: center;
   align-items: center;
   display: flex;
@@ -384,7 +450,6 @@ footer {
   margin-bottom: 2rem;
 }
 
-
 #main-contact form {
   width: 90%;
   max-width: 500px;
@@ -394,7 +459,9 @@ footer {
   box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
 }
 
-#main-contact label,#main-contact input,#main-contact textarea {
+#main-contact label,
+#main-contact input,
+#main-contact textarea {
   display: block;
   width: 100%;
   font-size: 1rem;
@@ -405,10 +472,11 @@ footer {
   color: white;
   font-weight: bold;
   margin-bottom: 0.5rem;
-  font-family:Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-#main-contact input,#main-contact textarea {
+#main-contact input,
+#main-contact textarea {
   padding-bottom: 0.5rem;
   padding-top: 0.5rem;
   border-radius: 5px;
@@ -416,7 +484,8 @@ footer {
   background-color: var(--nexus-light-blue);
 }
 
-#main-contact input:focus,#main-contact textarea:focus {
+#main-contact input:focus,
+#main-contact textarea:focus {
   outline: none;
   background-color: var(--nexus-blue);
 }
@@ -431,13 +500,12 @@ footer {
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 5px;
-  
+
   transition: all 0.3s ease;
 }
 
 #main-contact button[type="submit"]:hover {
   background-color: var(--nexus-dark-purple);
-
 }
 
 #contact-info {
@@ -447,10 +515,10 @@ footer {
   justify-content: center;
   background-color: var(--nexus-light-blue);
   padding: 50px 0;
-  border-radius: 0px 10px 10px  0px;
+  border-radius: 0px 10px 10px 0px;
   max-width: 500px;
   max-height: 550px;
-  
+
   box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
 }
 
@@ -462,7 +530,7 @@ footer {
   margin-top: 0;
 }
 
-#contact-info address{
+#contact-info address {
   color: var(--nexus-purple);
   font-size: 1rem;
   font-weight: bold;
@@ -470,13 +538,10 @@ footer {
   margin-top: 0;
   padding-left: 1%;
   padding-right: 1%;
-
-
 }
-#contact-info address a{
+#contact-info address a {
   text-decoration: none;
   color: var(--nexus-blue);
-  
 }
 
 #map {
