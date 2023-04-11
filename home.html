@@ -1,35 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- CSS -->
     <link rel="stylesheet" href="./css/style.css" />
     <title>Nexus</title>
-  </head>
-  <body id="body-home">
+</head>
+
+<body id="body-home">
     <nav>
-      <ul>
-        <li><a href="./home.html">Home</a></li>
-        <li><a href="./about.html">About</a></li>
-        <li><a href="./contact.html">Contact</a></li>
-      </ul>
+        <ul>
+            <li><a href="./home.html" class="active">Home</a></li>
+            <li><a href="./about.html">Over ons</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+        </ul>
     </nav>
     <header id="header-home">
-      <article>
-        <h1>Nexus</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates
-          architecto fugiat soluta aliquam provident inventore maiores accusamus
-          explicabo consequuntur voluptas, commodi nam. Nostrum, tempore
-          similique! Porro, provident quibusdam. Eos, dolor.
-        </p>
-      </article>
+        <article>
+            <h1>Nexus</h1>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates
+                architecto fugiat soluta aliquam provident inventore maiores accusamus
+                explicabo consequuntur voluptas, commodi nam. Nostrum, tempore
+                similique! Porro, provident quibusdam. Eos, dolor.
+            </p>
+        </article>
     </header>
-    <main id="main-home"></main>
+    <main id="main-home">
+        <section id="comparison-tool">
+            <h1>Vergelijkingstool</h1>
+            <div class="comparison-form">
+                <div>
+                    <input placeholder="Ondernemingsnummer" type="text" id="company1-input" name="company1" />
+                </div>
+                <button class="compare-button">Vergelijk</button>
+                <div>
+                    <input placeholder="Ondernemingsnummer" type="text" id="company2-input" name="company2" />
+                </div>
+            </div>
+            <div class="comparison-results">
+                <div class="company1-data">
+                    <table>
+                        <tr>
+                            <th>Naam:</th>
+                            <td>[Data]</td>
+                        </tr>
+                        <tr>
+                            <th>Adres:</th>
+                            <td>[Data]</td>
+                        </tr>
+                        <tr>
+                            <th>Datum neerlegging:</th>
+                            <td>[Data]</td>
+                        </tr>
+                        <tr>
+                            <th>Eigen vermogen:</th>
+                            <td>[Data]</td>
+                        </tr>
+                        <tr>
+                            <th>Schulden:</th>
+                            <td>[Data]</td>
+                        </tr>
+                        <tr>
+                            <th>Bedrijfswinst:</th>
+                            <td>[Data]</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="company2-data">
+                    <table>
+                        <tr>
+                            <th>Naam:</th>
+                            <td>[Data]</td>
+                        </tr>
+                        <tr>
+                            <th>Adres:</th>
+                            <td>[Data]</td>
+                        </tr>
+                        <tr>
+                            <th>Datum neerlegging:</th>
+                            <td>[Data]</td>
+                        </tr>
+                        <tr>
+                            <th>Eigen vermogen:</th>
+                            <td>[Data]</td>
+                        </tr>
+                        <tr>
+                            <th>Schulden:</th>
+                            <td>[Data]</td>
+                        </tr>
+                        <tr>
+                            <th>Bedrijfswinst:</th>
+                            <td>[Data]</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+    <aside>
+        <section id="history">
+
+        </section>
+    </aside>
     <footer>
-      <p>Copyright &copy; 2023-2024 Nexus</p>
+        <p>Copyright &copy; 2023-2024 Nexus</p>
     </footer>
-  </body>
+</body>
+
 </html>

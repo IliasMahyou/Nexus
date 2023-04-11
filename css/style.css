@@ -18,10 +18,10 @@ body {
 body {
     display: grid;
     grid-template-areas:
-        "nav    nav    nav    nav"
-        "header header header header"
-        "main   main   main   main"
-        "footer footer footer footer";
+        "nav    nav    nav    nav    nav"
+        "header header header header header"
+        "main   main   main   main   main   "
+        "footer footer footer footer footer";
 }
 
 nav {
@@ -60,6 +60,16 @@ main {
     grid-area: main;
 }
 
+main h1 {
+    color: var(--nexus-dark-purple);
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+}
+
+main button {
+    text-transform: uppercase;
+}
+
 footer {
     grid-area: footer;
     background-color: lightgrey;
@@ -68,13 +78,22 @@ footer {
 }
 
 /* Home page */
+#body-home {
+    display: grid;
+    grid-template-areas:
+        "nav    nav    nav    nav    nav"
+        "header header header header header"
+        "main   main   main   aside  aside"
+        "footer footer footer footer footer";
+}
+
 #header-home {
     grid-area: header;
     background-image: url("https://source.unsplash.com/random/?business,bank");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 50vh;
+    height: 75vh;
     text-align: center;
 }
 
@@ -88,6 +107,100 @@ footer {
     color: white;
     letter-spacing: 0.2rem;
     width: 50%;
+}
+
+#main-home {
+    background-color: white;
+    height: 100%;
+}
+
+#comparison-tool {
+    margin: 50px auto;
+    max-width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+#comparison-tool h1 {
+    margin-bottom: 30px;
+}
+
+.comparison-form {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.comparison-form div {
+    display: flex;
+    flex-direction: column;
+}
+
+.comparison-form input {
+    padding: 5px;
+    min-width: 175px;
+    height: 30px;
+}
+
+.comparison-form ::placeholder {
+    color: var(--nexus-purple);
+    font-size: 12pt;
+    opacity: 50%;
+}
+
+.comparison-form .compare-button {
+    padding: 5px 20px;
+    min-width: 150px;
+    background-color: var(--nexus-blue);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    letter-spacing: 0.1rem;
+    font-size: 12pt;
+}
+
+.comparison-form .compare-button:hover {
+    background-color: var(--nexus-dark-purple);
+}
+
+.comparison-results {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.comparison-results div {
+    width: 50%;
+}
+
+.comparison-results .company1-data {
+    padding: 20px 40px 20px 0;
+    border-right: 1px solid var(--nexus-blue);
+}
+
+.comparison-results .company2-data {
+    padding: 20px 0 20px 40px;
+    border-left: 1px solid var(--nexus-blue);
+}
+
+.comparison-results table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.comparison-results th {
+    text-align: left;
+}
+
+.comparison-results td {
+    text-align: right;
+    padding: 8px 0 8px 8px;
+}
+
+#body-home aside {
+    grid-area: aside;
+    background-color: var(--nexus-blue);
 }
 
 /* Landing page */
@@ -330,11 +443,9 @@ input:checked+.slider:before {
     width: 100%;
     padding: 0.5rem;
     margin-bottom: 1rem;
-    border: 2px solid var(--nexus-dark-purple);
-    border-right-width: 0px;
-    border-top-width: 0px;
-    border-left-width: 0px;
+    border: none;
     outline: none;
+    border-bottom: 2px solid var(--nexus-dark-purple);
     box-sizing: border-box;
     font-family: inherit;
 }
@@ -362,7 +473,67 @@ input:checked+.slider:before {
     letter-spacing: 0.1rem;
 }
 
+/* Media queries */
 @media screen and (max-width: 767px) {
+    aside {
+        display: none;
+    }
+
+    #main-home {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100vw;
+    }
+
+    #comparison-tool {
+        width: 100%;
+        margin: 20px auto;
+    }
+
+    .comparison-form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .comparison-form div {
+        margin-bottom: 10px;
+    }
+
+    .comparison-form input {
+        margin-bottom: 10px;
+    }
+
+    .comparison-form #company2-input {
+        order: 2;
+    }
+
+    .comparison-form .compare-button {
+        order: 3;
+        height: 45px;
+    }
+
+    .comparison-results {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .comparison-results .company1-data,
+    .comparison-results .company2-data {
+        padding: 20px;
+        width: 100%;
+        border: none;
+    }
+
+    .comparison-results .company1-data {
+        order: 1;
+    }
+
+    .comparison-results .company2-data {
+        order: 2;
+    }
+
     #main-contact {
         flex-direction: column;
     }
