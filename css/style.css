@@ -200,7 +200,34 @@ footer {
 
 #body-home aside {
     grid-area: aside;
-    background-color: var(--nexus-blue);
+    background-color: var(--nexus-purple);
+    color: white;
+    padding: 1rem;
+    position: relative;
+}
+
+#history {
+    position: sticky;
+    top: 0;
+}
+
+#history h2 {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0 0 20px 0;
+}
+
+#history ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-height: 200px;
+    overflow-y: scroll;
+}
+
+#history li {
+    font-size: 0.8rem;
+    padding: 0.5rem;
 }
 
 /* Landing page */
