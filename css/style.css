@@ -198,6 +198,18 @@ footer {
     padding: 8px 0 8px 8px;
 }
 
+#company-info {
+    position: absolute;
+    z-index: 10px;
+    bottom: 0%;
+    left: 20%;
+    padding: 15px;
+    background-color: white;
+    width: fit-content;
+    height: auto;
+    border-radius: 10px;
+}
+
 #body-home aside {
     grid-area: aside;
     background-color: var(--nexus-purple);
