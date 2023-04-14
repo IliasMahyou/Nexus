@@ -208,6 +208,7 @@ footer {
     width: fit-content;
     height: auto;
     border-radius: 10px;
+    display: hidden;
 }
 
 #body-home aside {
