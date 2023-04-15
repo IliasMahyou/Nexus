@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="nl">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
-    <meta
-      name="description"
-      content="Ontdek het team verantwoordelijk voor deze webapplicatie."
-    />
+    <meta name="description" content="Ontdek het team verantwoordelijk voor deze webapplicatie." />
     <meta name="keywords" content="Nexus, About, Team" />
     <meta name="author" content="Nexus" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -13,89 +11,71 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="shortcut icon" href="./img/Logo.PNG" type="image/x-icon" />
     <title>About Us</title>
-  </head>
-  <body>
-    <!--Navigatiemenu-->
+</head>
+
+<body>
     <nav>
-      <ul>
-        <li><a href="./home.html">Home</a></li>
-        <li><a href="./about.html">About</a></li>
-        <li><a href="./contact.html">Contact</a></li>
-      </ul>
-
-      <!--Schakelaar-Licht/Donker-->
-      <label class="switch">
-        <input type="checkbox" />
-        <span class="slider round"></span>
-      </label>
+        <ul>
+            <li><a href="./home.html">Home</a></li>
+            <li><a href="./about.html" class="active">Over ons</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+        </ul>
+        <label class="switch">
+            <input type="checkbox" />
+            <span class="slider round"></span>
+        </label>
     </nav>
-
-    <!--Hoofdinhoud-->
+    <header id="header-about">
+        <article>
+            <h1>Over ons</h1>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates
+                architecto fugiat soluta aliquam provident inventore maiores accusamus
+                explicabo consequuntur voluptas, commodi nam. Nostrum, tempore
+                similique! Porro, provident quibusdam. Eos, dolor.
+            </p>
+        </article>
+    </header>
     <main id="main-about">
-      <section class="team-section">
-        <h1>Nexus-team</h1>
-        <img
-          src="https://source.unsplash.com/random/500x300"
-          alt="Groepsfoto van het Nexus-team."
-          height="300"
-          width="500"
-        />
-      </section>
-      <!--Sectie-Leden-->
-      <section>
-        <h2>Wie zijn we?</h2>
-        <div id="members">
-          <article class="member">
-            <img
-              src="https://source.unsplash.com/random/200x200"
-              height="220"
-              width="220"
-              alt="Individuele foto van Anthony Hellemans."
-            />
-            <h3>Anthony Hellemans</h3>
-          </article>
-          <article class="member">
-            <img
-              src="https://source.unsplash.com/random/200x200"
-              height="220"
-              width="220"
-              alt="Individuele foto van Ilias Mahyou."
-            />
-            <h3>Ilias Mahyou</h3>
-          </article>
-          <article class="member">
-            <img
-              src="https://source.unsplash.com/random/200x200"
-              height="220"
-              width="220"
-              alt="Individuele foto van Milan Mareels."
-            />
-            <h3>Milan Mareels</h3>
-          </article>
-          <article class="member">
-            <img
-              src="https://source.unsplash.com/random/200x200"
-              height="220"
-              width="220"
-              alt="Individuele foto van Renzo Declerck."
-            />
-            <h3>Renzo Declerck</h3>
-          </article>
-          <article class="member">
-            <img
-              src="https://source.unsplash.com/random/200x200"
-              height="220"
-              width="220"
-              alt="Individuele foto van Warre Bogaerts."
-            />
-            <h3>Warre Bogaerts</h3>
-          </article>
-        </div>
-      </section>
+        <section>
+            <h2>Ontmoet het team</h2>
+            <div id="members">
+                <article class="member">
+                    <img src="./img/profile-anthony.jpg"" alt=" Individuele foto van Anthony Hellemans." />
+                    <div class="member-name">
+                        <h3>Anthony Hellemans</h3>
+                    </div>
+                </article>
+                <article class="member">
+                    <img src="./img/profile-ilias.jpg" alt="Individuele foto van Ilias Mahyou." />
+                    <div class="member-name">
+                        <h3>Ilias Mahyou</h3>
+                    </div>
+                </article>
+                <article class="member">
+                    <img src="./img/profile-milan.jpg" alt="Individuele foto van Milan Mareels." />
+                    <div class="member-name">
+                        <h3>Milan Mareels</h3>
+                    </div>
+                </article>
+                <article class="member">
+                    <img src="./img/profile-renzo.jpg" alt="Individuele foto van Renzo Declerck." />
+                    <div class="member-name">
+                        <h3>Renzo Declerck</h3>
+                    </div>
+                </article>
+                <article class="member">
+                    <img src="./img/profile-warre.jpg" alt="Individuele foto van Warre Bogaerts." />
+                    <div class="member-name">
+                        <h3>Warre Bogaerts</h3>
+                    </div>
+                </article>
+            </div>
+        </section>
     </main>
-    <!--Footer-->
     <footer>
-      <p>Copyright &copy; 2023-2024 Nexus</p>
+        <p>Copyright &copy; 2023-2024 Nexus</p>
     </footer>
-  </body>
+</body>
+
 </html>
