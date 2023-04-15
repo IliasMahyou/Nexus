@@ -220,8 +220,14 @@ footer {
 #company-info td {
     padding-left: 50px;
 }
+/*compare-btn*/
+#company-info  button:nth-child(2){
+    position: absolute;
+    right: 0;
+    margin: 20px; 
+}
 /*hideInfo-btn*/
-#company-info button {
+#company-info button:first-child {
     margin: 20px;
     margin-bottom: 0;
 }
