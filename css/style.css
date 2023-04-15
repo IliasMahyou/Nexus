@@ -204,6 +204,40 @@ footer {
     padding: 8px 0 8px 8px;
 }
 
+/***Bedrijfsinfovenster - stijlen***/
+#company-info {
+    position: absolute;
+    z-index: 10px;
+    bottom: 0%;
+    left: 20%;
+    background-color: white;
+    width: fit-content;
+    height: auto;
+    border-radius: 10px;
+    display: none;
+}
+/*bedrijfsinfotabel*/
+#company-info table {
+    margin: 100px;
+    margin-top: 55px;
+    text-align: left;
+}
+/*Bedrijfsinfo*/
+#company-info td {
+    padding-left: 50px;
+}
+/*compare-btn*/
+#company-info  button:nth-child(2){
+    position: absolute;
+    right: 0;
+    margin: 20px; 
+}
+/*hideInfo-btn*/
+#company-info button:first-child {
+    margin: 20px;
+    margin-bottom: 0;
+}
+
 #body-home aside {
     grid-area: aside;
     background-color: var(--nexus-purple);

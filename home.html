@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- CSS -->
     <link rel="stylesheet" href="./css/style.css" />
+    <script src="js/history.js" defer></script>
     <title>Nexus</title>
 </head>
 
@@ -100,12 +101,43 @@
                 </div>
             </div>
         </section>
+        <!--Bedrijfsvenster voor het geselecteerde bedrijf in de historiek-->
+        <article id="company-info">
+            <button type="button" onclick="hideInfo()">X</button>
+            <button type="button">Vergelijk</button>
+            <table>
+                <tr>
+                    <th scope="row">Naam:</th>
+                    <td>[Data]</td>
+                </tr>
+                <tr>
+                    <th scope="row">Adres:</th>
+                    <td>[Data]</td>
+                </tr>
+                <tr>
+                    <th scope="row">Datum neerlegging:</th>
+                    <td>[Data]</td>
+                </tr>
+                <tr>
+                    <th scope="row">Eigen vermogen:</th>
+                    <td>[Data]</td>
+                </tr>
+                <tr>
+                    <th scope="row">Schulden:</th>
+                    <td>[Data]</td>
+                </tr>
+                <tr>
+                    <th scope="row">Bedrijfswinst:</th>
+                    <td>[Data]</td>
+                </tr>
+            </table>
+        </article>
     </main>
     <aside>
         <section id="history">
             <h2>Recente zoekoprachten:</h2>
             <ul>
-                <li>Bedrijf A</li>
+                <li onclick="showInfo(this)">Bedrijf A</li>
                 <li>Bedrijf B</li>
                 <li>Bedrijf C</li>
                 <li>Bedrijf D</li>
