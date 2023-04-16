@@ -137,11 +137,6 @@ footer {
     margin-bottom: 20px;
 }
 
-.comparison-form div {
-    display: flex;
-    flex-direction: column;
-}
-
 .comparison-form input {
     padding: 5px;
     min-width: 175px;
