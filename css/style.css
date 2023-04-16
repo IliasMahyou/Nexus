@@ -175,12 +175,12 @@ footer {
     width: 50%;
 }
 
-.comparison-results .company1-data {
+#company1-data {
     padding: 20px 40px 20px 0;
     border-right: 1px solid var(--nexus-blue);
 }
 
-.comparison-results .company2-data {
+#company2-data {
     padding: 20px 0 20px 40px;
     border-left: 1px solid var(--nexus-blue);
 }
