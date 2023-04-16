@@ -37,7 +37,7 @@
             <h1>Vergelijkingstool</h1>
             <form name="frmComparison" class="comparison-form">
                 <input placeholder="Ondernemingsnummer" type="text" id="company1-input" name="company1" />
-                <button class="compare-button" onclick="compare()">Vergelijk</button>
+                <button class="compare-button" onclick="compare()" id="btnCompare">Vergelijk</button>
                 <input placeholder="Ondernemingsnummer" type="text" id="company2-input" name="company2" />
             </form>
             <div class="comparison-results">
@@ -81,7 +81,7 @@
                         </tr>
                         <tr>
                             <th>Datum neerlegging:</th>
-                            <td id="commpany2Date"></td>
+                            <td id="company2Date"></td>
                         </tr>
                         <tr>
                             <th>Eigen vermogen:</th>
@@ -101,7 +101,7 @@
         </section>
         <!--Bedrijfsvenster voor het geselecteerde bedrijf in de historiek-->
         <article id="company-info">
-            <button type="button" onclick="hideInfo()">X</button>
+            <button type="submit" onclick="hideInfo()" id="button">X</button>
             <button type="button">Vergelijk</button>
             <table>
                 <tr>
