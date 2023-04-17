@@ -41,7 +41,6 @@ function fetchCompanyData(company) {
             debts[1] = company2Data.debts;
             profits[1] = company2Data.profits;
         }
-        markDifferences(equities, debts, profits);
     
 }
 
@@ -88,18 +87,23 @@ function compare() {
     let counter = 0;
     if (company1Number == 485362) {
         fetchCompanyData(1);
+        addToHistory(company1Data)
         counter++;
     } else {
         frmComparison.insertAdjacentHTML("afterend", '<span class="errMessage"> Eerste ondernemingsnummer is niet gevonden.</span>');
     }
     if (company2Number == 569082) {
         fetchCompanyData(2);
+        addToHistory(company2Data)
         counter++;
     } else {
         frmComparison.insertAdjacentHTML("afterend", '<span class="errMessage"> Tweede ondernemingsnummer is niet gevonden.</span>');
     }
     if (counter == 2) {
         deleteErr();
+        markDifferences(equities, debts, profits);
     }
+    //Hier ook markdifferences() laten oproepen met een return counter van fetchData
+    //Hetzelfde voor historiek aanvulling
     //Misschien dan nog later, een foutmelding laten verschijnen wanneer de gebruiker wil vergelijken maar nog geen ondernemingsnummers heeft ingegeven
 }

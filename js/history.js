@@ -6,3 +6,8 @@ function showInfo(element) {
 function hideInfo() {
     document.getElementById("company-info").style.display = "none";
 }
+//Bedrijf na het vergelijken toevoegen in de historiek.
+function addToHistory(company) {
+    const history = document.querySelector("#history ul");
+    history.insertAdjacentHTML("afterbegin", `<li onclick="showInfo(this)">${company.name}</li>`);
+}
