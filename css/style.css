@@ -506,9 +506,8 @@ footer {
   border-radius: 50%;
   transition: .3s ease-out;
 }
-
-input {
-  display: none;
+ #toggle{
+    display: none;
 }
 
 /* -- Light Mode -- */
