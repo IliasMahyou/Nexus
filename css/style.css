@@ -630,8 +630,8 @@ input:checked+.slider:before {
         align-items: center;
     }
 
-    .comparison-results .company1-data,
-    .comparison-results .company2-data {
+    .comparison-results #company1-data,
+    .comparison-results #company2-data {
         padding: 20px;
         width: 100%;
         border: none;
