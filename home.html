@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- CSS -->
     <link rel="stylesheet" href="./css/style.css" />
+    <!-- JS -->
+    <script src="js/dummyData.js" defer></script>
     <script src="js/history.js" defer></script>
     <title>Nexus</title>
 </head>
@@ -33,69 +35,65 @@
     <main id="main-home">
         <section id="comparison-tool">
             <h1>Vergelijkingstool</h1>
-            <div class="comparison-form">
-                <div>
-                    <input placeholder="Ondernemingsnummer" type="text" id="company1-input" name="company1" />
-                </div>
-                <button class="compare-button">Vergelijk</button>
-                <div>
-                    <input placeholder="Ondernemingsnummer" type="text" id="company2-input" name="company2" />
-                </div>
-            </div>
+            <form name="frmComparison" class="comparison-form">
+                <input placeholder="Ondernemingsnummer" type="text" id="company1-input" name="company1" />
+                <button class="compare-button" onclick="compare()" id="btnCompare">Vergelijk</button>
+                <input placeholder="Ondernemingsnummer" type="text" id="company2-input" name="company2" />
+            </form>
             <div class="comparison-results">
-                <div class="company1-data">
+                <div id="company1-data">
                     <table>
                         <tr>
                             <th>Naam:</th>
-                            <td>[Data]</td>
+                            <td id="company1Name"></td>
                         </tr>
                         <tr>
                             <th>Adres:</th>
-                            <td>[Data]</td>
+                            <td id="company1Address"></td>
                         </tr>
                         <tr>
                             <th>Datum neerlegging:</th>
-                            <td>[Data]</td>
+                            <td id="company1Date"></td>
                         </tr>
                         <tr>
                             <th>Eigen vermogen:</th>
-                            <td>[Data]</td>
+                            <td id="company1Equity"></td>
                         </tr>
                         <tr>
                             <th>Schulden:</th>
-                            <td>[Data]</td>
+                            <td id="company1Debts"></td>
                         </tr>
                         <tr>
                             <th>Bedrijfswinst:</th>
-                            <td>[Data]</td>
+                            <td id="company1Profit"></td>
                         </tr>
                     </table>
                 </div>
-                <div class="company2-data">
+                <div id="company2-data">
                     <table>
                         <tr>
                             <th>Naam:</th>
-                            <td>[Data]</td>
+                            <td id="company2Name"></td>
                         </tr>
                         <tr>
                             <th>Adres:</th>
-                            <td>[Data]</td>
+                            <td id="company2Address"></td>
                         </tr>
                         <tr>
                             <th>Datum neerlegging:</th>
-                            <td>[Data]</td>
+                            <td id="company2Date"></td>
                         </tr>
                         <tr>
                             <th>Eigen vermogen:</th>
-                            <td>[Data]</td>
+                            <td id="company2Equity"></td>
                         </tr>
                         <tr>
                             <th>Schulden:</th>
-                            <td>[Data]</td>
+                            <td id="company2Debts"></td>
                         </tr>
                         <tr>
                             <th>Bedrijfswinst:</th>
-                            <td>[Data]</td>
+                            <td id="company2Profit"></td>
                         </tr>
                     </table>
                 </div>
@@ -103,32 +101,32 @@
         </section>
         <!--Bedrijfsvenster voor het geselecteerde bedrijf in de historiek-->
         <article id="company-info">
-            <button type="button" onclick="hideInfo()">X</button>
+            <button type="submit" onclick="hideInfo()" id="button">X</button>
             <button type="button">Vergelijk</button>
             <table>
                 <tr>
                     <th scope="row">Naam:</th>
-                    <td>[Data]</td>
+                    <td id="companyName"></td>
                 </tr>
                 <tr>
                     <th scope="row">Adres:</th>
-                    <td>[Data]</td>
+                    <td id="companyAddress"></td>
                 </tr>
                 <tr>
                     <th scope="row">Datum neerlegging:</th>
-                    <td>[Data]</td>
+                    <td id="companyDate"></td>
                 </tr>
                 <tr>
                     <th scope="row">Eigen vermogen:</th>
-                    <td>[Data]</td>
+                    <td id="companyEquity"></td>
                 </tr>
                 <tr>
                     <th scope="row">Schulden:</th>
-                    <td>[Data]</td>
+                    <td id="companyDebts"></td>
                 </tr>
                 <tr>
                     <th scope="row">Bedrijfswinst:</th>
-                    <td>[Data]</td>
+                    <td id="companyProfit"></td>
                 </tr>
             </table>
         </article>
@@ -137,16 +135,6 @@
         <section id="history">
             <h2>Recente zoekoprachten:</h2>
             <ul>
-                <li onclick="showInfo(this)">Bedrijf A</li>
-                <li>Bedrijf B</li>
-                <li>Bedrijf C</li>
-                <li>Bedrijf D</li>
-                <li>Bedrijf E</li>
-                <li>Bedrijf F</li>
-                <li>Bedrijf G</li>
-                <li>Bedrijf H</li>
-                <li>Bedrijf I</li>
-                <li>Bedrijf J</li>
             </ul>
         </section>
     </aside>
