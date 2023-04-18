@@ -8,33 +8,16 @@
     <!-- CSS -->
     <link rel="stylesheet" href="./css/style.css" />
     <script src="js/history.js" defer></script>
-    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css"/>
     <title>Nexus</title>
 </head>
 
-<body class="light" id="body-home">
+<body id="body-home">
     <nav>
         <ul>
             <li><a href="./home.html" class="active">Home</a></li>
             <li><a href="./about.html">Over ons</a></li>
             <li><a href="./contact.html">Contact</a></li>
         </ul>
-        <div class="translator">
-            <ul>
-                <li><a href="#" class="talen">Talen</a>
-                <ul class="dropdown">
-                    <li><a href="#" language="dutch" class="active"><span class="fi fi-nl"></span></a></li>
-                    <li><a href="#" language="english"><span class="fi fi-us"></span></a></li>
-                    <li><a href="#" language="french"><span class="fi fi-fr"></span></a></li>
-                </ul></li></ul></div>
-        <input type="checkbox" id="toggle">
-        <label class="toggle" for="toggle">
-            <i class="bx bxs-sun"></i>
-            <i class="bx bx-moon"></i>
-            <span class="ball"></span>
-        </label>
-        <script type="text/javascript" src="./js/darkLight.js"></script>
     </nav>
     <header id="header-home">
         <article>
@@ -49,7 +32,7 @@
     </header>
     <main id="main-home">
         <section id="comparison-tool">
-            <h1 class="titleHome">Vergelijkingstool</h1>
+            <h1>Vergelijkingstool</h1>
             <div class="comparison-form">
                 <div>
                     <input placeholder="Ondernemingsnummer" type="text" id="company1-input" name="company1" />
@@ -152,25 +135,24 @@
     </main>
     <aside>
         <section id="history">
-            <h2 class="translateHistory">Recente zoekoprachten:</h2>
+            <h2>Recente zoekoprachten:</h2>
             <ul>
-                <li onclick="showInfo(this)" class="li">Bedrijf A</li>
-                <li class="li">Bedrijf B</li>
-                <li class="li">Bedrijf C</li>
-                <li class="li">Bedrijf D</li>
-                <li class="li">Bedrijf E</li>
-                <li class="li">Bedrijf F</li>
-                <li class="li">Bedrijf G</li>
-                <li class="li">Bedrijf H</li>
-                <li class="li">Bedrijf I</li>
-                <li class="li">Bedrijf J</li>
+                <li onclick="showInfo(this)">Bedrijf A</li>
+                <li>Bedrijf B</li>
+                <li>Bedrijf C</li>
+                <li>Bedrijf D</li>
+                <li>Bedrijf E</li>
+                <li>Bedrijf F</li>
+                <li>Bedrijf G</li>
+                <li>Bedrijf H</li>
+                <li>Bedrijf I</li>
+                <li>Bedrijf J</li>
             </ul>
         </section>
     </aside>
     <footer>
         <p>Copyright &copy; 2023-2024 Nexus</p>
     </footer>
-    <script src="./js/translateHome.js"></script>
 </body>
 
 </html>
