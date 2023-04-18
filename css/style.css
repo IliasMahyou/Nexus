@@ -165,7 +165,6 @@ footer {
     justify-content: space-between;
     margin-bottom: 20px;
 }
-
 .comparison-form div {
     display: flex;
     flex-direction: column;
@@ -199,6 +198,11 @@ footer {
     background-color: var(--nexus-dark-purple);
 }
 
+/*Foutmelding*/
+.errMessage {
+    color: var(--nexus-dark-purple);
+}
+
 .comparison-results {
     display: flex;
     justify-content: space-between;
@@ -209,12 +213,12 @@ footer {
     width: 50%;
 }
 
-.comparison-results .company1-data {
+#company1-data {
     padding: 20px 40px 20px 0;
     border-right: 1px solid var(--nexus-blue);
 }
 
-.comparison-results .company2-data {
+#company2-data {
     padding: 20px 0 20px 40px;
     border-left: 1px solid var(--nexus-blue);
 }
@@ -479,97 +483,107 @@ footer {
     width: 0;
     height: 0;
 }
+
 /* Slider */
 .toggle {
-  cursor: pointer;
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  width: 6rem;
-  height: 3rem;
-  border-radius: 2.5rem;
-  transition: .2s;
-}
-.toggle i {
-    width: 50%;
-    line-height: 3rem;
-    text-align: center;
-    font-size: 1.5rem;
-    z-index: 1;
-}
-
-.toggle .ball {
-  position: absolute;
-  width: 2.25rem;
-  height: 2.25rem;
-  margin: 0.375rem;
-  border-radius: 50%;
-  transition: .3s ease-out;
-}
- #toggle{
-    display: none;
-}
-
-/* -- Light Mode -- */
-
-.light {
-  transition: .2s;
-  background-color: #fafafa;
-}
-
-.light .toggle {
-  background: linear-gradient(145deg, #e1e1e1, #fff);
-}
-
-.light .toggle .bxs-sun {
-  color: #fafafa;
-}
-
-.light .toggle .bx-moon {
-  color: var(--nexus-dark-purple);
-}
-
-.light .toggle .ball {
-  background: var(--nexus-dark-purple);
-}
-
-/* -- Dark Mode -- */
-
-.dark {
-  background-color: #293133;
-  color: white;
-}
-
-.dark .darkH {
-  color: var(--nexus-light-blue);
-}
-.dark .titleHome {
-  color: var(--nexus-light-blue);
-}
-.dark #contact-info h1 {
-  color: var(--nexus-light-blue);
-}
-.dark #contact-info p {
-  color: white;
-}
-.dark #contact-info i {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 6rem;
+    height: 3rem;
+    border-radius: 2.5rem;
+    transition: .2s;
+  }
+  .toggle i {
+      width: 50%;
+      line-height: 3rem;
+      text-align: center;
+      font-size: 1.5rem;
+      z-index: 1;
+  }
+  
+  .toggle .ball {
+    position: absolute;
+    width: 2.25rem;
+    height: 2.25rem;
+    margin: 0.375rem;
+    border-radius: 50%;
+    transition: .3s ease-out;
+  }
+   #toggle{
+      display: none;
+  }
+  
+  /* -- Light Mode -- */
+  
+  .light {
+    transition: .2s;
+    background-color: #fafafa;
+  }
+  
+  .light .toggle {
+    background: linear-gradient(145deg, #e1e1e1, #fff);
+  }
+  
+  .light .toggle .bxs-sun {
+    color: #fafafa;
+  }
+  
+  .light .toggle .bx-moon {
+    color: var(--nexus-dark-purple);
+  }
+  
+  .light .toggle .ball {
+    background: var(--nexus-dark-purple);
+  }
+  
+  /* -- Dark Mode -- */
+  
+  .dark {
+    background-color: #293133;
+    color: white;
+  }
+  
+  .dark .darkH {
     color: var(--nexus-light-blue);
   }
-.dark .toggle {
-  background: var(--nexus-dark-purple);
+  .dark .titleHome {
+    color: var(--nexus-light-blue);
+  }
+  .dark #contact-info h1 {
+    color: var(--nexus-light-blue);
+  }
+  .dark #contact-info p {
+    color: white;
+  }
+  .dark #contact-info i {
+      color: var(--nexus-light-blue);
+    }
+  .dark .toggle {
+    background: var(--nexus-dark-purple);
+  }
+  
+  .dark .toggle .bx-sun {
+    color: #fafafa;
+  }
+  
+  .dark .toggle .bxs-moon {
+    color: var(--nexus-dark-purple);
+  }
+  
+  .dark .toggle .ball {
+    background: #fafafa;
+    transform: translateX(3rem);
+  }
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
 }
 
-.dark .toggle .bx-sun {
-  color: #fafafa;
-}
-
-.dark .toggle .bxs-moon {
-  color: var(--nexus-dark-purple);
-}
-
-.dark .toggle .ball {
-  background: #fafafa;
-  transform: translateX(3rem);
+.slider.round:before {
+    border-radius: 50%;
 }
 
 /* Contact page */
@@ -659,6 +673,12 @@ footer {
 
 /* Media queries */
 @media screen and (max-width: 767px) {
+    .translator {
+        display: none;
+    }
+    .toggle {
+        display: none;
+    }
     aside {
         display: none;
     }
@@ -703,8 +723,8 @@ footer {
         align-items: center;
     }
 
-    .comparison-results .company1-data,
-    .comparison-results .company2-data {
+    .comparison-results #company1-data,
+    .comparison-results #company2-data {
         padding: 20px;
         width: 100%;
         border: none;
