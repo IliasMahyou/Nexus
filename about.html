@@ -10,24 +10,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="shortcut icon" href="./img/Logo.PNG" type="image/x-icon" />
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css"/>
+    <script src="./js/translateAbout.js" defer></script>
+    <script type="text/javascript" src="./js/darkLight.js" defer></script>
     <title>About Us</title>
 </head>
 
-<body>
+<body class="light">
     <nav>
         <ul>
             <li><a href="./home.html">Home</a></li>
             <li><a href="./about.html" class="active">Over ons</a></li>
             <li><a href="./contact.html">Contact</a></li>
         </ul>
-        <label class="switch">
-            <input type="checkbox" />
-            <span class="slider round"></span>
+        <div class="translator">
+        <ul>
+            <li><a href="#" class="talen">Talen</a>
+            <ul class="dropdown">
+                <li><a href="#" language="dutch" class="active"><span class="fi fi-nl"></span></a></li>
+                <li><a href="#" language="english"><span class="fi fi-us"></span></a></li>
+                <li><a href="#" language="french"><span class="fi fi-fr"></span></a></li>
+            </ul></li></ul></div>
+        <input type="checkbox" id="toggle">
+        <label class="toggle" for="toggle">
+            <i class="bx bxs-sun"></i>
+            <i class="bx bx-moon"></i>
+            <span class="ball"></span>
         </label>
     </nav>
     <header id="header-about">
         <article>
-            <h1>Over ons</h1>
+            <h1 class="titleAbout">Over ons</h1>
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates
                 architecto fugiat soluta aliquam provident inventore maiores accusamus
@@ -38,10 +52,10 @@
     </header>
     <main id="main-about">
         <section>
-            <h2>Ontmoet het team</h2>
+            <h2 class="darkH">Ontmoet het team</h2>
             <div id="members">
                 <article class="member">
-                    <img src="./img/profile-anthony.jpg"" alt=" Individuele foto van Anthony Hellemans." />
+                    <img src="./img/profile-anthony.jpg" alt=" Individuele foto van Anthony Hellemans." />
                     <div class="member-name">
                         <h3>Anthony Hellemans</h3>
                     </div>
