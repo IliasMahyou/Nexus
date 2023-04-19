@@ -142,7 +142,7 @@ footer {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 75vh;
+    height: 40vh;
     text-align: center;
 }
 
@@ -653,9 +653,6 @@ footer {
         display: none;
     }
     .toggle {
-        display: none;
-    }
-    aside {
         display: none;
     }
 
