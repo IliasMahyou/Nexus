@@ -67,11 +67,26 @@ nav ul li a.active {
     justify-content: space-between;
     align-items: center;
 }
+
 /* Translator */
 .translator {
     position: relative;
     display: inline-block;
 }
+
+.translator .dropdown{
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    position: absolute;
+    margin: 0 auto;
+    right: 11%;
+    padding: 0.9rem;
+    z-index: 1;
+    display: none;
+    background-color: var(--nexus-blue);
+}
+
 .translator ul {
     text-align: center;
 }
@@ -84,20 +99,13 @@ nav ul li a.active {
 }
 .translator .dropdown li{
     display: block;
+    margin-top: 10px;
 }
 .translator .dropdown li a span{
     padding: 0.7rem;
     border-radius: 20%;
 }
-.translator .dropdown{
-    width: 100%;
-    position: absolute;
-    margin-left: -2.6rem;
-    padding: 25px;
-    z-index: 1;
-    display: none;
-    background-color: var(--nexus-blue);
-}
+
 .translator ul li:hover .dropdown{
     display: block;
 }

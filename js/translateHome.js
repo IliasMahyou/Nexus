@@ -45,7 +45,7 @@ let data = {
       "Schulden:",
       "BedrijfsWinst:",
     ],
-    translateHistory: "Recent searches",
+    translateHistory: "Recent zoekopdrachten",
     li: [
       "Bedrijf A",
       "Bedrijf B",
@@ -111,7 +111,7 @@ let data = {
       "Dettes:",
       "Résultat d'exploitation:",
     ],
-    translateHistory: "Recent searches",
+    translateHistory: "Recherches récentes",
     li: [
       "Entreprise A",
       "Entreprise B",

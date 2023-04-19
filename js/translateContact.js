@@ -13,15 +13,15 @@ link.forEach((el) => {
 
 let data = {
   dutch: {
-    talen: "Nederlands",
+    talen: "NL",
     darkH: "Contacteer ons",
   },
   english: {
-    talen: "English",
+    talen: "EN",
     darkH: "Contact us",
   },
   french: {
-    talen: "Français",
+    talen: "FR",
     darkH: "Contactez-nous",
   },
 }
