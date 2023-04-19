@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="shortcut icon" href="./img/Logo.PNG" type="image/x-icon" />
     <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css" />
     <script src="./js/translateAbout.js" defer></script>
     <script type="text/javascript" src="./js/darkLight.js" defer></script>
     <title>About Us</title>
@@ -19,25 +19,32 @@
 
 <body class="light">
     <nav>
-        <ul>
-            <li><a href="./home.html">Home</a></li>
-            <li><a href="./about.html" class="active">Over ons</a></li>
-            <li><a href="./contact.html">Contact</a></li>
-        </ul>
-        <div class="translator">
-        <ul>
-            <li><a href="#" class="talen">Talen</a>
-            <ul class="dropdown">
-                <li><a href="#" language="dutch" class="active"><span class="fi fi-nl"></span></a></li>
-                <li><a href="#" language="english"><span class="fi fi-us"></span></a></li>
-                <li><a href="#" language="french"><span class="fi fi-fr"></span></a></li>
-            </ul></li></ul></div>
-        <input type="checkbox" id="toggle">
-        <label class="toggle" for="toggle">
-            <i class="bx bxs-sun"></i>
-            <i class="bx bx-moon"></i>
-            <span class="ball"></span>
-        </label>
+        <div id="nav-left">
+            <ul>
+                <li><a href="./home.html" class="active">Home</a></li>
+                <li><a href="./about.html">Over ons</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div id="nav-right">
+            <div class="translator">
+                <ul>
+                    <li><a href="#" class="talen">Taal</a>
+                        <ul class="dropdown">
+                            <li><a href="#" language="dutch" class="active"><span class="fi fi-nl"></span></a></li>
+                            <li><a href="#" language="english"><span class="fi fi-us"></span></a></li>
+                            <li><a href="#" language="french"><span class="fi fi-fr"></span></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <input type="checkbox" id="toggle">
+            <label class="toggle" for="toggle">
+                <i class="bx bxs-sun"></i>
+                <i class="bx bx-moon"></i>
+                <span class="ball"></span>
+            </label>
+        </div>
     </nav>
     <header id="header-about">
         <article>
