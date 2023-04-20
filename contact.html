@@ -15,26 +15,33 @@
 
   <body class="light">
     <nav>
-      <ul>
-        <li><a href="./home.html">Home</a></li>
-        <li><a href="./about.html">Over ons</a></li>
-        <li><a href="./contact.html" class="active">Contact</a></li>
-      </ul>
-      <div class="translator">
-        <ul>
-            <li><a href="#" class="talen">Talen</a>
-            <ul class="dropdown">
-                <li><a href="#" language="dutch" class="active"><span class="fi fi-nl"></span></a></li>
-                <li><a href="#" language="english"><span class="fi fi-us"></span></a></li>
-                <li><a href="#" language="french"><span class="fi fi-fr"></span></a></li>
-            </ul></li></ul></div>
-      <input type="checkbox" id="toggle">
-      <label class="toggle" for="toggle">
-          <i class="bx bxs-sun"></i>
-          <i class="bx bx-moon"></i>
-          <span class="ball"></span>
-      </label>
-    </nav>
+      <div id="nav-left">
+          <ul>
+              <li><a href="./home.html">Home</a></li>
+              <li><a href="./about.html">Over ons</a></li>
+              <li><a href="./contact.html" class="active">Contact</a></li>
+          </ul>
+      </div>
+      <div id="nav-right">
+          <div class="translator">
+              <ul>
+                  <li><a href="#" class="talen">NL</a>
+                      <ul class="dropdown">
+                          <li><a href="#" language="dutch" class="active"><span class="fi fi-nl"></span></a></li>
+                          <li><a href="#" language="english"><span class="fi fi-us"></span></a></li>
+                          <li><a href="#" language="french"><span class="fi fi-fr"></span></a></li>
+                      </ul>
+                  </li>
+              </ul>
+          </div>
+          <input type="checkbox" id="toggle">
+          <label class="toggle" for="toggle">
+              <i class="bx bxs-sun"></i>
+              <i class="bx bx-moon"></i>
+              <span class="ball"></span>
+          </label>
+      </div>
+  </nav>
     <main id="main-contact">
       <iframe
         class="map"
