@@ -1,4 +1,4 @@
-const formlogin = document.forms.namedItem("formlogin");
+const formlogin = document.getElementById(".form-body");
 
 
 const validateLogin = () =>{
@@ -12,7 +12,7 @@ const validateLogin = () =>{
     } 
 }
 
-const button = document.getElementById("submit-button");
+const button = document.getElementById("submit");
 button.addEventListener("click",function (event) {
    validateLogin();
    event.preventDefault();
