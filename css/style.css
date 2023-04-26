@@ -360,6 +360,18 @@ footer {
     cursor: pointer;
 }
 
+/* History page */
+#main-history {
+    display: grid;
+    grid-template-areas: 'history companyInfo companyInfo';
+}
+#history {
+    grid-area: history;
+}
+#companyInfo {
+    grid-area: companyInfo
+}
+
 /* About page */
 #header-about {
     grid-area: header;
