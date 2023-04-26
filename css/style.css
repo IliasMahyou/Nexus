@@ -365,11 +365,15 @@ footer {
     display: grid;
     grid-template-areas: 'history companyInfo companyInfo';
 }
-#history {
+#section-history {
     grid-area: history;
 }
-#companyInfo {
+#section-companyInfo {
     grid-area: companyInfo
+}
+#table-companyInfo {
+    text-align: left;
+    display: none;
 }
 
 /* About page */
