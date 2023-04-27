@@ -799,6 +799,7 @@ footer {
 
     #main-contact {
         flex-direction: column;
+        height: auto;
     }
 
     .map {
