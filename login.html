@@ -1,41 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl-BE">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/style.css" />
     <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <script src="./js/login.js" defer></script>
     <script type="text/javascript" src="./js/darkLight.js" defer></script>
-    <title>Login Page</title>
+    <title>Login Pagina</title>
   </head>
-  <body>
-    <body class="light">
-      <nav>
-        <ul>
-            <li>Nexus</li>
-        </ul>
-        <input type="checkbox" id="toggle">
-        <label class="toggle" for="toggle">
-            <i class="bx bxs-sun"></i>
-            <i class="bx bx-moon"></i>
-            <span class="ball"></span>
-        </label>
+  <body class="login-body">
+    <div class="login-box">
 
-    </nav>
-    <header id="header-login">
-      <img class="logo-login" src="./img/Logo.PNG" alt="logo-nexus" />
-    </header>
+      <h2>Welcome back</h2>
+      <p>Enter your details</p>
 
-    <main id="main-login">
-      <form action="#" class="login-form">
-        <label for="email">E-mail</label>
-        <input type="email" name="email" id="email" required />
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" required />
-        <input type="submit" value="LOGIN" class="submit-button" id="submit-button" />
+      <form>
+          <div class="form-group">
+              <label for="email">
+                  Email
+              </label>
+              <i class="bx bxs-user"></i>
+              <input
+                  type="email"
+                  id="email"
+                  placeholder="Your email"
+                  required
+              >
+          </div>
+          <div class="form-group">
+              <label for="password">
+                  Password
+              </label>
+              <i class="bx bxs-lock"></i>
+              <input
+                  type="password"
+                  id="password"
+                  placeholder="Your password"
+                  required
+              >
+          </div>
+
+          <a class="forgot">
+              Forgot your password?
+          </a>
+
+          <input type="submit" value="Log In" id="submit">
+
       </form>
-    </main>
+
+  </div>
   </body>
 </html>

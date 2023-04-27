@@ -324,40 +324,112 @@ footer {
 }
 
 /* Login page */
-#main-login {
+.login-body {
+    height: 100vh;
     display: flex;
+    align-items: center;
     justify-content: center;
+    background-image: url('../img/bg.svg');
+    background-size: cover;
+    box-sizing: border-box;
+    animation: move 15s linear alternate infinite;
 }
 
-#header-login {
-    display: flex;
-    justify-content: center;
-    padding: 6rem;
-    grid-area: header;
+@keyframes move {
+    50% {
+        background-position: 50%;
+    }
 }
 
-.logo-login {
-    width: 20rem;
-    height: auto;
-    margin: auto;
+.login-box {
+    width: 400px;
+    height: min-content;
+    padding: 40px;
+    background: #fff;
+    text-align: center;
+    border-radius: 16px;
+    box-sizing: border-box;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
 }
 
-.login-form input {
-    background-color: var(--nexus-light-blue);
-    border: 0;
-    display: flex;
-    justify-content: center;
-    border-radius: 10px;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    height: 2rem;
-    width: 20rem;
+.login-box h2 {
+    font-size: 2.2rem;
+    margin: 0;
 }
 
-.login-form .submit-button {
-    margin: auto;
-    width: 40%;
+.login-box p {
+    color: #404040;
+    margin-top: 4px;
+    font-size: 1.2rem;
+}
+
+.login-box form {
+    text-align: left;
+    margin-top: 30px;
+}
+
+.login-box form .form-group {
+    margin: 18px 0;
+}
+
+.login-box form .form-group label {
+    display: block;
+    font-size: 20px;
+    color: #101010;
+}
+
+.login-box form .form-group input {
+    width: 100%;
+    height: 40px;
+    margin-top: 6px;
+    padding: 0 12px 0 34px;
+    border: 2px solid #c4c4c4;
+    border-radius: 3px;
+    box-sizing: border-box;
+    font-size: 18px;
+    color: #404040;
+    transition: .3s;
+}
+
+.login-box form .form-group input:focus {
+    border-color: #124ce7;
+    box-shadow: 0 0 12px #bbd3ff;
+}
+
+.login-box form .form-group input:valid {
+    border-color: #124ce7;
+    background: #e4edff;
+}
+
+.login-box form .form-group i {
+    position: absolute;
+    color: #404040;
+    font-size: 20px;
+    transform: translateX(12px) translateY(16px);
+}
+
+.login-box form .forgot {
     cursor: pointer;
+    color: #3784ff;
+    font-size: 18px;
+}
+
+.login-box form .forgot:hover {
+    color: #124ce7;
+}
+
+.login-box form input[type="submit"] {
+    cursor: pointer;
+    width: 100%;
+    height: 46px;
+    border-radius: 3px;
+    font-size: 22px;
+    margin-top: 28px;
+    color: #fff;
+    background: linear-gradient(
+        0deg, #124ce7, #3784ff
+    );
+    border: 0;
 }
 
 /* About page */
