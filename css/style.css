@@ -452,7 +452,7 @@ footer {
 /* About page */
 #header-about {
     grid-area: header;
-    background-image: url("https://source.unsplash.com/random/?business,bank");
+    background: linear-gradient(0deg, rgba(var(--nexus-blue-rgb), 0.8), rgba(var(--nexus-dark-purple-rgb), 0.8)), url(/img/header-about.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -501,6 +501,7 @@ footer {
     margin: 20px;
     text-align: center;
     overflow: hidden;
+    background-color: white;
 }
 
 .member img {
