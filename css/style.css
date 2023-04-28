@@ -433,6 +433,22 @@ footer {
     border: 0;
 }
 
+/* History page */
+#main-history {
+    display: grid;
+    grid-template-areas: 'history companyInfo companyInfo';
+}
+#section-history {
+    grid-area: history;
+}
+#section-companyInfo {
+    grid-area: companyInfo
+}
+#table-companyInfo {
+    text-align: left;
+    display: none;
+}
+
 /* About page */
 #header-about {
     grid-area: header;
