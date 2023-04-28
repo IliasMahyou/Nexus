@@ -15,10 +15,6 @@ function showInfo(companyName) {
     document.getElementById("companyDebts").textContent = company.debts;
     document.getElementById("companyProfit").textContent = company.profit;
 }
-//Bedrijfsinfovenster laten verdwijnen bij het klikken op de knop.
-function hideInfo() {
-    document.getElementById("company-info").style.display = "none";
-}
 //Bedrijf na het vergelijken toevoegen in de historiek.
 function addToHistory(company) {
     const history = document.querySelector("#history ul");
