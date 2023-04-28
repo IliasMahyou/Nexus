@@ -1,19 +1,7 @@
 let searchedCompanies = [];
-//Bedrijfsinfovenster tevoorschijn laten komen bij het kiezen van een bedrijf uit de historiek.
-function showInfo(companyName) {
-    let company;
-    for (let i = 0; i < searchedCompanies.length; i++) {
-        if (searchedCompanies[i].name === companyName) {
-            company = searchedCompanies[i];
-        }
-    }
-    document.getElementById("company-info").style.display = "block";
-    document.getElementById("companyName").textContent = company.name;
-    document.getElementById("companyAddress").textContent = company.address;
-    document.getElementById("companyDate").textContent = company.date;
-    document.getElementById("companyEquity").textContent = company.equity;
-    document.getElementById("companyDebts").textContent = company.debts;
-    document.getElementById("companyProfit").textContent = company.profit;
+
+function fillIn(el, content) {
+    document.getElementById(el).textContent = content;
 }
 
 ///////////////DEZE FUNCTIE NAAR ANDER HOME-SCRIPT brengen
