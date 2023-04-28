@@ -15,6 +15,9 @@ function showInfo(companyName) {
     document.getElementById("companyDebts").textContent = company.debts;
     document.getElementById("companyProfit").textContent = company.profit;
 }
+
+///////////////DEZE FUNCTIE NAAR ANDER HOME-SCRIPT brengen
+
 //Bedrijf na het vergelijken toevoegen in de historiek.
 function addToHistory(company) {
     const history = document.querySelector("#history ul");
