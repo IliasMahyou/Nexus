@@ -17,9 +17,16 @@ async function fetchCompany(referencenumber) {
     return company;
 }
 async function addCompany(company){
-    if (!compannyExist) {
+    if (!compannyExist(company.referencenumber)) {
         await client.connect();
         await client.db('NBB').collection('Companies').insertOne(company);
+        await client.close();
+    }
+}
+async function addToHistory(user, companyName) {
+    if (!inHistory(company.referencenumber)) {
+        await client.connect();
+        await client.db('NBB').collection('History').insertOne({user: user, company: companyName});
         await client.close();
     }
 }
