@@ -23,10 +23,23 @@ async function addCompany(company){
         await client.close();
     }
 }
-async function addToHistory(user, companyName) {
+async function fetchHistory(username) {
+    let companiesList = [];
+    await client.connect();
+    const cursor = await client.db('NBB').collection('History').find({user: username});
+    const userHistory = await cursor.toArray();
+    for (let index = 0; index < userHistory.length; index++) {
+        for (const company of userHistory[i].referencenumber) {
+            companiesList.add(fetchCompany(referencenumber).name);
+        }
+    }
+    await client.close();
+    return companiesList;
+}
+async function addToHistory(username, referencenumber) {
     if (!inHistory(company.referencenumber)) {
         await client.connect();
-        await client.db('NBB').collection('History').insertOne({user: user, company: companyName});
+        await client.db('NBB').collection('History').insertOne({user: username, company: referencenumber});
         await client.close();
     }
 }
