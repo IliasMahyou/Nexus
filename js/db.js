@@ -29,8 +29,8 @@ async function fetchHistory(username) {
     const cursor = await client.db('NBB').collection('History').find({user: username});
     const userHistory = await cursor.toArray();
     for (let index = 0; index < userHistory.length; index++) {
-        for (const company of userHistory[i].referencenumber) {
-            companiesList.add(fetchCompany(referencenumber).name);
+        for (const company of userHistory[i]) {
+            companiesList.add(fetchCompany(company.referencenumber).name);
         }
     }
     await client.close();
