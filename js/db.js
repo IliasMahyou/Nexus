@@ -23,6 +23,16 @@ async function addCompany(company){
         await client.close();
     }
 }
+async function inHistory(username, referencenumber) {
+    await client.connect();
+    const answer = await client.db('NBB').collection('History').findOne({user: username, company: referencenumber});
+    await client.close();
+    if (answer == null) {
+        return true;
+    } else {
+        return false;
+    }
+}
 async function fetchHistory(username) {
     let companiesList = [];
     await client.connect();
