@@ -23,6 +23,16 @@ export async function addCompany(company) {
         await client.close();
     }
 }
+export async function userExist(user) {
+    await client.connect();
+    const user = await client.db('NBB').collection('Users').findOne({name: user.name, password: user.password})
+    await client.close();
+    if (user == null) {
+        return true;
+    } else {
+        return false;
+    }
+}
 export async function addUser(user) {
     if (!userExist(user.name)) {
         await client.connect();
