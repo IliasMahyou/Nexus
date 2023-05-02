@@ -53,6 +53,10 @@ function markDifferences(company1, company2) {
 
     //Nog kleur maken voor even aantal
 }
+function showErr(number) {
+    const number = number == 1 ? "Eerste" : "Tweede";
+    frmComparison.insertAdjacentHTML("afterend", `<span class="errMessage">${number} ondernemingsnummer is niet gevonden.</span>`)
+}
 function deleteErr() {
     const errMessages = document.getElementsByClassName("errMessage");
     for (let i= 0; i < errMessages.length; i++) {
