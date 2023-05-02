@@ -1,6 +1,7 @@
 /*Importatie*/
 import * as api from './api.js';
 import * as db from './db.js';
+import fillIn from './history.js';
 /*Constantedeclaraties*/
 const frmComparison = document.forms.namedItem("frmComparison");
 /*Synchrone functies*/
@@ -66,7 +67,15 @@ function createCompany(companyData) {
         debts: debts,
         profit: profit
     }
-}  
+}
+function showCompany(company, number) {
+    fillIn(`company${number}Name`, company.name);
+    fillIn(`company${number}Address`, company.address);
+    //fillIn(`company${number}Date`, company.date);
+    fillIn(`company${number}Equity`, company.equities);
+    fillIn(`company${number}Debts`, company.debts);
+    fillIn(`company${number}Profit`, company.profit);
+}
 /*Asynchrone functies*/
 async function compare() {
     //VOORLOPIG NOG HARDCODED USER
@@ -80,7 +89,7 @@ async function compare() {
         const company1Data = api.firstApiCall(company1Number, api.secondApiCall());
         const company1 =  createCompany(company1Data);
         await db.addCompany(company1);
-        await showCompany(company1);
+        await showCompany(company1, 1);
         await db.addToHistory(user.name, company1.referencenumber)
         counter++;
     } else {
@@ -90,7 +99,7 @@ async function compare() {
         const company2Data = api.firstApiCall(company2Number, api.secondApiCall());
         const company2 =  createCompany(company2Data);
         await db.addCompany(company2);
-        await showCompany(company2);
+        await showCompany(company2, 2);
         await db.addToHistory(user.name, company2.referencenumber)
         counter++;
     } else {

@@ -1,7 +1,7 @@
 /*Importatie*/
 import * as db from './db.js';
 /*Synchrone functies*/
-function fillIn(id, content) {
+export default function fillIn(id, content) {
     document.getElementById(id).textContent = content;
 }
 function showCompanyInfo(company) {
