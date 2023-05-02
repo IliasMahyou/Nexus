@@ -42,6 +42,31 @@ function deleteErr() {
        errMessages[i].textContent = "";
     }
 }
+function createCompany(companyData) {
+    const name = companyData.EnterpriseName;
+    const referencenumber = companyData.ReferenceNumber;
+    const address = companyData.Address.Street + " " + companyData.Address.Number;
+    let equities, debts, profit;
+    for (let i = 0; i < companyData.Rubrics.length; i++) {
+        if (companyData.Rubrics[i].Code == "10/15" && companyData.Rubrics[i].Period == "N") {
+            equities = companyData.Rubrics[i].Value;
+        }
+        if (companyData.Rubrics[i].Code == "17/49" && companyData.Rubrics[i].Period == "N") {
+            debts = companyData.Rubrics[i].Value;
+        }
+        if (companyData.Rubrics[i].Code == "9905" && companyData.Rubrics[i].Period == "N") {
+            profit = companyData.Rubrics[i].Value;
+        }
+    }
+    return company = {
+        name: name,
+        referencenumber: referencenumber,
+        address: address,
+        equities: equities,
+        debts: debts,
+        profit: profit
+    }
+}  
 /*Asynchrone functies*/
 async function compare() {
     //VOORLOPIG NOG HARDCODED USER
