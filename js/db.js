@@ -16,10 +16,17 @@ export async function fetchCompany(referencenumber) {
     await client.close();
     return company;
 }
-export async function addCompany(company){
+export async function addCompany(company) {
     if (!compannyExist(company.referencenumber)) {
         await client.connect();
         await client.db('NBB').collection('Companies').insertOne(company);
+        await client.close();
+    }
+}
+export async function addUser(user) {
+    if (!userExist(user.name)) {
+        await client.connect();
+        await client.db('NBB').collection('Users').insertOne(user);
         await client.close();
     }
 }
