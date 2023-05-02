@@ -40,7 +40,7 @@ async function fetchHistory(username) {
     const userHistory = await cursor.toArray();
     for (let index = 0; index < userHistory.length; index++) {
         for (const company of userHistory[i]) {
-            companiesList.add(fetchCompany(company.referencenumber).name);
+            companiesList.add(fetchCompany(company.referencenumber));
         }
     }
     await client.close();
