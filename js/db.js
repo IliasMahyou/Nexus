@@ -3,7 +3,7 @@ const {MongoClient} = require('mongodb');
 const connection = "mongodb+srv://nexus_admin:Nexus_123@nexus.09eb4ta.mongodb.net/Nexus?retryWrites=true&w=majority";
 const client = new MongoClient(connection, {useUnifiedTopology: true});
 /*Asynchrone functies*/
-export async function companyExist(referencenumber) {
+async function companyExist(referencenumber) {
     if (fetchCompany(referencenumber) == null) {
         return true;
     } else {
@@ -23,7 +23,7 @@ export async function addCompany(company) {
         await client.close();
     }
 }
-export async function userExist(user) {
+async function userExist(user) {
     await client.connect();
     const user = await client.db('NBB').collection('Users').findOne({name: user.name, password: user.password})
     await client.close();
@@ -40,7 +40,7 @@ export async function addUser(user) {
         await client.close();
     }
 }
-export async function inHistory(username, referencenumber) {
+async function inHistory(username, referencenumber) {
     await client.connect();
     const answer = await client.db('NBB').collection('History').findOne({user: username, company: referencenumber});
     await client.close();

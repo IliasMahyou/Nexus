@@ -4,8 +4,6 @@ import { fetchCompanyDataIntoMongoDB } from "./dataBase.mjs";
 /*Constantedeclaratie*/
 const apiKey = "5bca88bca6c74941af1a74c459833c52";
 const requestId = "4b8e79a0-bd54-11eb-8529-0242ac130003";
-const enterpriseNumber = "0446486050";
-const apiEndpoint1 = `https://ws.cbso.nbb.be/authentic/legalEntity/${enterpriseNumber}/references`;
 const fetchOptions1 = {
   method: "GET",
   headers: {
@@ -18,7 +16,8 @@ const fetchOptions1 = {
 /*Variabelendeclaratie*/
 let accountingDataUrl;
 /*Synchrone functies*/
-export function firstApiCall(callback) {
+export function firstApiCall(referencenumber, callback) {
+  const apiEndpoint1 = `https://ws.cbso.nbb.be/authentic/legalEntity/${referencenumber}/references`
   fetch(apiEndpoint1, fetchOptions1)
     .then((response) => response.json())
     .then((data) => {
