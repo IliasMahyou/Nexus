@@ -436,13 +436,18 @@ footer {
 /* History page */
 #main-history {
     display: grid;
-    grid-template-areas: 'history companyInfo companyInfo';
+    grid-template-areas: 'history companyInfo companyInfo companyInfo companyInfo';
 }
 #section-history {
     grid-area: history;
+    background-color: rgba(var(--nexus-blue-rgb), 0.8);
+}
+#section-history h2 {
+    color: white;
+    padding: 20px;
 }
 #section-companyInfo {
-    grid-area: companyInfo
+    grid-area: companyInfo;
 }
 #table-companyInfo {
     text-align: left;
