@@ -44,31 +44,7 @@ function fetchCompanyData(company) {
     
 }
 
-function markDifferences(equities, debts, profits) {
-    if (equities[0] > equities[1]) {
-        document.getElementById("company1Equity").style.color = "green";
-        document.getElementById("company2Equity").style.color = "red";
-    } else {
-        document.getElementById("company1Equity").style.color = "red";
-        document.getElementById("company2Equity").style.color = "green";
-    }
-    if (debts[0] < debts[1]) {
-        document.getElementById("company1Debts").style.color = "green";
-        document.getElementById("company2Debts").style.color = "red";
-    } else {
-        document.getElementById("company1Debts").style.color = "red";
-        document.getElementById("company2Debts").style.color = "green";
-    }
-    if (profits[0] > profits[1]) {
-        document.getElementById("company1Profit").style.color = "green";
-        document.getElementById("company2Profit").style.color = "red";
-    } else {
-        document.getElementById("company1Profit").style.color = "red";
-        document.getElementById("company2Profit").style.color = "green";
-    }
 
-    //Nog kleur maken voor even aantal
-}
 
 document.getElementById("btnCompare").addEventListener("click", function(event){
     event.preventDefault()
