@@ -53,3 +53,5 @@ async function addToHistory(username, referencenumber) {
         await client.close();
     }
 }
+/*Exportatie*/
+export * from "functions-db";
