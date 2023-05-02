@@ -1,5 +1,4 @@
-/*Importatie*/
-import * as db from './db.js';
+import { fetchHistory } from "./db";
 /*Synchrone functies*/
 export default function fillIn(id, content) {
     document.getElementById(id).textContent = content;
@@ -16,7 +15,7 @@ function showCompanyInfo(company) {
 }
 /*Asynchrone functies*/
 async function showHistory(username){
-    const companiesList = db.fetchHistory(username);
+    const companiesList = fetchHistory(username);
     for (const company of companiesList) {
         document.getElementById("section-history").insertAdjacentHTML("afterbegin",`<div class="company" onclick="showCompanyInfo(${company})"><h3>${company.name}</h3><br><span>${company.referencenumber}</span></div>`);
     }

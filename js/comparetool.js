@@ -1,6 +1,5 @@
-/*Importatie*/
-import * as api from './api.js';
-import * as db from './db.js';
+import { firstApiCall, secondApiCall} from './api.js';
+import { addCompany, addToHistory, companyExist, fetchCompany } from './db.js';
 import fillIn from './history.js';
 /*Constantedeclaraties*/
 const frmComparison = document.forms.namedItem("frmComparison");
@@ -85,22 +84,31 @@ async function compare() {
     const company1Number = frmComparison["company1"].value;
     const company2Number = frmComparison["company2"].value;
     let counter = 0;
+    let company1, company2;
     if (company1Number != null && company1Number != "") {
-        const company1Data = api.firstApiCall(company1Number, api.secondApiCall());
-        const company1 =  createCompany(company1Data);
-        await db.addCompany(company1);
+        if (companyExist(company1Number)) {
+            company1 = fetchCompany(company1Number);
+        } else {
+            const company1Data = firstApiCall(company1Number, secondApiCall());
+            company1 =  createCompany(company1Data);    
+        }
+        await addCompany(company1);
         await showCompany(company1, 1);
-        await db.addToHistory(user.name, company1.referencenumber)
+        await addToHistory(user.name, company1.referencenumber)
         counter++;
     } else {
         showErr(1);
     }
     if (company2Number != null && company2Number != "") {
-        const company2Data = api.firstApiCall(company2Number, api.secondApiCall());
-        const company2 =  createCompany(company2Data);
-        await db.addCompany(company2);
+        if (companyExist(company1Number)) {
+            company2 = fetchCompany(company1Number);
+        } else {
+            const company2Data = firstApiCall(company2Number, secondApiCall());
+            company2 =  createCompany(company2Data);
+        }
+        await addCompany(company2);
         await showCompany(company2, 2);
-        await db.addToHistory(user.name, company2.referencenumber)
+        await addToHistory(user.name, company2.referencenumber)
         counter++;
     } else {
         showErr(2);
