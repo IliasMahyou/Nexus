@@ -46,16 +46,7 @@ function fetchCompanyData(company) {
 
 
 
-document.getElementById("btnCompare").addEventListener("click", function(event){
-    event.preventDefault()
-});
 
-function deleteErr() {
-    const errMessages = document.getElementsByClassName("errMessage");
-    for (let i= 0; i < errMessages.length; i++) {
-       errMessages[i].textContent = "";
-    }
-}
 
 function compare() {
     const company1Number = frmComparison["company1"].value;

@@ -1,6 +1,9 @@
 /*Constantedeclaraties*/
 const frmComparison = document.forms.namedItem("frmComparison");
 /*Synchrone functies*/
+document.getElementById("btnCompare").addEventListener("click", function(event){
+    event.preventDefault()
+});
 function compare() {
     const company1Number = frmComparison["company1"].value;
     const company2Number = frmComparison["company2"].value;
@@ -49,4 +52,10 @@ function markDifferences(company1, company2) {
     }
 
     //Nog kleur maken voor even aantal
+}
+function deleteErr() {
+    const errMessages = document.getElementsByClassName("errMessage");
+    for (let i= 0; i < errMessages.length; i++) {
+       errMessages[i].textContent = "";
+    }
 }
