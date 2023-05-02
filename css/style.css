@@ -141,7 +141,7 @@ footer {
 /* Home page */
 #header-home {
     grid-area: header;
-    background: linear-gradient(0deg, rgba(var(--nexus-blue-rgb), 0.8), rgba(var(--nexus-dark-purple-rgb), 0.8)), url(/img/header-home.jpg);
+    background: linear-gradient(0deg, rgba(var(--nexus-blue-rgb), 0.8), rgba(var(--nexus-dark-purple-rgb), 0.8)), url('../img/header-home.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -452,7 +452,7 @@ footer {
 /* About page */
 #header-about {
     grid-area: header;
-    background: linear-gradient(0deg, rgba(var(--nexus-blue-rgb), 0.8), rgba(var(--nexus-dark-purple-rgb), 0.8)), url(/img/header-about.jpg);
+    background: linear-gradient(0deg, rgba(var(--nexus-blue-rgb), 0.8), rgba(var(--nexus-dark-purple-rgb), 0.8)), url('../img/header-about.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
