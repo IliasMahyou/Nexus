@@ -1,4 +1,4 @@
-import {MongoClient} from "mongodb";
+const {MongoClient} = require("mongodb");
 const connection = "mongodb+srv://nexus_admin:Nexus_123@nexus.09eb4ta.mongodb.net/Nexus?retryWrites=true&w=majority";
 const client = new MongoClient(connection, {useUnifiedTopology: true});
 /*Asynchrone functies*/
