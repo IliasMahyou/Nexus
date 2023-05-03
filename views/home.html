@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/style.css" />
+    <!-- JS -->
+    <script src="js/comparetool.js" defer></script>
+    <script src="js/history.js" defer></script>
+    <script type="module" src="js/db.js" defer></script>
+    <script src="js/api.js"></script>
+    <script src="./js/translateHome.js" defer></script>
+    <script type="text/javascript" src="./js/darkLight.js" defer></script>
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css" />
+    <title>Nexus</title>
+</head>
+
+<body class="light" id="body-home">
+    <nav>
+        <div id="nav-left">
+            <ul>
+                <li><a href="./home.html" class="active">Home</a></li>
+                <li><a href="./about.html">Over ons</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div id="nav-right">
+            <div class="translator">
+                <ul>
+                    <li><a href="#" class="talen">NL</a>
+                        <ul class="dropdown">
+                            <li><a href="#" language="dutch" class="active"><span class="fi fi-nl"></span></a></li>
+                            <li><a href="#" language="english"><span class="fi fi-us"></span></a></li>
+                            <li><a href="#" language="french"><span class="fi fi-fr"></span></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <input type="checkbox" id="toggle">
+            <label class="toggle" for="toggle">
+                <i class="bx bxs-sun"></i>
+                <i class="bx bx-moon"></i>
+                <span class="ball"></span>
+            </label>
+        </div>
+    </nav>
+
+    <header id="header-home">
+        <article>
+            <h1>Nexus</h1>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates
+                architecto fugiat soluta aliquam provident inventore maiores accusamus
+                explicabo consequuntur voluptas, commodi nam. Nostrum, tempore
+                similique! Porro, provident quibusdam. Eos, dolor.
+            </p>
+        </article>
+    </header>
+    <main id="main-home">
+        <section id="comparison-tool">
+            <h1 class="titleHome">Vergelijkingstool</h1>
+            <form name="frmComparison" class="comparison-form">
+                <input placeholder="Ondernemingsnummer" type="text" id="company1-input" name="company1" />
+                <button class="compare-button" onclick="compare()" id="btnCompare">Vergelijk</button>
+                <input placeholder="Ondernemingsnummer" type="text" id="company2-input" name="company2" />
+            </form>
+            <div class="comparison-results">
+                <div id="company1-data">
+                    <table>
+                        <tr>
+                            <th>Naam:</th>
+                            <td id="company1Name"></td>
+                        </tr>
+                        <tr>
+                            <th>Adres:</th>
+                            <td id="company1Address"></td>
+                        </tr>
+                        <tr>
+                            <th>Datum neerlegging:</th>
+                            <td id="company1Date"></td>
+                        </tr>
+                        <tr>
+                            <th>Eigen vermogen:</th>
+                            <td id="company1Equity"></td>
+                        </tr>
+                        <tr>
+                            <th>Schulden:</th>
+                            <td id="company1Debts"></td>
+                        </tr>
+                        <tr>
+                            <th>Bedrijfswinst:</th>
+                            <td id="company1Profit"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="company2-data">
+                    <table>
+                        <tr>
+                            <th>Naam:</th>
+                            <td id="company2Name"></td>
+                        </tr>
+                        <tr>
+                            <th>Adres:</th>
+                            <td id="company2Address"></td>
+                        </tr>
+                        <tr>
+                            <th>Datum neerlegging:</th>
+                            <td id="company2Date"></td>
+                        </tr>
+                        <tr>
+                            <th>Eigen vermogen:</th>
+                            <td id="company2Equity"></td>
+                        </tr>
+                        <tr>
+                            <th>Schulden:</th>
+                            <td id="company2Debts"></td>
+                        </tr>
+                        <tr>
+                            <th>Bedrijfswinst:</th>
+                            <td id="company2Profit"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>Copyright &copy; 2023-2024 Nexus</p>
+    </footer>
+</body>
+
+</html>
