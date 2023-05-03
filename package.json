@@ -1,6 +1,7 @@
 {
   "name": "nexus",
   "version": "1.0.0",
+  "type": "module",
   "description": "Groeps Project voor IT Porjects van het team Nexus - NBB",
   "main": "index.js",
   "scripts": {
