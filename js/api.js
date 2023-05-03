@@ -1,4 +1,3 @@
-import fetch from "node-fetch";
 /*Constantedeclaratie*/
 const apiKey = "5bca88bca6c74941af1a74c459833c52";
 const requestId = "4b8e79a0-bd54-11eb-8529-0242ac130003";
@@ -14,7 +13,7 @@ const fetchOptions1 = {
 /*Variabelendeclaratie*/
 let accountingDataUrl;
 /*Synchrone functies*/
-export function firstApiCall(referencenumber, callback) {
+function firstApiCall(referencenumber, callback) {
   const apiEndpoint1 = `https://ws.cbso.nbb.be/authentic/legalEntity/${referencenumber}/references`
   fetch(apiEndpoint1, fetchOptions1)
     .then((response) => response.json())
@@ -41,7 +40,7 @@ export function firstApiCall(referencenumber, callback) {
     })
     .catch((error) => console.error(error));
 }
-export function secondApiCall() {
+function secondApiCall() {
   const apiEndpoint = `${accountingDataUrl}`;
   const fetchOptions = {
     method: "GET",

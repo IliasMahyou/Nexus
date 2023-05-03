@@ -1,6 +1,5 @@
-import { fetchHistory } from "./db";
 /*Synchrone functies*/
-export default function fillIn(id, content) {
+function fillIn(id, content) {
     document.getElementById(id).textContent = content;
 }
 function showCompanyInfo(company) {

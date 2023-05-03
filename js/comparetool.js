@@ -1,6 +1,3 @@
-import { firstApiCall, secondApiCall} from './api.js';
-import { addCompany, addToHistory, companyExist, fetchCompany } from './db.js';
-import fillIn from './history.js';
 /*Constantedeclaraties*/
 const frmComparison = document.forms.namedItem("frmComparison");
 /*Synchrone functies*/
@@ -33,7 +30,7 @@ function markDifferences(company1, company2) {
     //Nog kleur maken voor even aantal
 }
 function showErr(number) {
-    const number = number == 1 ? "Eerste" : "Tweede";
+    number == 1 ? "Eerste" : "Tweede";
     frmComparison.insertAdjacentHTML("afterend", `<span class="errMessage">${number} ondernemingsnummer is niet gevonden.</span>`)
 }
 function deleteErr() {

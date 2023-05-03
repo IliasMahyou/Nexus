@@ -1,0 +1,25 @@
+{
+  "name": "nexus",
+  "version": "1.0.0",
+  "description": "Groeps Project voor IT Porjects van het team Nexus - NBB",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IliasMahyou/Nexus.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IliasMahyou/Nexus/issues"
+  },
+  "homepage": "https://github.com/IliasMahyou/Nexus#readme",
+  "devDependencies": {
+    "@types/mongodb": "^4.0.7",
+    "@types/node": "^18.16.3",
+    "crypto": "^1.0.1",
+    "mongodb": "^5.3.0"
+  }
+}
