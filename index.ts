@@ -1,36 +1,21 @@
 /*Importatie*/
-import express from "express";
+import express from "express";//Express() ophalen
 import ejs from "ejs";
 
-
 /*Constantedeclaratie*/
-const app = express();
-
+const app = express();//Express-app maken
 
 /*Synchrone functies*/
-app.set("view engine", "ejs");
-app.set("port", 3000);
+app.set("view engine", "ejs");//EJS-templating instelen
+app.set("port", 3000);//Luisterende poort: 3000
 
-app.use(express.static("public"));
+app.use(express.static("public"));//Statische assets leesbaar maken
 
-app.get("/", (req, res) => {
-  res.render('index');
-});
-app.get("/login", (req, res) => {
-    res.render('login');
-});
-app.get("/home", (req, res) => {
-    res.render('home');
-  });
-app.get("/history", (req, res) => {
-    res.render('history');
-});app.get("/about", (req, res) => {
-    res.render('about');
-});
-app.get("/contact", (req, res) => {
-    res.render('contact');
-});
+app.get("/", (req: any, res: any) => res.render('landing'));//landing.ejs inladen bij '/'
+app.get("/login", (req: any, res: any) => res.render('login'));//login.ejs inladen bij '/login'
+app.get("/home", (req: any, res: any) => res.render('home'));//home.ejs inladen bij '/home'
+app.get("/history", (req: any, res: any) => res.render('history'));//history.ejs inladen bij '/history'
+app.get("/about", (req: any, res: any) => res.render('about'));//about.ejs inladen bij '/about'
+app.get("/contact", (req: any, res: any) => res.render('contact'));//contact.ejs inladen bij '/contact'
 
-app.listen(app.get("port"), () =>
-  console.log("[server] http://localhost:" + app.get("port"))
-);
+app.listen(app.get("port"), () => console.log("[server] http://localhost:" + app.get("port")));//Lokale server starten
