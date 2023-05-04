@@ -1,0 +1,32 @@
+{
+  "name": "nbb",
+  "version": "1.0.0",
+  "description": "Alle packages, nodig voor de nbb-applicatie",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IliasMahyou/Nexus.git"
+  },
+  "keywords": [
+    "NBB",
+    "Nexus"
+  ],
+  "author": "Nexus",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IliasMahyou/Nexus/issues"
+  },
+  "homepage": "https://github.com/IliasMahyou/Nexus#readme",
+  "devDependencies": {
+    "@types/ejs": "^3.1.2",
+    "@types/express": "^4.17.17",
+    "@types/node": "^18.16.3",
+    "crypto": "^1.0.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "mongodb": "^5.3.0"
+  }
+}
