@@ -1,3 +1,4 @@
+/*Importatie*/
 const {MongoClient} = require("mongodb");
 const connection = "mongodb+srv://nexus_admin:Nexus_123@nexus.09eb4ta.mongodb.net/Nexus?retryWrites=true&w=majority";
 const client = new MongoClient(connection, {useUnifiedTopology: true});
@@ -69,4 +70,5 @@ async function addToHistory(username, referencenumber) {
         await client.close();
     }
 }
-export {userExist, addUser};
+/*Exportatie*/
+export {addCompany, fetchCompany};
