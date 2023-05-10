@@ -64,9 +64,10 @@
     <main id="main-home">
         <section id="comparison-tool">
             <h1 class="titleHome">Vergelijkingstool</h1>
-            <form name="frmComparison" class="comparison-form" method>
-                <input placeholder="Ondernemingsnummer" type="text" id="company1-input" name="company1" />
-                <button class="compare-button" onclick="compare()" id="btnCompare">Vergelijk</button>
+            <form action="/home" name="frmComparison" class="comparison-form" method="post">
+                <input placeholder="Ondernemingsnummer" type="text" id="company1" name="company1" />
+                <input type="submit" class="compare-button" id="btnCompare" placeholder="vgl">
+                <button class="compare-button" id="btnCompare">Vergelijk</button>
                 <input placeholder="Ondernemingsnummer" type="text" id="company2-input" name="company2" />
             </form>
             <div class="comparison-results">
@@ -74,7 +75,10 @@
                     <table>
                         <tr>
                             <th>Naam:</th>
-                            <td id="company1Name"></td>
+                            <td id="company1Name">
+                                <% if (companyData) { %>
+                                    <%= companyData.name %>
+                                <% } %></td>
                         </tr>
                         <tr>
                             <th>Adres:</th>

@@ -1,22 +1,6 @@
 import fetch from "node-fetch";
-/*intfaces*/
-interface CompanyData {
-  name: string;
-  address: string;
-  depositDate: string;
-  equity: number;
-  profit: number;
-  debt: number;
-}
-interface fetchOptions {
-  method: string;
-  headers: {
-    "NBB-CBSO-Subscription-Key": string;
-    "X-Request-Id": string;
-    Accept: string;
-  };
-  timeout: number;
-}
+import { CompanyData, fetchOptions } from "./types";
+
 /*variables*/
 const apiKey: string = "5bca88bca6c74941af1a74c459833c52";
 const requestId: string = "4b8e79a0-bd54-11eb-8529-0242ac130003";
@@ -102,11 +86,5 @@ export async function getCompanyData(enterprisenumber:string):Promise<CompanyDat
   let companyData = await secondApiCall(accountingDataUrl);
   return companyData;
 }
-
-async function main() {
-  let companyData = await getCompanyData("0446486050");
-  console.log(companyData);
-}
-main();
 
 export{};
