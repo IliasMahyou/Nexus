@@ -8,12 +8,12 @@ const frmLogin = document.forms.namedItem('frmLogin');//Loginformulier
 const validateLogin = () =>{
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
-  if (userExists) {
-    window.location.replace('../views/home.ejs');
-  } else {
-    alert("Fout wachtwoord of email address probeer opnieuw!");
-    window.location.reload();
-  } 
+    if (email === "Nexus@gmail.com" && password === "NBB") {
+     window.location.href = "home";
+    } else {
+      alert("Fout wachtwoord of email address probeer opnieuw!");
+      window.location.reload();
+    } 
 }
 
 const button = document.getElementById("submit");

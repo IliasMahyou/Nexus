@@ -1,74 +1,105 @@
-/*Importatie*/
-const {MongoClient} = require("mongodb");
-const connection = "mongodb+srv://nexus_admin:Nexus_123@nexus.09eb4ta.mongodb.net/Nexus?retryWrites=true&w=majority";
-const client = new MongoClient(connection, {useUnifiedTopology: true});
+import { MongoClient,ObjectId } from "mongodb";
+import {Company, User, History} from "./types";
+// url naar database Nexus mongoDB
+
+const uri =
+  "mongodb+srv://nexus_admin:Nexus_123@nexus.09eb4ta.mongodb.net/Nexus?retryWrites=true&w=majority";
+  const client = new MongoClient(uri);
 /*Asynchrone functies*/
-async function companyExist(referencenumber) {
-    if (fetchCompany(referencenumber) == null) {
-        return true;
-    } else {
-        return false;
+
+
+
+async function companyExist(referencenumber:string) {
+  if (fetchCompany(referencenumber) == null) {
+    return true;
+  } else {
+    return false;
+  }
+}
+async function fetchCompany(referencenumber:string) {
+  connect();
+  const company = await client
+    .db("NBB")
+    .collection("Companies")
+    .findOne({ referencenumber: referencenumber });
+  exit();
+  return company;
+}
+async function addCompany(company:Company) {
+  if (!companyExist(company.referencenumber)) {
+    connect();
+    await client.db("NBB").collection("Companies").insertOne(company);
+    exit();
+  }
+}
+async function userExist(userData:User) {
+  connect();
+  const user = await client
+    .db("NBB")
+    .collection("Users")
+    .findOne({ name: userData.name, password: userData.password });
+  exit();
+  if (user == null) {
+    return true;
+  } else {
+    return false;
+  }
+}
+async function addUser(user:User) {
+  if (!userExist(user)) {// user.name werkt niet
+    connect();
+    await client.db("NBB").collection("Users").insertOne(user);
+    exit();
+  }
+}
+async function inHistory(search:History) {
+  connect();
+  const answer = await client
+    .db("NBB")
+    .collection("History")
+    .findOne({ user: search.username, company: search.referencenumber });
+  exit();
+  if (answer == null) {
+    return true;
+  } else {
+    return false;
+  }
+}
+async function fetchHistory(username:User) {
+  let companiesList:any = [];
+  connect();
+  const userHistory = await client
+    .db("NBB")
+    .collection("History")
+    .find({ user: username }).toArray();
+    for (const search  of userHistory) {
+       const company = fetchCompany(search.referencenumber)
+      companiesList.push(company);
     }
+  exit();
+  return companiesList;
 }
-async function fetchCompany(referencenumber) {
-    await client.connect();
-    const company = await client.db('NBB').collection('Companies').findOne({referencenumber: referencenumber});
-    await client.close();
-    return company;
+async function addToHistory(search:History) {
+  if (!inHistory(search)) {
+    connect();
+    await client
+      .db("NBB")
+      .collection("History")
+      .insertOne({ user: search.username, company: search.referencenumber });
+    exit();
+  }
 }
-async function addCompany(company) {
-    if (!compannyExist(company.referencenumber)) {
-        await client.connect();
-        await client.db('NBB').collection('Companies').insertOne(company);
-        await client.close();
-    }
+
+
+const connect = async () => {
+  const client = new MongoClient(uri);
+  await client.connect();
 }
-async function userExist(userData) {
-    await client.connect();
-    const user = await client.db('NBB').collection('Users').findOne({name: userData.name, password: userData.password})
-    await client.close();
-    if (user == null) {
-        return true;
-    } else {
-        return false; 
-    }
+
+const exit = async () => {
+  try {
+      await client.close();
+  } catch (error) {
+      console.error(error);
+  }
 }
-async function addUser(user) {
-    if (!userExist(user.name)) {
-        await client.connect();
-        await client.db('NBB').collection('Users').insertOne(user);
-        await client.close();
-    }
-}
-async function inHistory(username, referencenumber) {
-    await client.connect();
-    const answer = await client.db('NBB').collection('History').findOne({user: username, company: referencenumber});
-    await client.close();
-    if (answer == null) {
-        return true;
-    } else {
-        return false;
-    }
-}
-async function fetchHistory(username) {
-    let companiesList = [];
-    await client.connect();
-    const cursor = await client.db('NBB').collection('History').find({user: username});
-    const userHistory = await cursor.toArray();
-    for (let index = 0; index < userHistory.length; index++) {
-        for (const company of userHistory[i]) {
-            companiesList.add(fetchCompany(company.referencenumber));
-        }
-    }
-    await client.close();
-    return companiesList;
-}
-async function addToHistory(username, referencenumber) {
-    if (!inHistory(referencenumber)) {
-        await client.connect();
-        await client.db('NBB').collection('History').insertOne({user: username, company: referencenumber});
-        await client.close();
-    }
-}
-/*Exportatie*/
-export {addCompany, fetchCompany};
