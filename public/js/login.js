@@ -1,15 +1,19 @@
-const formlogin = document.getElementById(".form-body");
+/*Importatie*/
+import { userExists } from '../ts/db.js';
 
+/*Constantedeclaratie*/
+const frmLogin = document.forms.namedItem('frmLogin');//Loginformulier
 
+/*Synchrone functies*/
 const validateLogin = () =>{
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
-    if (email === "Nexus@gmail.com" && password === "NBB") {
-     window.location.href = "./index.html";
-    } else {
-      alert("Fout wachtwoord of email address probeer opnieuw!");
-      window.location.reload();
-    } 
+  if (userExists) {
+    window.location.replace('../views/home.ejs');
+  } else {
+    alert("Fout wachtwoord of email address probeer opnieuw!");
+    window.location.reload();
+  } 
 }
 
 const button = document.getElementById("submit");
