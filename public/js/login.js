@@ -1,6 +1,10 @@
-const formlogin = document.getElementById(".form-body");
+/*Importatie*/
+import { userExists } from '../ts/db.js';
 
+/*Constantedeclaratie*/
+const frmLogin = document.forms.namedItem('frmLogin');//Loginformulier
 
+/*Synchrone functies*/
 const validateLogin = () =>{
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;

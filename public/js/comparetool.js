@@ -1,3 +1,4 @@
+
 /*Constantedeclaraties*/
 const frmComparison = document.forms.namedItem("frmComparison");
 /*Synchrone functies*/

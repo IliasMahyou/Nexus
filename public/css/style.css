@@ -324,8 +324,8 @@ footer {
     text-align: center;
 }
 
-/* Login page */
-.login-body {
+/* Loginpagina */
+#login-body {
     height: 100vh;
     display: flex;
     align-items: center;
@@ -335,14 +335,12 @@ footer {
     box-sizing: border-box;
     animation: move 15s linear alternate infinite;
 }
-
 @keyframes move {
     50% {
         background-position: 50%;
     }
 }
-
-.login-box {
+#login-box {
     width: 400px;
     height: min-content;
     padding: 40px;
@@ -352,34 +350,28 @@ footer {
     box-sizing: border-box;
     box-shadow: 0 0 10px rgba(0, 0, 0, .2);
 }
-
-.login-box h2 {
+#login-box h1 {
     font-size: 2.2rem;
     margin: 0;
 }
-
-.login-box p {
+#login-box p {
     color: #404040;
     margin-top: 4px;
     font-size: 1.2rem;
 }
-
-.login-box form {
+#login-box form {
     text-align: left;
     margin-top: 30px;
 }
-
-.login-box form .form-group {
+#login-box form .form-group {
     margin: 18px 0;
 }
-
-.login-box form .form-group label {
+#login-box form .form-group label {
     display: block;
     font-size: 20px;
     color: #101010;
 }
-
-.login-box form .form-group input {
+#login-box form .form-group input {
     width: 100%;
     height: 40px;
     margin-top: 6px;
@@ -391,35 +383,29 @@ footer {
     color: #404040;
     transition: .3s;
 }
-
-.login-box form .form-group input:focus {
+#login-box form .form-group input:focus {
     border-color: #124ce7;
     box-shadow: 0 0 12px #bbd3ff;
 }
-
-.login-box form .form-group input:valid {
+#login-box form .form-group input:valid {
     border-color: #124ce7;
     background: #e4edff;
 }
-
-.login-box form .form-group i {
+#login-box form .form-group i {
     position: absolute;
     color: #404040;
     font-size: 20px;
     transform: translateX(12px) translateY(16px);
 }
-
-.login-box form .forgot {
+#login-box form .forgot {
     cursor: pointer;
     color: #3784ff;
     font-size: 18px;
 }
-
-.login-box form .forgot:hover {
+#login-box form .forgot:hover {
     color: #124ce7;
 }
-
-.login-box form input[type="submit"] {
+#login-box form input[type="submit"] {
     cursor: pointer;
     width: 100%;
     height: 46px;

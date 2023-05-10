@@ -10,7 +10,7 @@
     <!-- JS -->
     <script src="js/comparetool.js" defer></script>
     <script src="js/history.js" defer></script>
-    <script type="module" src="js/db.js" defer></script>
+    <script src="js/db.js" defer></script>
     <script src="js/api.js"></script>
     <script src="./js/translateHome.js" defer></script>
     <script type="text/javascript" src="./js/darkLight.js" defer></script>
@@ -64,7 +64,7 @@
     <main id="main-home">
         <section id="comparison-tool">
             <h1 class="titleHome">Vergelijkingstool</h1>
-            <form name="frmComparison" class="comparison-form">
+            <form name="frmComparison" class="comparison-form" method>
                 <input placeholder="Ondernemingsnummer" type="text" id="company1-input" name="company1" />
                 <button class="compare-button" onclick="compare()" id="btnCompare">Vergelijk</button>
                 <input placeholder="Ondernemingsnummer" type="text" id="company2-input" name="company2" />
