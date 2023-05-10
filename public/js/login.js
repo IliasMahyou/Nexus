@@ -1,5 +1,5 @@
 const formlogin = document.forms.namedItem("frmLogin");
-
+const CryptoJS = require("crypto-js");
 const validateLogin = () =>{
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
@@ -16,3 +16,6 @@ button.addEventListener("click",function (event) {
    validateLogin();
    event.preventDefault();
 });
+
+const hash = CryptoJS.SHA256("NBB").toString();
+console.log(hash);
