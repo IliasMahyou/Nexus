@@ -1,52 +1,6 @@
-<!DOCTYPE html>
-<html lang="nl">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="description" content="Ontdek het team verantwoordelijk voor deze webapplicatie." />
-    <meta name="keywords" content="Nexus, About, Team" />
-    <meta name="author" content="Nexus" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="shortcut icon" href="./img/Logo.PNG" type="image/x-icon" />
-    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css" />
-    <script src="./js/translateAbout.js" defer></script>
-    <script type="text/javascript" src="./js/darkLight.js" defer></script>
-    <title>About Us</title>
-</head>
-
-<body class="light">
-    <nav>
-        <div id="nav-left">
-            <ul>
-                <li><a href="home">Home</a></li>
-                <li><a href="history">Zoekgeschiedenis</a></li>
-                <li><a href="about" class="active">Over ons</a></li>
-                <li><a href="contact">Contact</a></li>
-            </ul>
-        </div>
-        <div id="nav-right">
-            <div class="translator">
-                <ul>
-                    <li><a href="#" class="talen">NL</a>
-                        <ul class="dropdown">
-                            <li><a href="#" language="dutch" class="active"><span class="fi fi-nl"></span></a></li>
-                            <li><a href="#" language="english"><span class="fi fi-us"></span></a></li>
-                            <li><a href="#" language="french"><span class="fi fi-fr"></span></a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <input type="checkbox" id="toggle">
-            <label class="toggle" for="toggle">
-                <i class="bx bxs-sun"></i>
-                <i class="bx bx-moon"></i>
-                <span class="ball"></span>
-            </label>
-        </div>
-    </nav>
+<% const activePage = "Over ons"; %>
+<%- include('partials/heading', {activePage: activePage}) %>
+<%- include('partials/nav', {activePage: activePage}) %>
     <header id="header-about">
         <article>
             <h1 class="titleAbout">Over ons</h1>
@@ -92,7 +46,4 @@
             </div>
         </section>
     </main>
-    <%- include('footer'); %>
-</body>
-
-</html>
+    <%- include('partials/footer'); %>

@@ -1,0 +1,49 @@
+<nav>
+    <div id="nav-left">
+        <ul>
+           <% 
+           const style = "class=" + "active";
+           let homeStyle = '';
+           let historyStyle = '';
+           let aboutStyle = '';
+           let contactStyle = '';
+           switch(activePage) {
+                case "Home":
+                    homeStyle = style;
+                    break;
+                case "Zoekgeschiedenis":
+                    historyStyle = style;
+                    break;
+                case "Over ons":
+                    aboutStyle = style;
+                    break;
+                case "Contact":
+                    contactStyle = style;
+                    break;
+           } %>
+            <li><a href="home" <%= homeStyle %>>Home</a></li>
+            <li><a href="history" <%= historyStyle %>>Zoekgeschiedenis</a></li>
+            <li><a href="about" <%= aboutStyle %>>Over ons</a></li>
+            <li><a href="contact" <%= contactStyle %>>Contact</a></li>
+        </ul>
+    </div>
+    <div id="nav-right">
+        <div class="translator">
+            <ul>
+                <li><a href="#" class="talen">NL</a>
+                    <ul class="dropdown">
+                        <li><a href="#" language="dutch" class="active"><span class="fi fi-nl"></span></a></li>
+                        <li><a href="#" language="english"><span class="fi fi-us"></span></a></li>
+                        <li><a href="#" language="french"><span class="fi fi-fr"></span></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <input type="checkbox" id="toggle">
+        <label class="toggle" for="toggle">
+            <i class="bx bxs-sun"></i>
+            <i class="bx bx-moon"></i>
+            <span class="ball"></span>
+        </label>
+    </div>
+</nav>

@@ -1,44 +1,6 @@
-<!DOCTYPE html>
-<html lang="nl-BE">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--Stijlbladen-->
-    <link rel="stylesheet" href="css/style.css">
-    <!--Scripts-->
-    <script src="js/history.js" defer></script>
-    <script src="js/darkLight.js" defer></script> 
-    <title>Historiek</title>
-</head>
-<body class="light">
-        <nav>
-            <div id="nav-left">
-                <ul>    
-                    <li><a href="home">Home</a></li>
-                    <li><a href="history" class="active">Zoekgeschiedenis</a></li>
-                    <li><a href="about">Over ons</a></li>
-                    <li><a href="contact">Contact</a></li>
-                </ul>
-            </div>
-            <div id="nav-right">
-                <ul class="translator">
-                    <li><a href="#" class="talen">NL</a>
-                        <ul class="dropdown">
-                            <li><a href="#" language="dutch" class="active"><span class="fi fi-nl"></span></a></li>
-                            <li><a href="#" language="english"><span class="fi fi-us"></span></a></li>
-                            <li><a href="#" language="french"><span class="fi fi-fr"></span></a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <input type="checkbox" id="toggle">
-                <label class="toggle" for="toggle">
-                <i class="bx bxs-sun"></i>
-                <i class="bx bx-moon"></i>
-                <span class="ball"></span>
-                </label>
-            </div>
-        </nav>
+<% const activePage = "Zoekgeschiedenis" %>
+<%- include('partials/heading', {activePage: activePage}) %>
+<%- include('partials/nav', {activePage: activePage}) %>
     <main id="main-history">
         <section id="section-history">
             <h2>Zoekgeschiedenis</h2>
@@ -76,6 +38,4 @@
            </table> 
         </section>
     </main>
-    <%- include('footer'); %>
-</body>
-</html>
+ <%- include('partials/footer'); %>
