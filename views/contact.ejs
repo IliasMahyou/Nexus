@@ -1,48 +1,6 @@
-<!DOCTYPE html>
-<html lang="en" class="contact-page">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/style.css" />
-    <script src="./js/translateContact.js" defer></script>
-    <script type="text/javascript" src="./js/darkLight.js" defer></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css"/>
-    <title>Contact</title>
-  </head>
-
-  <body class="light">
-    <nav>
-      <div id="nav-left">
-          <ul>
-              <li><a href="home">Home</a></li>
-              <li><a href="history">Zoekgeschiedenis</a></li>
-              <li><a href="about">Over ons</a></li>
-              <li><a href="contact" class="active">Contact</a></li>
-          </ul>
-      </div>
-      <div id="nav-right">
-          <div class="translator">
-              <ul>
-                  <li><a href="#" class="talen">NL</a>
-                      <ul class="dropdown">
-                          <li><a href="#" language="dutch" class="active"><span class="fi fi-nl"></span></a></li>
-                          <li><a href="#" language="english"><span class="fi fi-us"></span></a></li>
-                          <li><a href="#" language="french"><span class="fi fi-fr"></span></a></li>
-                      </ul>
-                  </li>
-              </ul>
-          </div>
-          <input type="checkbox" id="toggle">
-          <label class="toggle" for="toggle">
-              <i class="bx bxs-sun"></i>
-              <i class="bx bx-moon"></i>
-              <span class="ball"></span>
-          </label>
-      </div>
-  </nav>
+<% const activePage = "Contact"; %>
+<%- include('partials/heading', {activePage: activePage}) %>
+<%- include('partials/nav', {activePage: activePage}) %>
     <main id="main-contact">
       <iframe
         class="map"
@@ -101,6 +59,4 @@
         </form>
       </section>
     </main>
-    <%- include('footer'); %>
-  </body>
-</html>
+<%- include('partials/footer'); %>
