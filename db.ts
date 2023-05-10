@@ -8,7 +8,6 @@ const uri =
 /*Asynchrone functies*/
 
 
-
 async function companyExist(referencenumber:string) {
   if (fetchCompany(referencenumber) == null) {
     return true;

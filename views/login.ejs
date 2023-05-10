@@ -10,8 +10,7 @@
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap">
     <!--Scripts-->
-    <script src="js/login.js" defer></script>
-    <script type="text/javascript" src="js/darkLight.js" defer></script>
+    <script type="text/javascript" src="./js/login.js" defer></script>
     <!--Paginatitel-->
     <title>Login Pagina</title>
   </head>
@@ -21,16 +20,16 @@
       <p>Enter your details</p>
       <form name="frmLogin">
           <div class="form-group">
-              <label for="username">Gebruikersnaam</label>
+              <label for="email">Gebruikersnaam</label>
               <i class="bx bxs-user"></i>
-              <input type="text" name="username" placeholder="Uw gebruikersnaam" required>
+              <input type="text" name="email" placeholder="Uw gebruikersnaam" id="email" required>
           </div>
           <div class="form-group">
               <label for="password">Wachtwoord</label>
               <i class="bx bxs-lock"></i>
-              <input type="password" name="password" placeholder="Uw wachtwoord" required>
+              <input type="password" name="password" placeholder="Uw wachtwoord" id="password" required>
           </div>
-          <input type="submit" value="Log In">
+          <input type="submit" value="Log In" id="submit-button">
       </form>
     </div>
   </body>
