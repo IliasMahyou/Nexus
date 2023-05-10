@@ -1,4 +1,5 @@
-import {MongoClient} from "mongodb";
+/*Importatie*/
+const {MongoClient} = require("mongodb");
 const connection = "mongodb+srv://nexus_admin:Nexus_123@nexus.09eb4ta.mongodb.net/Nexus?retryWrites=true&w=majority";
 const client = new MongoClient(connection, {useUnifiedTopology: true});
 /*Asynchrone functies*/
@@ -63,9 +64,11 @@ async function fetchHistory(username) {
     return companiesList;
 }
 async function addToHistory(username, referencenumber) {
-    if (!inHistory(company.referencenumber)) {
+    if (!inHistory(referencenumber)) {
         await client.connect();
         await client.db('NBB').collection('History').insertOne({user: username, company: referencenumber});
         await client.close();
     }
 }
+/*Exportatie*/
+export {addCompany, fetchCompany};
