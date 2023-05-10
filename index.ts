@@ -1,7 +1,7 @@
 /*Importatie*/
 import express from "express";//Express()
 import ejs from "ejs";
-import { addCompany, fetchCompany } from "db";//Nodige ondernemingDatabaseFunctie
+
 
 /*Constantedeclaratie*/
 const app = express();//Express-app maken
