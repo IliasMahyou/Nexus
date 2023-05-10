@@ -5,7 +5,7 @@ const validateLogin = () =>{
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
     if (email === "Nexus@gmail.com" && password === "NBB") {
-     window.location.href = "./index.html";
+     window.location.href = "home";
     } else {
       alert("Fout wachtwoord of email address probeer opnieuw!");
       window.location.reload();
