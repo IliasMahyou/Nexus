@@ -26,15 +26,50 @@ async function getFetch(enterprisenumber:string):Promise<any> {
 async function firstApiCall(enterprisenumber:string,companyData: CompanyData):Promise<string>{
   let response = await getFetch(`${enterprisenumber}`);
   let responseData = await response.json();
-  for (let i = 0; i < responseData.length; i++) {
+  let bool = false;
+  do { 
+    for (let i = 0; i < responseData.length; i++) {
+      if (responseData[i].ExerciseDates.startDate >= "2022-01-01") {
+        accountingDataUrl = responseData[i].AccountingDataURL;
+        companyData.depositDate = responseData[i].DepositDate;
+        bool = true;
+      }
+    }
+    if (bool == false) {
+      for (let i = 0; i < responseData.length; i++) {
+        if (responseData[i].ExerciseDates.startDate >= "2021-01-01") {
+          accountingDataUrl = responseData[i].AccountingDataURL;
+          companyData.depositDate = responseData[i].DepositDate;
+          bool = true;
+        }
+      }
+    }
+    if (bool == false) {
+      for (let i = 0; i < responseData.length; i++) {
+        if (responseData[i].ExerciseDates.startDate >= "2020-01-01") {
+          accountingDataUrl = responseData[i].AccountingDataURL;
+          companyData.depositDate = responseData[i].DepositDate;
+          bool = true;
+        }
+      }
+    }
+    if (bool == false) {
+      for (let i = 0; i < responseData.length; i++) {
+        if (responseData[i].ExerciseDates.startDate >= "2019-01-01") {
+          accountingDataUrl = responseData[i].AccountingDataURL;
+          companyData.depositDate = responseData[i].DepositDate;
+          bool = true;
+        }
+      }
+    }
+  } while (bool == false);
+  /*for (let i = 0; i < responseData.length; i++) {
     if (responseData[i].ExerciseDates.startDate >= "2022-01-01") {
       accountingDataUrl = responseData[i].AccountingDataURL;
       companyData.depositDate = responseData[i].DepositDate;
-      break;
-    } else if (responseData[i].ExerciseDates.startDate >= "2021-01-01") {
+    } /*else if (responseData[i].ExerciseDates.startDate >= "2021-01-01") {
       accountingDataUrl = responseData[i].AccountingDataURL;
       companyData.depositDate = responseData[i].DepositDate;
-      break;
     } else if (responseData[i].ExerciseDates.startDate >= "2020-01-01") {
       accountingDataUrl = responseData[i].AccountingDataURL;
       companyData.depositDate = responseData[i].DepositDate;
@@ -44,7 +79,7 @@ async function firstApiCall(enterprisenumber:string,companyData: CompanyData):Pr
       companyData.depositDate = responseData[i].DepositDate;
       break;
     }
-  }
+  }*/
   return accountingDataUrl;
 }
 
