@@ -1,83 +1,99 @@
-<% const activePage = "Home"; %>
-<%- include('partials/heading', {activePage: activePage}) %>
-<%- include('partials/nav', {activePage: activePage}) %>
-    <header id="header-home">
-        <article>
-            <h1>Nexus</h1>
-            <p>
-                Welkom bij Nexus, waar we ons richten op het leveren van innovatieve en nuttige tools om het leven van onze klanten gemakkelijker te maken. 
-            </p>
-            <p> 
-                Onderaan de pagina vindt u een unieke vergelijkingstool waarmee de jaarrekeningen van twee bedrijven met elkaar vergeleken kunnen worden. Deze tool is ontwikkeld om u te helpen weloverwogen beslissingen te nemen bij het beoordelen van de financiële gezondheid van bedrijven. Onze vergelijkingstool is eenvoudig in gebruik en biedt u snel en nauwkeurig inzicht in de financiële prestaties van de bedrijven die u vergelijkt.  
-            </p> 
-        </article>
-    </header>
-    <main id="main-home">
-        <section id="comparison-tool">
-            <h1 class="titleHome">Vergelijkingstool</h1>
-            <form name="frmComparison" class="comparison-form" method>
-                <input placeholder="Ondernemingsnummer" type="text" id="company1-input" name="company1" />
-                <button class="compare-button" onclick="compare()" id="btnCompare">Vergelijk</button>
-                <input placeholder="Ondernemingsnummer" type="text" id="company2-input" name="company2" />
-            </form>
-            <div class="comparison-results">
-                <div id="company1-data">
-                    <table>
-                        <tr>
-                            <th>Naam:</th>
-                            <td id="company1Name"></td>
-                        </tr>
-                        <tr>
-                            <th>Adres:</th>
-                            <td id="company1Address"></td>
-                        </tr>
-                        <tr>
-                            <th>Datum neerlegging:</th>
-                            <td id="company1Date"></td>
-                        </tr>
-                        <tr>
-                            <th>Eigen vermogen:</th>
-                            <td id="company1Equity"></td>
-                        </tr>
-                        <tr>
-                            <th>Schulden:</th>
-                            <td id="company1Debts"></td>
-                        </tr>
-                        <tr>
-                            <th>Bedrijfswinst:</th>
-                            <td id="company1Profit"></td>
-                        </tr>
-                    </table>
-                </div>
-                <div id="company2-data">
-                    <table>
-                        <tr>
-                            <th>Naam:</th>
-                            <td id="company2Name"></td>
-                        </tr>
-                        <tr>
-                            <th>Adres:</th>
-                            <td id="company2Address"></td>
-                        </tr>
-                        <tr>
-                            <th>Datum neerlegging:</th>
-                            <td id="company2Date"></td>
-                        </tr>
-                        <tr>
-                            <th>Eigen vermogen:</th>
-                            <td id="company2Equity"></td>
-                        </tr>
-                        <tr>
-                            <th>Schulden:</th>
-                            <td id="company2Debts"></td>
-                        </tr>
-                        <tr>
-                            <th>Bedrijfswinst:</th>
-                            <td id="company2Profit"></td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </section>
-    </main>
-    <%- include('partials/footer'); %>
+<% const activePage = "Home"; %> <%- include('partials/heading', {activePage:
+activePage}) %> <%- include('partials/nav', {activePage: activePage}) %>
+<script src="./js/translateHome.js" defer></script>
+<header id="header-home">
+  <article>
+    <h1>Nexus</h1>
+    <p>
+      Welkom bij Nexus, waar we ons richten op het leveren van innovatieve en
+      nuttige tools om het leven van onze klanten gemakkelijker te maken.
+      Onderaan de pagina vindt u een unieke vergelijkingstool waarmee de
+      jaarrekeningen van twee bedrijven met elkaar vergeleken kunnen worden.
+      Deze tool is ontwikkeld om u te helpen weloverwogen beslissingen te nemen
+      bij het beoordelen van de financiële gezondheid van bedrijven. Onze
+      vergelijkingstool is eenvoudig in gebruik en biedt u snel en nauwkeurig
+      inzicht in de financiële prestaties van de bedrijven die u vergelijkt.
+    </p>
+  </article>
+</header>
+<main id="main-home">
+  <section id="comparison-tool">
+    <h1 class="titleHome">Vergelijkingstool</h1>
+    <form name="frmComparison" class="comparison-form" method>
+      <input
+        placeholder="Ondernemingsnummer"
+        type="text"
+        id="company1-input"
+        name="company1"
+      />
+      <button class="compare-button" onclick="compare()" id="btnCompare">
+        Vergelijk
+      </button>
+      <input
+        placeholder="Ondernemingsnummer"
+        type="text"
+        id="company2-input"
+        name="company2"
+      />
+    </form>
+    <div class="comparison-results">
+      <div id="company1-data">
+        <table>
+          <tr>
+            <th>Naam:</th>
+            <td id="company1Name"></td>
+          </tr>
+          <tr>
+            <th>Adres:</th>
+            <td id="company1Address"></td>
+          </tr>
+          <tr>
+            <th>Datum neerlegging:</th>
+            <td id="company1Date"></td>
+          </tr>
+          <tr>
+            <th>Eigen vermogen:</th>
+            <td id="company1Equity"></td>
+          </tr>
+          <tr>
+            <th>Schulden:</th>
+            <td id="company1Debts"></td>
+          </tr>
+          <tr>
+            <th>Bedrijfswinst:</th>
+            <td id="company1Profit"></td>
+          </tr>
+        </table>
+      </div>
+      <div id="company2-data">
+        <table>
+          <tr>
+            <th>Naam:</th>
+            <td id="company2Name"></td>
+          </tr>
+          <tr>
+            <th>Adres:</th>
+            <td id="company2Address"></td>
+          </tr>
+          <tr>
+            <th>Datum neerlegging:</th>
+            <td id="company2Date"></td>
+          </tr>
+          <tr>
+            <th>Eigen vermogen:</th>
+            <td id="company2Equity"></td>
+          </tr>
+          <tr>
+            <th>Schulden:</th>
+            <td id="company2Debts"></td>
+          </tr>
+          <tr>
+            <th>Bedrijfswinst:</th>
+            <td id="company2Profit"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </section>
+</main>
+<%- include('partials/footer'); %>
