@@ -1,49 +1,69 @@
-<% const activePage = "Over ons"; %>
-<%- include('partials/heading', {activePage: activePage}) %>
-<%- include('partials/nav', {activePage: activePage}) %>
-    <header id="header-about">
-        <article>
-            <h1 class="titleAbout">Over ons</h1>
-            <p>
-                Nexus is een toonaangevende specialist in het ontwerpen van innovatieve webapplicaties. Met ons toegewijde team van IT-professionals streven we naar uitmuntendheid en zijn we trots op onze hoogwaardige oplossingen en uitstekende klantenservice. We geloven in open communicatie, samenwerking en wederzijds respect, en kijken ernaar uit om met u samen te werken.
-            </p>
-        </article>
-    </header>
-    <main id="main-about">
-        <section>
-            <h2 class="darkH">Ontmoet het team</h2>
-            <div id="members">
-                <article class="member">
-                    <img src="./img/profile-anthony.jpg" alt=" Individuele foto van Anthony Hellemans." />
-                    <div class="member-name">
-                        <h3>Anthony Hellemans</h3>
-                    </div>
-                </article>
-                <article class="member">
-                    <img src="./img/profile-ilias.jpg" alt="Individuele foto van Ilias Mahyou." />
-                    <div class="member-name">
-                        <h3>Ilias Mahyou</h3>
-                    </div>
-                </article>
-                <article class="member">
-                    <img src="./img/profile-milan.jpg" alt="Individuele foto van Milan Mareels." />
-                    <div class="member-name">
-                        <h3>Milan Mareels</h3>
-                    </div>
-                </article>
-                <article class="member">
-                    <img src="./img/profile-renzo.jpg" alt="Individuele foto van Renzo Declerck." />
-                    <div class="member-name">
-                        <h3>Renzo Declerck</h3>
-                    </div>
-                </article>
-                <article class="member">
-                    <img src="./img/profile-warre.jpg" alt="Individuele foto van Warre Bogaerts." />
-                    <div class="member-name">
-                        <h3>Warre Bogaerts</h3>
-                    </div>
-                </article>
-            </div>
-        </section>
-    </main>
-    <%- include('partials/footer'); %>
+<% const activePage = "Over ons"; %> <%- include('partials/heading',
+{activePage: activePage}) %> <%- include('partials/nav', {activePage:
+activePage}) %>
+<script src="./js/translateAbout.js" defer></script>
+<header id="header-about">
+  <article>
+    <h1 class="titleAbout">Over ons</h1>
+    <p>
+      Nexus is een toonaangevende specialist in het ontwerpen van innovatieve
+      webapplicaties. Met ons toegewijde team van IT-professionals streven we
+      naar uitmuntendheid en zijn we trots op onze hoogwaardige oplossingen en
+      uitstekende klantenservice. We geloven in open communicatie, samenwerking
+      en wederzijds respect, en kijken ernaar uit om met u samen te werken.
+    </p>
+  </article>
+</header>
+<main id="main-about">
+  <section>
+    <h2 class="darkH">Ontmoet het team</h2>
+    <div id="members">
+      <article class="member">
+        <img
+          src="./img/profile-anthony.jpg"
+          alt=" Individuele foto van Anthony Hellemans."
+        />
+        <div class="member-name">
+          <h3>Anthony Hellemans</h3>
+        </div>
+      </article>
+      <article class="member">
+        <img
+          src="./img/profile-ilias.jpg"
+          alt="Individuele foto van Ilias Mahyou."
+        />
+        <div class="member-name">
+          <h3>Ilias Mahyou</h3>
+        </div>
+      </article>
+      <article class="member">
+        <img
+          src="./img/profile-milan.jpg"
+          alt="Individuele foto van Milan Mareels."
+        />
+        <div class="member-name">
+          <h3>Milan Mareels</h3>
+        </div>
+      </article>
+      <article class="member">
+        <img
+          src="./img/profile-renzo.jpg"
+          alt="Individuele foto van Renzo Declerck."
+        />
+        <div class="member-name">
+          <h3>Renzo Declerck</h3>
+        </div>
+      </article>
+      <article class="member">
+        <img
+          src="./img/profile-warre.jpg"
+          alt="Individuele foto van Warre Bogaerts."
+        />
+        <div class="member-name">
+          <h3>Warre Bogaerts</h3>
+        </div>
+      </article>
+    </div>
+  </section>
+</main>
+<%- include('partials/footer'); %>
