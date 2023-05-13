@@ -38,7 +38,10 @@ app.get("/home", (req, res) => {
 });
 app.post("/home", async (req, res) => {
     let companyData = await getCompanyData(req.body.company1 as string);
+    console.log(companyData);
     let companyData2 = await getCompanyData(req.body.company2 as string);
+    console.log(companyData2);
+
     res.render('home', {companyData: companyData, companyData2:companyData2});//home.ejs inladen bij '/home' na de input van de gebruiker
 });
 app.get("/history", (req: any, res: any) => res.render('history'));//history.ejs inladen bij '/history'

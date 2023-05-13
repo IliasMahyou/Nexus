@@ -164,7 +164,12 @@ footer {
 #main-home {
     height: 100%;
 }
-
+#main-home .green {
+    color: green;
+}
+#main-home .red {
+    color: red;
+}
 #comparison-tool {
     margin: 50px auto;
     max-width: 60%;

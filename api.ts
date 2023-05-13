@@ -1,17 +1,11 @@
 import fetch from "node-fetch";
-import { CompanyData, fetchOptions } from "./types";
+import { CompanyData, fetchOptions, Balans } from "./types";
 
 /*variables*/
 const apiKey: string = "5bca88bca6c74941af1a74c459833c52";
 const requestId: string = "4b8e79a0-bd54-11eb-8529-0242ac130003";
-let companyData: CompanyData = {
-  name: "",
-  address: "",
-  depositDate: "",
-  equity: 0,
-  profit: 0,
-  debt: 0,
-};
+
+let balans: Balans;
 let accountingDataUrl: string = "";
 /*functions*/
 async function getFetch(enterprisenumber:string):Promise<any> {
@@ -28,7 +22,7 @@ async function getFetch(enterprisenumber:string):Promise<any> {
     return await fetch(url, fetchOptions)
 }
 
-async function firstApiCall(enterprisenumber:string):Promise<string>{
+async function firstApiCall(enterprisenumber:string,companyData: CompanyData):Promise<string>{
   let response = await getFetch(`${enterprisenumber}`);
   let responseData = await response.json();
   for (let i = 0; i < responseData.length; i++) {
@@ -53,7 +47,7 @@ async function firstApiCall(enterprisenumber:string):Promise<string>{
   return accountingDataUrl;
 }
 
-async function secondApiCall(accountingDataUrl:string):Promise<any> {
+async function secondApiCall(accountingDataUrl:string,companyData: CompanyData):Promise<any> {
   const fetchOptions:fetchOptions = {
     method: "GET",
     headers: {
@@ -65,6 +59,7 @@ async function secondApiCall(accountingDataUrl:string):Promise<any> {
   };
   let response = await fetch(accountingDataUrl, fetchOptions);
   let data = await response.json();
+  
       companyData.name = data.EnterpriseName;
       companyData.address = data.Address.Street + " " + data.Address.Number;
       for(let i = 0; i < data.Rubrics.length; i++) {
@@ -82,9 +77,18 @@ async function secondApiCall(accountingDataUrl:string):Promise<any> {
 }
 
 export async function getCompanyData(enterprisenumber:string):Promise<CompanyData> {
-  let accountingDataUrl = await firstApiCall(`${enterprisenumber}`);
-  let companyData = await secondApiCall(accountingDataUrl);
-  return companyData;
+  let companyData: CompanyData = {
+    name: "",
+    address: "",
+    depositDate: "",
+    equity: 0,
+    profit: 0,
+    debt: 0,
+  };
+  let accountingDataUrl = await firstApiCall(`${enterprisenumber}`, companyData);
+  let receivedCompanyData = await secondApiCall(accountingDataUrl, companyData);
+  return receivedCompanyData;
 }
+
 
 export{};

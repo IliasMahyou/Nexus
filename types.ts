@@ -38,3 +38,11 @@ export interface fetchOptions {
     };
     timeout: number;
 }
+
+export interface Balans {
+    eigenVermogen: number;
+    vreemdVermogen: number;
+    vlottendeActiva: number;
+    korteTermijnSchulden: number;
+    totaalPassief: number;
+}

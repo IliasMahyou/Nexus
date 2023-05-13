@@ -8,7 +8,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="./css/style.css" />
     <!-- JS -->
-    <script src="js/comparetool.js" defer></script>
+ 
     <script src="js/history.js" defer></script>
     <script src="js/db.js" defer></script>
     <script src="js/api.js"></script>
@@ -66,7 +66,6 @@
             <h1 class="titleHome">Vergelijkingstool</h1>
             <form action="/home" name="frmComparison" class="comparison-form" method="post">
                 <input placeholder="Ondernemingsnummer" type="text" id="company1" name="company1" />
-                <input type="submit" class="compare-button" id="btnCompare" placeholder="vgl">
                 <button class="compare-button" id="btnCompare">Vergelijk</button>
                 <input placeholder="Ondernemingsnummer" type="text" id="company2-input" name="company2" />
             </form>
@@ -76,29 +75,48 @@
                         <tr>
                             <th>Naam:</th>
                             <td id="company1Name">
-                                <% if (companyData) { %>
-                                    <%= companyData.name %>
-                                <% } %></td>
+                                <% if(companyData){ %>
+                                <%= companyData.name %>
+                                <% } %>
+                            </td>
                         </tr>
                         <tr>
                             <th>Adres:</th>
-                            <td id="company1Address"></td>
+                            <td id="company1Address"><%= companyData.address %></td>
                         </tr>
                         <tr>
                             <th>Datum neerlegging:</th>
-                            <td id="company1Date"></td>
+                            <td id="company1Date"><%= companyData.depositDate %></td>
                         </tr>
                         <tr>
                             <th>Eigen vermogen:</th>
-                            <td id="company1Equity"></td>
+                            <td id="company1Equity">
+                                <% if(companyData.equity != 0){ %>
+                                    <% if(companyData.equity > companyData2.equity){ %> 
+                                    <span class="green"><%= companyData.equity %></span> <% } 
+                                    else { %> <span class="red"><%= companyData.equity %></span> <% } %>
+                                        <% } %>
+                            </td>
                         </tr>
                         <tr>
                             <th>Schulden:</th>
-                            <td id="company1Debts"></td>
+                            <td id="company1Debts">
+                                <% if(companyData.debt != 0){ %>
+                                    <% if(companyData.debt < companyData2.debt){ %> 
+                                        <span class="green"><%= companyData.debt %></span> <% } 
+                                        else { %> <span class="red"><%= companyData.debt %></span> <% } %>
+                                    <% } %>
+                            </td>
                         </tr>
                         <tr>
                             <th>Bedrijfswinst:</th>
-                            <td id="company1Profit"></td>
+                            <td id="company1Profit">
+                                <% if(companyData.profit != 0){ %>
+                                    <% if(companyData.profit > companyData2.profit){ %> 
+                                        <span class="green"><%= companyData.profit %></span> <% } 
+                                        else { %> <span class="red"><%= companyData.profit %></span> <% } %>
+                                    <% } %>
+                            </td>
                         </tr>
                     </table>
                 </div>
@@ -106,27 +124,45 @@
                     <table>
                         <tr>
                             <th>Naam:</th>
-                            <td id="company2Name"></td>
+                            <td id="company2Name"><%= companyData2.name %></td>
                         </tr>
                         <tr>
                             <th>Adres:</th>
-                            <td id="company2Address"></td>
+                            <td id="company2Address"><%= companyData2.address %></td>
                         </tr>
                         <tr>
                             <th>Datum neerlegging:</th>
-                            <td id="company2Date"></td>
+                            <td id="company2Date"><%= companyData2.depositDate %></td>
                         </tr>
                         <tr>
                             <th>Eigen vermogen:</th>
-                            <td id="company2Equity"></td>
+                            <td id="company2Equity">
+                                <% if(companyData2.equity != 0){ %>
+                                    <% if(companyData2.equity > companyData.equity){ %> 
+                                        <span class="green"><%= companyData2.equity %></span> <% } 
+                                        else { %> <span class="red"><%= companyData2.equity %></span> <% } %>
+                                    <% } %>
+                            </td>
                         </tr>
                         <tr>
                             <th>Schulden:</th>
-                            <td id="company2Debts"></td>
+                            <td id="company2Debts">
+                                <% if(companyData2.debt != 0){ %>
+                                    <% if(companyData2.debt < companyData.debt){ %> 
+                                        <span class="green"><%= companyData2.debt %></span> <% } 
+                                        else { %> <span class="red"><%= companyData2.debt %></span> <% } %>
+                                    <% } %>
+                            </td>
                         </tr>
                         <tr>
                             <th>Bedrijfswinst:</th>
-                            <td id="company2Profit"></td>
+                            <td id="company2Profit">
+                                <% if(companyData2.profit != 0){ %>
+                                    <% if(companyData2.profit > companyData.profit){ %> 
+                                        <span class="green"><%= companyData2.profit %></span> <% } 
+                                        else { %> <span class="red"><%= companyData2.profit %></span> <% } %>
+                                    <% } %>
+                            </td>
                         </tr>
                     </table>
                 </div>
