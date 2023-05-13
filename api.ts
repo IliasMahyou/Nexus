@@ -1,5 +1,6 @@
 import fetch from "node-fetch";
 import { CompanyData, fetchOptions, Balans } from "./types";
+import e from "express";
 
 /*variables*/
 const apiKey: string = "5bca88bca6c74941af1a74c459833c52";
@@ -59,9 +60,27 @@ async function secondApiCall(accountingDataUrl:string,companyData: CompanyData):
   };
   let response = await fetch(accountingDataUrl, fetchOptions);
   let data = await response.json();
-  
-      companyData.name = data.EnterpriseName;
-      companyData.address = data.Address.Street + " " + data.Address.Number;
+      if (data.EnterpriseName == undefined) {
+          companyData.name = "No data found";
+          return companyData;
+      }
+      else {
+          companyData.name = data.EnterpriseName;
+      }
+
+      if (data.Address.Street == undefined || data.Address.Number == undefined) {
+          companyData.address = "No data found";
+          return companyData;
+      }
+      else {
+          companyData.address = data.Address.Street + " " + data.Address.Number;
+      }
+      if (data.Rubrics == undefined) {
+          companyData.equity = 0;
+          companyData.debt = 0;
+          companyData.profit = 0;
+          return companyData;
+      }
       for(let i = 0; i < data.Rubrics.length; i++) {
           if (data.Rubrics[i].Code == "10/15" && data.Rubrics[i].Period == "N") {
               companyData.equity = data.Rubrics[i].Value;
