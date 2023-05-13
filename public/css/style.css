@@ -170,10 +170,10 @@ footer {
   height: 100%;
 }
 #main-home .green {
-    color: green;
+  color: green;
 }
 #main-home .red {
-    color: red;
+  color: red;
 }
 #comparison-tool {
   margin: 50px auto;
@@ -477,6 +477,10 @@ figure img:hover {
   color: #fff;
   background: linear-gradient(0deg, var(--nexus-purple), var(--nexus-blue));
   border: 0;
+}
+.login-fout {
+  text-align: center;
+  color: red;
 }
 
 /* History page */
