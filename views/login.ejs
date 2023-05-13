@@ -15,8 +15,6 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap"
     />
-    <!--Scripts-->
-    <script type="text/javascript" src="./js/login.js" defer></script>
     <!--Paginatitel-->
     <title>Login Pagina</title>
   </head>
@@ -24,7 +22,7 @@
     <div id="login-box">
       <h1>Welcome back</h1>
       <p>Enter your details</p>
-      <form name="frmLogin">
+      <form name="frmLogin" action="/login" method="post">
         <div class="form-group">
           <label for="email">Gebruikersnaam</label>
           <i class="bx bxs-user"></i>
@@ -47,6 +45,9 @@
             required
           />
         </div>
+        <% if(locals.succses){%>
+        <div class="login-fout">Wrong username or password.</div>
+        <%}%>
         <input type="submit" value="Log In" id="submit-button-login" />
       </form>
     </div>
