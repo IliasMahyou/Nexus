@@ -3,8 +3,8 @@ import express from "express"; //Express()
 import ejs from "ejs";
 import bcrypt from "bcrypt";
 import { getCompanyData } from "./api";
-import { CompanyData, User } from "./types";
-import { userExist } from "./db";
+import { CompanyData, User, Company } from "./types";
+import { userExist, fetchHistory } from "./db";
 
 /*Constantedeclaraties*/
 const app = express(); //Express-app maken
@@ -86,7 +86,10 @@ app.post("/home", async (req, res) => {
 });
 
 // History //
-app.get("/history", (req: any, res: any) => res.render("history")); //history.ejs inladen bij '/history'
+app.get("/history", async (req: any, res: any) => {
+  const searchedCompanies: Company[] = await fetchHistory(user.name);
+  res.render("history", {searchedCompanies: searchedCompanies});
+}); //history.ejs inladen bij '/history'
 
 
 app.get("/about", (req: any, res: any) => res.render("about")); //about.ejs inladen bij '/about'
