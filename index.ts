@@ -9,6 +9,9 @@ import { userExist } from "./db";
 /*Constantedeclaraties*/
 const app = express(); //Express-app maken
 
+/*Variabelendeclaraties*/
+let user: User;//De ingelogde gebruiker
+
 /*Synchrone functies*/
 app.set("view engine", "ejs"); //EJS-templating instelen
 app.set("port", 3000); //Luisterende poort: 3000
@@ -25,7 +28,7 @@ app.get("/login", (req: any, res: any) => {
 }); //login.ejs inladen bij '/login'
 app.post("/login", async (req, res) => {
   const hashedPassword = await bcrypt.hash(req.body.password, 10);
-  const user: User = {name: req.body.email, password: hashedPassword};
+  user = {name: req.body.email, password: hashedPassword};
   //Gebruikerscontrole
   if (await userExist(user)) {
     let companyData: CompanyData = {
@@ -47,7 +50,6 @@ app.post("/login", async (req, res) => {
     res.render("home", {
       companyData: companyData,
       companyData2: companyData2,
-      user: user
     });
   } else {
     res.render("login", { succses: "Wrong username or password." });
