@@ -3,10 +3,10 @@ import express from "express"; //Express()
 import ejs from "ejs";
 import bcrypt from "bcrypt";
 import { getCompanyData } from "./api";
-import { CompanyData } from "./types";
-//import { addCompany, fetchCompany } from "db";//Nodige ondernemingDatabaseFunctie
+import { CompanyData, User } from "./types";
+import { userExist } from "./db";
 
-/*Constantedeclaratie*/
+/*Constantedeclaraties*/
 const app = express(); //Express-app maken
 
 /*Synchrone functies*/
@@ -24,12 +24,10 @@ app.get("/login", (req: any, res: any) => {
   res.render("login");
 }); //login.ejs inladen bij '/login'
 app.post("/login", async (req, res) => {
-  let email = req.body.email;
-  let password = req.body.password;
-  const hash = await bcrypt.hash(password, 10);
-  console.log(hash);
-  // Als het wachtwoord en email juist is
-  if (password == "NBB" && email == "Nexus@gmail.com") {
+  const hashedPassword = await bcrypt.hash(req.body.password, 10);
+  const user: User = {name: req.body.email, password: hashedPassword};
+  //Gebruikerscontrole
+  if (await userExist(user)) {
     let companyData: CompanyData = {
       name: "",
       address: "",
@@ -49,10 +47,9 @@ app.post("/login", async (req, res) => {
     res.render("home", {
       companyData: companyData,
       companyData2: companyData2,
+      user: user
     });
-  }
-  // Als het wachtwoord en email fout is
-  if (password != "NBB" || email != "Nexus@gmail.com") {
+  } else {
     res.render("login", { succses: "Wrong username or password." });
   }
 });
@@ -88,6 +85,8 @@ app.post("/home", async (req, res) => {
 
 // History //
 app.get("/history", (req: any, res: any) => res.render("history")); //history.ejs inladen bij '/history'
+
+
 app.get("/about", (req: any, res: any) => res.render("about")); //about.ejs inladen bij '/about'
 app.get("/contact", (req: any, res: any) => res.render("contact")); //contact.ejs inladen bij '/contact'
 
