@@ -63,7 +63,7 @@ async function inHistory(search:History) {
     return false;
   }
 }
-async function fetchHistory(username:User) {
+async function fetchHistory(username:string) {
   let companiesList:any = [];
   connect();
   const userHistory = await client
