@@ -2,8 +2,7 @@ import { MongoClient,ObjectId } from "mongodb";
 import {Company, User, History} from "./types";
 // url naar database Nexus mongoDB
 
-const uri =
-  "mongodb+srv://nexus_admin:Nexus_123@nexus.09eb4ta.mongodb.net/Nexus?retryWrites=true&w=majority";
+const uri = "mongodb+srv://nexus_admin:Nexus123@nexus.09eb4ta.mongodb.net/?retryWrites=true&w=majority"
   const client = new MongoClient(uri);
 /*Asynchrone functies*/
 
@@ -102,3 +101,6 @@ const exit = async () => {
       console.error(error);
   }
 }
+
+/*Exportatie*/
+export {userExist, fetchHistory};
