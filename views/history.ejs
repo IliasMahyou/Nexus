@@ -14,33 +14,30 @@
         </section>
         <section id="section-companyInfo">
            <table id="table-companyInfo">
-                <caption></caption>
+                <caption><%- company.name %></caption>
                 <tr>
                     <th scope="row">Ondernemingsnummer</th>
-                    <td></td>
+                    <td><%- company.referencenumber %></td>
                 </tr>
                 <tr>
-                    <th scope="rowgroup" rowspan="2">Adres</th>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
+                    <th scope="row">Adres</th>
+                    <td><%- company.address %></td>
                 </tr>
                 <tr>
                     <th scope="row">Datum neerlegging</th>
-                    <td></td>
+                    <td><%- company.depositDate %></td>
                 </tr>
                 <tr>
                     <th scope="row">Eigen vermogen</th>
-                    <td></td>
+                    <td><%- company.equities %></td>
                 </tr>
                 <tr>
                     <th scope="row">Schulden</th>
-                    <td></td>
+                    <td><%- company.debts %></td>
                 </tr>
                 <tr>
                     <th scope="row">Winst</th>
-                    <td></td>
+                    <td><%- company.profit %></td>
                 </tr>
            </table> 
         </section>
