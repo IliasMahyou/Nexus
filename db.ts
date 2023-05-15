@@ -76,12 +76,10 @@ async function fetchHistory(username:string) {
 }
 async function addToHistory(search:History) {
   if (!inHistory(search)) {
-    connect();
     await client
       .db("NBB")
       .collection("History")
-      .insertOne({ user: search.username, company: search.referencenumber });
-    exit();
+      .insertOne({ user: search.username, referencenumber: search.referencenumber });
   }
 }
 
@@ -100,4 +98,4 @@ const exit = async () => {
 }
 
 /*Exportatie*/
-export {userExist, fetchHistory, fetchCompany, connect, exit};
+export {userExist, fetchHistory, fetchCompany, connect, exit, addToHistory};

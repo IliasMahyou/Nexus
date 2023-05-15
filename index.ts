@@ -3,14 +3,32 @@ import express from "express"; //Express()
 import ejs from "ejs";
 import bcrypt from "bcrypt";
 import { getCompanyData } from "./api";
-import { CompanyData, User, Company } from "./types";
-import { userExist, fetchHistory, fetchCompany, connect, exit} from "./db";
+import { User, Company } from "./types";
+import { userExist, fetchHistory, fetchCompany, connect, exit, addToHistory} from "./db";
 
 /*Constantedeclaraties*/
 const app = express(); //Express-app maken
+const emptyCompanyData: Company = {
+  name: "",
+  referencenumber: "",
+  address: "",
+  depositDate: "",
+  equities: 0,
+  debts: 0,
+  profit: 0
+};
+const emptyCompany2Data: Company = {
+  name: "",
+  referencenumber: "",
+  address: "",
+  depositDate: "",
+  equities: 0,
+  debts: 0,
+  profit: 0
+};
 
 /*Variabelendeclaraties*/
-let user: User;//De ingelogde gebruiker
+let activeUser: User;//De ingelogde gebruiker
 
 /*Synchrone functies*/
 app.set("view engine", "ejs"); //EJS-templating instelen
@@ -29,28 +47,12 @@ app.get("/login", (req: any, res: any) => {
 }); //login.ejs inladen bij '/login'
 app.post("/login", async (req, res) => {
   const hashedPassword = await bcrypt.hash(req.body.password, 10);
-  user = {name: req.body.email, password: req.body.password};
+  activeUser = {name: req.body.email, password: req.body.password};
   //Gebruikerscontrole
-  if (await userExist(user)) {
-    let companyData: CompanyData = {
-      name: "",
-      address: "",
-      depositDate: "",
-      equity: 0,
-      profit: 0,
-      debt: 0,
-    };
-    let companyData2: CompanyData = {
-      name: "",
-      address: "",
-      depositDate: "",
-      equity: 0,
-      profit: 0,
-      debt: 0,
-    };
+  if (await userExist(activeUser)) {
     res.render("home", {
-      companyData: companyData,
-      companyData2: companyData2,
+      companyData: emptyCompanyData,
+      companyData2: emptyCompany2Data,
     });
   } else {
     res.render("login", { succses: "Wrong username or password." });
@@ -59,36 +61,19 @@ app.post("/login", async (req, res) => {
 
 // Home //
 app.get("/home", (req, res) => {
-  let companyData: CompanyData = {
-    name: "",
-    address: "",
-    depositDate: "",
-    equity: 0,
-    profit: 0,
-    debt: 0,
-  };
-  let companyData2: CompanyData = {
-    name: "",
-    address: "",
-    depositDate: "",
-    equity: 0,
-    profit: 0,
-    debt: 0,
-  };
-  res.render("home", { companyData: companyData, companyData2: companyData2 }); //home.ejs inladen bij '/home'
+  res.render("home", { companyData: emptyCompanyData, company2Data: emptyCompany2Data }); //home.ejs inladen bij '/home'
 });
 app.post("/home", async (req, res) => {
-  let companyData = await getCompanyData(req.body.company1 as string);
-  console.log(companyData);
-  let companyData2 = await getCompanyData(req.body.company2 as string);
-  console.log(companyData2);
-
-  res.render("home", { companyData: companyData, companyData2: companyData2 }); //home.ejs inladen bij '/home' na de input van de gebruiker
+  const companyData = await getCompanyData(req.body.company1 as string);
+  const company2Data = await getCompanyData(req.body.company2 as string);
+  res.render("home", { companyData: companyData, company2Data: emptyCompany2Data }); //home.ejs inladen bij '/home' na de input van de gebruiker
+  addToHistory({username: activeUser.name, referencenumber: companyData.referencenumber});
+  addToHistory({username: activeUser.name, referencenumber: company2Data.referencenumber});
 });
 
 // History //
 app.get("/history", async (req: any, res: any) => {
-  const searchedCompanies: Company[] = await fetchHistory(user.name);
+  const searchedCompanies: Company[] = await fetchHistory(activeUser.name);
   res.render("history", {searchedCompanies: searchedCompanies});
 }); //history.ejs inladen bij '/history'
 app.get("/history/:referencenumber", async (req, res) => {
