@@ -103,4 +103,4 @@ const exit = async () => {
 }
 
 /*Exportatie*/
-export {userExist, fetchHistory};
+export {userExist, fetchHistory, fetchCompany};
