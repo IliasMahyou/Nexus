@@ -5,6 +5,7 @@ export interface Company{
     name:string,
     referencenumber:string,
     address:string,
+    depositeDate: string,
     equities:number,
     debts:number,
     profit:number,
