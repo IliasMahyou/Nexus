@@ -15,12 +15,10 @@ async function companyExist(referencenumber:string) {
   }
 }
 async function fetchCompany(referencenumber:string) {
-  connect();
   const company = await client
     .db("NBB")
     .collection("Companies")
     .findOne({ referencenumber: referencenumber });
-  exit();
   return company;
 }
 async function addCompany(company:Company) {
