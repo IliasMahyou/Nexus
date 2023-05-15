@@ -4,7 +4,7 @@ import ejs from "ejs";
 import bcrypt from "bcrypt";
 import { getCompanyData } from "./api";
 import { CompanyData, User, Company } from "./types";
-import { userExist, fetchHistory, fetchCompany } from "./db";
+import { userExist, fetchHistory, fetchCompany, connect, exit} from "./db";
 
 /*Constantedeclaraties*/
 const app = express(); //Express-app maken
@@ -24,11 +24,12 @@ app.get("/", (req: any, res: any) => res.render("landing")); //landing.ejs inlad
 
 // login //
 app.get("/login", (req: any, res: any) => {
+  connect();
   res.render("login");
 }); //login.ejs inladen bij '/login'
 app.post("/login", async (req, res) => {
   const hashedPassword = await bcrypt.hash(req.body.password, 10);
-  user = {name: req.body.email, password: hashedPassword};
+  user = {name: req.body.email, password: req.body.password};
   //Gebruikerscontrole
   if (await userExist(user)) {
     let companyData: CompanyData = {

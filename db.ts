@@ -31,16 +31,15 @@ async function addCompany(company:Company) {
   }
 }
 async function userExist(userData:User) {
-  connect();
   const user = await client
     .db("NBB")
     .collection("Users")
     .findOne({ name: userData.name, password: userData.password });
-  exit();
+    console.log(user);
   if (user == null) {
-    return true;
-  } else {
     return false;
+  } else {
+    return true;
   }
 }
 async function addUser(user:User) {
@@ -103,4 +102,4 @@ const exit = async () => {
 }
 
 /*Exportatie*/
-export {userExist, fetchHistory, fetchCompany};
+export {userExist, fetchHistory, fetchCompany, connect, exit};
