@@ -4,6 +4,13 @@
     <main id="main-history">
         <section id="section-history">
             <h2>Zoekgeschiedenis</h2>
+            <% for(const company of searchedCompanies) { %>
+                <article>
+                    <h3><%- company.name %></h3>
+                    <p><%- company.address</p>
+                    <hr>
+                </article>
+            <% } %>
         </section>
         <section id="section-companyInfo">
            <table id="table-companyInfo">
