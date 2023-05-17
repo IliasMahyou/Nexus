@@ -1,5 +1,5 @@
 import fetch from "node-fetch";
-import { CompanyData, fetchOptions, Balans } from "./types";
+import { CompanyData, fetchOptions} from "./types";
 import {v4 as uuidv4} from 'uuid';
 import e from "express";
 
