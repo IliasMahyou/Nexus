@@ -17,6 +17,7 @@ export interface User{
 }
 
 export interface History{
+    _id?:ObjectId,
     username:string,
     referencenumber:string,
 }

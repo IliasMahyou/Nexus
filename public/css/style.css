@@ -188,29 +188,29 @@ footer {
   margin-bottom: 30px;
 }
 
-.comparison-form {
+#comparison-form {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
 }
 
-.comparison-form div {
+#comparison-form div {
   display: flex;
   flex-direction: column;
 }
 
-.comparison-form input {
+#comparison-form input {
   padding: 5px;
   width: 15vw;
   height: 30px;
 }
 
-.comparison-form::placeholder {
+#comparison-form::placeholder {
   color: var(--nexus-purple);
   opacity: 50%;
 }
 
-.comparison-form .compare-button {
+#comparison-form #compare-button {
   padding: 5px 20px;
   min-width: 150px;
   background-color: var(--nexus-blue);
@@ -222,7 +222,7 @@ footer {
   font-size: 12pt;
 }
 
-.comparison-form .compare-button:hover {
+#comparison-form #compare-button:hover {
   background-color: var(--nexus-dark-purple);
 }
 
@@ -231,13 +231,13 @@ footer {
   color: var(--nexus-dark-purple);
 }
 
-.comparison-results {
+#comparison-results {
   display: flex;
   justify-content: space-between;
   margin: 20px 0;
 }
 
-.comparison-results div {
+#comparison-results div {
   width: 50%;
 }
 
@@ -251,16 +251,15 @@ footer {
   border-left: 1px solid var(--nexus-blue);
 }
 
-.comparison-results table {
+#comparison-results table {
   border-collapse: collapse;
   width: 100%;
 }
 
-.comparison-results th {
+#comparison-results th {
   text-align: left;
 }
-
-.comparison-results td {
+#comparison-results td {
   text-align: right;
   padding: 8px 0 8px 8px;
 }
@@ -501,7 +500,6 @@ figure img:hover {
 }
 #table-companyInfo {
   text-align: left;
-  display: none;
 }
 
 /* About page */

@@ -121,7 +121,7 @@ async function secondApiCall(accountingDataUrl:string,companyData: Company):Prom
               companyData.equities = data.Rubrics[i].Value;
           }
           if (data.Rubrics[i].Code == "17/49" && data.Rubrics[i].Period == "N") {
-              companyData.equities = data.Rubrics[i].Value;
+              companyData.debts = data.Rubrics[i].Value;
           }
           if (data.Rubrics[i].Code == "9905" && data.Rubrics[i].Period == "N") {
               companyData.profit = data.Rubrics[i].Value;
