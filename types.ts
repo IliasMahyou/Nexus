@@ -39,10 +39,17 @@ export interface fetchOptions {
     timeout: number;
 }
 
-export interface Balans {
-    eigenVermogen: number;
-    vreemdVermogen: number;
-    vlottendeActiva: number;
-    korteTermijnSchulden: number;
-    totaalPassief: number;
+export interface Balance {
+    equity: number;
+    currentAssets: number;
+    shortTermDebts: number;
+    totalPassive: number;
+    profit: number;
+    depositDate: string;
+}
+
+export interface Formules {
+    liquiditeit: number;
+    solvabiliteit: number;
+    rentabiliteit: number;
 }
