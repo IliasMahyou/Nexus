@@ -1,5 +1,6 @@
 <% const activePage = "Home"; %> <%- include('partials/heading', {activePage:
 activePage}) %> <%- include('partials/nav', {activePage: activePage}) %>
+<script src="./js/translateHome.js" defer></script>
 <header id="header-home">
   <article>
     <h1>Nexus</h1>
@@ -19,23 +20,41 @@ activePage}) %> <%- include('partials/nav', {activePage: activePage}) %>
   <section id="comparison-tool">
     <h1 class="titleHome">Vergelijkingstool</h1>
     <% if(companyData.name == "" || company2Data.name == ""){ %>
-      <span id="errNoReferencenumber">Vul twee ondernemingsnummers in</span>
+    <span id="errNoReferencenumber">Vul twee ondernemingsnummers in</span>
     <%}%>
-    <form action="/home" name="frmComparison" class="comparison-form" method="post">
-      <input placeholder="Ondernemingsnummer" type="text" id="company1" name="company1"/>
-      <button type="input" class="compare-button" id="btnCompare" onclick="this.classList.toggle('button--loading')">
+    <form
+      action="/home"
+      name="frmComparison"
+      class="comparison-form"
+      method="post"
+    >
+      <input
+        placeholder="Ondernemingsnummer"
+        type="text"
+        id="company1"
+        name="company1"
+      />
+      <button
+        type="input"
+        class="compare-button"
+        id="btnCompare"
+        onclick="this.classList.toggle('button--loading')"
+      >
         <span class="button__text">Vergelijk</span>
       </button>
-      <input placeholder="Ondernemingsnummer" type="text" id="company2-input" name="company2"/>
+      <input
+        placeholder="Ondernemingsnummer"
+        type="text"
+        id="company2-input"
+        name="company2"
+      />
     </form>
     <div class="comparison-results">
       <div id="company1-data">
         <table>
           <tr>
             <th>Naam:</th>
-            <td>
-              <% if(companyData){ %> <%= companyData.name %> <% } %>
-            </td>
+            <td><% if(companyData){ %> <%= companyData.name %> <% } %></td>
           </tr>
           <tr>
             <th>Adres:</th>
@@ -51,8 +70,8 @@ activePage}) %> <%- include('partials/nav', {activePage: activePage}) %>
               <% if(companyData.equities != 0){ %> <% if(companyData.equities >
               company2Data.equities){ %>
               <span class="greeN"><%= companyData.equities %></span> <% } else {
-              %> <span class="reD"><%= companyData.equities %></span> <% } %> <% }
-              %>
+              %> <span class="reD"><%= companyData.equities %></span> <% } %> <%
+              } %>
             </td>
           </tr>
           <tr>
@@ -93,11 +112,11 @@ activePage}) %> <%- include('partials/nav', {activePage: activePage}) %>
           <tr>
             <th>Eigen vermogen:</th>
             <td>
-              <% if(company2Data.equities != 0){ %> <% if(company2Data.equities >
-              companyData.equities){ %>
-              <span class="greeN"><%= company2Data.equities %></span> <% } else {
-              %> <span class="reD"><%= company2Data.equities %></span> <% } %> <%
-              } %>
+              <% if(company2Data.equities != 0){ %> <% if(company2Data.equities
+              > companyData.equities){ %>
+              <span class="greeN"><%= company2Data.equities %></span> <% } else
+              { %> <span class="reD"><%= company2Data.equities %></span> <% } %>
+              <% } %>
             </td>
           </tr>
           <tr>
@@ -105,8 +124,9 @@ activePage}) %> <%- include('partials/nav', {activePage: activePage}) %>
             <td>
               <% if(company2Data.debts != 0){ %> <% if(company2Data.debts <
               companyData.debts){ %>
-              <span class="greeN"><%= company2Data.debts %></span> <% } else { %>
-              <span class="reD"><%= company2Data.debts %></span> <% } %> <% } %>
+              <span class="greeN"><%= company2Data.debts %></span> <% } else {
+              %> <span class="reD"><%= company2Data.debts %></span> <% } %> <% }
+              %>
             </td>
           </tr>
           <tr>
