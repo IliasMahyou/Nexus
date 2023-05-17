@@ -5,6 +5,7 @@ export interface Company{
     name:string,
     referencenumber:string,
     address:string,
+    depositDate: string,
     equities:number,
     debts:number,
     profit:number,
@@ -16,17 +17,9 @@ export interface User{
 }
 
 export interface History{
+    _id?:ObjectId,
     username:string,
     referencenumber:string,
-}
-
-export interface CompanyData {
-    name: string;
-    address: string;
-    depositDate: string;
-    equity: number;
-    profit: number;
-    debt: number;
 }
 
 export interface fetchOptions {

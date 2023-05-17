@@ -1,5 +1,5 @@
 import fetch from "node-fetch";
-import { CompanyData, fetchOptions} from "./types";
+import { Company, fetchOptions} from "./types";
 import {v4 as uuidv4} from 'uuid';
 import e from "express";
 
@@ -8,8 +8,8 @@ const apiKey: string = "5bca88bca6c74941af1a74c459833c52";
 const requestId: string = `${uuidv4()}`;
 let accountingDataUrl: string = "";
 /*functions*/
-async function getFetch(enterprisenumber:string):Promise<any> {
-  const url = `https://ws.cbso.nbb.be/authentic/legalEntity/${enterprisenumber}/references`;
+async function getFetch(referencenumber:string):Promise<any> {
+  const url = `https://ws.cbso.nbb.be/authentic/legalEntity/${referencenumber}/references`;
   const fetchOptions:fetchOptions = {
     method: "GET",
     headers: {
@@ -22,8 +22,8 @@ async function getFetch(enterprisenumber:string):Promise<any> {
     return await fetch(url, fetchOptions)
 }
 
-async function firstApiCall(enterprisenumber:string,companyData: CompanyData):Promise<string>{
-  let response = await getFetch(`${enterprisenumber}`);
+async function firstApiCall(companyData: Company):Promise<string>{
+  let response = await getFetch(companyData.referencenumber);
   let responseData = await response.json();
   let bool = false;
     for (let i = 0; i < responseData.length; i++) {
@@ -71,7 +71,7 @@ async function firstApiCall(enterprisenumber:string,companyData: CompanyData):Pr
   return accountingDataUrl;
 }
 
-async function secondApiCall(accountingDataUrl:string,companyData: CompanyData):Promise<any> {
+async function secondApiCall(accountingDataUrl:string,companyData: Company):Promise<Company> {
   const fetchOptions:fetchOptions = {
     method: "GET",
     headers: {
@@ -85,14 +85,15 @@ async function secondApiCall(accountingDataUrl:string,companyData: CompanyData):
     companyData.name = "No data found";
     companyData.address = "";
     companyData.depositDate = "";
-    companyData.equity = 0;
-    companyData.debt = 0;
+    companyData.equities = 0;
+    companyData.debts = 0;
     companyData.profit = 0;
     return companyData;
   }
 
   let response = await fetch(accountingDataUrl, fetchOptions);
   let data = await response.json();
+  
       if (data.EnterpriseName == undefined) {
           companyData.name = "No data found";
           return companyData;
@@ -108,18 +109,12 @@ async function secondApiCall(accountingDataUrl:string,companyData: CompanyData):
       else {
           companyData.address = data.Address.Street + " " + data.Address.Number;
       }
-      if (data.Rubrics == undefined) {
-          companyData.equity = 0;
-          companyData.debt = 0;
-          companyData.profit = 0;
-          return companyData;
-      }
       for(let i = 0; i < data.Rubrics.length; i++) {
           if (data.Rubrics[i].Code == "10/15" && data.Rubrics[i].Period == "N") {
-              companyData.equity = data.Rubrics[i].Value;
+              companyData.equities = data.Rubrics[i].Value;
           }
           if (data.Rubrics[i].Code == "17/49" && data.Rubrics[i].Period == "N") {
-              companyData.debt = data.Rubrics[i].Value;
+              companyData.debts = data.Rubrics[i].Value;
           }
           if (data.Rubrics[i].Code == "9905" && data.Rubrics[i].Period == "N") {
               companyData.profit = data.Rubrics[i].Value;
@@ -128,18 +123,18 @@ async function secondApiCall(accountingDataUrl:string,companyData: CompanyData):
       return companyData;
 }
 
-export async function getCompanyData(enterprisenumber:string):Promise<CompanyData> {
-  let companyData: CompanyData = {
+export async function getCompanyData(referencenumber:string):Promise<Company> {
+  let companyData: Company = {
     name: "",
+    referencenumber: referencenumber,
     address: "",
     depositDate: "",
-    equity: 0,
+    equities: 0,
+    debts: 0,
     profit: 0,
-    debt: 0,
   };
-  let accountingDataUrl = await firstApiCall(`${enterprisenumber}`, companyData);
-  let receivedCompanyData = await secondApiCall(accountingDataUrl, companyData);
-  return receivedCompanyData;
+  const accountingDataUrl = await firstApiCall(companyData);
+  return await secondApiCall(accountingDataUrl, companyData);
 }
 
 
