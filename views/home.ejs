@@ -50,7 +50,7 @@ activePage}) %> <%- include('partials/nav', {activePage: activePage}) %>
         <table>
           <tr>
             <th>Naam:</th>
-            <td id="company1Name">
+            <td>
               <% if(companyData){ %> <%= companyData.name %> <% } %>
             </td>
           </tr>
@@ -60,32 +60,32 @@ activePage}) %> <%- include('partials/nav', {activePage: activePage}) %>
           </tr>
           <tr>
             <th>Datum neerlegging:</th>
-            <td id="company1Date"><%= companyData.depositDate %></td>
+            <td><%= companyData.depositDate %></td>
           </tr>
           <tr>
             <th>Eigen vermogen:</th>
-            <td id="company1Equity">
-              <% if(companyData.equity != 0){ %> <% if(companyData.equity >
-              companyData2.equity){ %>
-              <span class="greeN"><%= companyData.equity %></span> <% } else {
-              %> <span class="reD"><%= companyData.equity %></span> <% } %> <% }
+            <td>
+              <% if(companyData.equities != 0){ %> <% if(companyData.equities >
+              company2Data.equities){ %>
+              <span class="greeN"><%= companyData.equities %></span> <% } else {
+              %> <span class="reD"><%= companyData.equities %></span> <% } %> <% }
               %>
             </td>
           </tr>
           <tr>
             <th>Schulden:</th>
-            <td id="company1Debts">
-              <% if(companyData.debt != 0){ %> <% if(companyData.debt <
-              companyData2.debt){ %>
-              <span class="greeN"><%= companyData.debt %></span> <% } else { %>
-              <span class="reD"><%= companyData.debt %></span> <% } %> <% } %>
+            <td>
+              <% if(companyData.debts != 0){ %> <% if(companyData.debts <
+              company2Data.debts){ %>
+              <span class="greeN"><%= companyData.debts %></span> <% } else { %>
+              <span class="reD"><%= companyData.debts %></span> <% } %> <% } %>
             </td>
           </tr>
           <tr>
             <th>Bedrijfswinst:</th>
-            <td id="company1Profit">
+            <td>
               <% if(companyData.profit != 0){ %> <% if(companyData.profit >
-              companyData2.profit){ %>
+              company2Data.profit){ %>
               <span class="greeN"><%= companyData.profit %></span> <% } else {
               %> <span class="reD"><%= companyData.profit %></span> <% } %> <% }
               %>
@@ -97,42 +97,42 @@ activePage}) %> <%- include('partials/nav', {activePage: activePage}) %>
         <table>
           <tr>
             <th>Naam:</th>
-            <td id="company2Name"><%= companyData2.name %></td>
+            <td><%= company2Data.name %></td>
           </tr>
           <tr>
             <th>Adres:</th>
-            <td id="company2Address"><%= companyData2.address %></td>
+            <td><%= company2Data.address %></td>
           </tr>
           <tr>
             <th>Datum neerlegging:</th>
-            <td id="company2Date"><%= companyData2.depositDate %></td>
+            <td><%= company2Data.depositDate %></td>
           </tr>
           <tr>
             <th>Eigen vermogen:</th>
-            <td id="company2Equity">
-              <% if(companyData2.equity != 0){ %> <% if(companyData2.equity >
-              companyData.equity){ %>
-              <span class="greeN"><%= companyData2.equity %></span> <% } else {
-              %> <span class="reD"><%= companyData2.equity %></span> <% } %> <%
+            <td>
+              <% if(company2Data.equities != 0){ %> <% if(company2Data.equities >
+              companyData.equities){ %>
+              <span class="greeN"><%= company2Data.equities %></span> <% } else {
+              %> <span class="reD"><%= company2Data.equities %></span> <% } %> <%
               } %>
             </td>
           </tr>
           <tr>
             <th>Schulden:</th>
-            <td id="company2Debts">
-              <% if(companyData2.debt != 0){ %> <% if(companyData2.debt <
-              companyData.debt){ %>
-              <span class="greeN"><%= companyData2.debt %></span> <% } else { %>
-              <span class="reD"><%= companyData2.debt %></span> <% } %> <% } %>
+            <td>
+              <% if(company2Data.debts != 0){ %> <% if(company2Data.debts <
+              companyData.debts){ %>
+              <span class="greeN"><%= company2Data.debts %></span> <% } else { %>
+              <span class="reD"><%= company2Data.debts %></span> <% } %> <% } %>
             </td>
           </tr>
           <tr>
             <th>Bedrijfswinst:</th>
-            <td id="company2Profit">
-              <% if(companyData2.profit != 0){ %> <% if(companyData2.profit >
+            <td>
+              <% if(company2Data.profit != 0){ %> <% if(company2Data.profit >
               companyData.profit){ %>
-              <span class="greeN"><%= companyData2.profit %></span> <% } else {
-              %> <span class="reD"><%= companyData2.profit %></span> <% } %> <%
+              <span class="greeN"><%= company2Data.profit %></span> <% } else {
+              %> <span class="reD"><%= company2Data.profit %></span> <% } %> <%
               } %>
             </td>
           </tr>
