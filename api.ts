@@ -1,10 +1,11 @@
 import fetch from "node-fetch";
 import { CompanyData, fetchOptions, Balans } from "./types";
+import {v4 as uuidv4} from 'uuid';
 import e from "express";
 
 /*variables*/
 const apiKey: string = "5bca88bca6c74941af1a74c459833c52";
-const requestId: string = "4b8e79a0-bd54-11eb-8529-0242ac130003";
+const requestId: string = `${uuidv4()}`;
 
 let balans: Balans;
 let accountingDataUrl: string = "";
@@ -84,8 +85,8 @@ async function secondApiCall(accountingDataUrl:string,companyData: CompanyData):
   };
   if(accountingDataUrl == "data not found") {
     companyData.name = "No data found";
-    companyData.address = "No data found";
-    companyData.depositDate = "No data found";
+    companyData.address = "";
+    companyData.depositDate = "";
     companyData.equity = 0;
     companyData.debt = 0;
     companyData.profit = 0;
