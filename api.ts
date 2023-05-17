@@ -27,12 +27,12 @@ async function firstApiCall(enterprisenumber:string,companyData: CompanyData):Pr
   let response = await getFetch(`${enterprisenumber}`);
   let responseData = await response.json();
   let bool = false;
-  do { 
     for (let i = 0; i < responseData.length; i++) {
       if (responseData[i].ExerciseDates.startDate >= "2022-01-01") {
         accountingDataUrl = responseData[i].AccountingDataURL;
         companyData.depositDate = responseData[i].DepositDate;
         bool = true;
+        break;
       }
     }
     if (bool == false) {
@@ -41,6 +41,7 @@ async function firstApiCall(enterprisenumber:string,companyData: CompanyData):Pr
           accountingDataUrl = responseData[i].AccountingDataURL;
           companyData.depositDate = responseData[i].DepositDate;
           bool = true;
+          break;
         }
       }
     }
@@ -50,6 +51,7 @@ async function firstApiCall(enterprisenumber:string,companyData: CompanyData):Pr
           accountingDataUrl = responseData[i].AccountingDataURL;
           companyData.depositDate = responseData[i].DepositDate;
           bool = true;
+          break;
         }
       }
     }
@@ -59,27 +61,14 @@ async function firstApiCall(enterprisenumber:string,companyData: CompanyData):Pr
           accountingDataUrl = responseData[i].AccountingDataURL;
           companyData.depositDate = responseData[i].DepositDate;
           bool = true;
+          break;
         }
       }
     }
-  } while (bool == false);
-  /*for (let i = 0; i < responseData.length; i++) {
-    if (responseData[i].ExerciseDates.startDate >= "2022-01-01") {
-      accountingDataUrl = responseData[i].AccountingDataURL;
-      companyData.depositDate = responseData[i].DepositDate;
-    } /*else if (responseData[i].ExerciseDates.startDate >= "2021-01-01") {
-      accountingDataUrl = responseData[i].AccountingDataURL;
-      companyData.depositDate = responseData[i].DepositDate;
-    } else if (responseData[i].ExerciseDates.startDate >= "2020-01-01") {
-      accountingDataUrl = responseData[i].AccountingDataURL;
-      companyData.depositDate = responseData[i].DepositDate;
-      break;
-    } else if (responseData[i].ExerciseDates.startDate >= "2019-01-01") {
-      accountingDataUrl = responseData[i].AccountingDataURL;
-      companyData.depositDate = responseData[i].DepositDate;
-      break;
+    if (bool == false) {
+      accountingDataUrl = "data not found";
     }
-  }*/
+
   return accountingDataUrl;
 }
 
@@ -93,6 +82,16 @@ async function secondApiCall(accountingDataUrl:string,companyData: CompanyData):
     },
     timeout: 12000,
   };
+  if(accountingDataUrl == "data not found") {
+    companyData.name = "No data found";
+    companyData.address = "No data found";
+    companyData.depositDate = "No data found";
+    companyData.equity = 0;
+    companyData.debt = 0;
+    companyData.profit = 0;
+    return companyData;
+  }
+
   let response = await fetch(accountingDataUrl, fetchOptions);
   let data = await response.json();
       if (data.EnterpriseName == undefined) {
