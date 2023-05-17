@@ -93,6 +93,7 @@ async function secondApiCall(accountingDataUrl:string,companyData: Company):Prom
 
   let response = await fetch(accountingDataUrl, fetchOptions);
   let data = await response.json();
+  
       if (data.EnterpriseName == undefined) {
           companyData.name = "No data found";
           return companyData;
@@ -107,12 +108,6 @@ async function secondApiCall(accountingDataUrl:string,companyData: Company):Prom
       }
       else {
           companyData.address = data.Address.Street + " " + data.Address.Number;
-      }
-      if (data.Rubrics == undefined) {
-          companyData.equities = 0;
-          companyData.debts = 0;
-          companyData.profit = 0;
-          return companyData;
       }
       for(let i = 0; i < data.Rubrics.length; i++) {
           if (data.Rubrics[i].Code == "10/15" && data.Rubrics[i].Period == "N") {

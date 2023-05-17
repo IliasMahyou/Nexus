@@ -56,15 +56,23 @@ app.get("/home", (req, res) => {
   res.render("home", { companyData: emptyCompanyData, company2Data: emptyCompanyData }); //home.ejs inladen bij '/home'
 });
 app.post("/home", async (req, res) => {
-  const companyData = await getCompanyData(req.body.company1 as string);
-  const company2Data = await getCompanyData(req.body.company2 as string);
-  const searchCompanyData = {username: activeUser.name, referencenumber: companyData.referencenumber};
-  const searchCompany2Data = {username: activeUser.name, referencenumber: company2Data.referencenumber};
-  addToHistory(searchCompanyData);
-  addToHistory(searchCompany2Data);
-  addCompany(companyData);
-  addCompany(company2Data);
-  res.render("home", { companyData: companyData, company2Data: company2Data }); //home.ejs inladen bij '/home' na de input van de gebruiker
+  let companyData = emptyCompanyData;
+  let company2Data = emptyCompanyData;
+  const referencenumberCompany1: string = req.body.company1 as string;
+  const referencenumberCompany2: string = req.body.company2 as string;
+  if (referencenumberCompany1 != "") {
+    companyData = await getCompanyData(referencenumberCompany1);
+    const searchCompanyData = {username: activeUser.name, referencenumber: companyData.referencenumber};
+    addToHistory(searchCompanyData);
+    addCompany(companyData);
+  }
+  if (referencenumberCompany2 != "") {
+    company2Data = await getCompanyData(referencenumberCompany2);
+    const searchCompany2Data = {username: activeUser.name, referencenumber: company2Data.referencenumber};
+    addToHistory(searchCompany2Data);
+    addCompany(company2Data);
+  }
+  res.render("home",{ companyData: companyData, company2Data: company2Data}); //home.ejs inladen bij '/home' na de input van de gebruiker
 });
 
 // History //
@@ -85,6 +93,7 @@ app.get("/history", async (req: any, res: any) => {
   }
  }
   res.render("history", {searchedCompanies: companiesList, company: emptyCompanyData });
+  companiesList = [];
 }); //history.ejs inladen bij '/history'
 app.get("/history/:referencenumber", async (req, res) => {
   const userHistory = await fetchHistory(activeUser.name);
@@ -105,37 +114,27 @@ app.get("/history/:referencenumber", async (req, res) => {
   const spotlightCompanyOrLink = await fetchCompany(req.params.referencenumber);
   if (spotlightCompanyOrLink != null) {
     res.render("history", {searchedCompanies: companiesList, company: spotlightCompanyOrLink});
+    companiesList = [];
   } else {
     switch (req.params.referencenumber) {
       case 'home':
-        res.render("http://localhost:3000/home", { companyData: emptyCompanyData, company2Data: emptyCompanyData }); //home.ejs inladen bij '/home'
+        res.redirect("/home");
+        companiesList = [];
+        break;
+      case 'history':
+        res.redirect("/history");
+        companiesList = [];
+        break;
+      case 'about':
+        res.redirect("/about");
+        companiesList = [];
         break;
       case 'contact':
-        res.render('http://localhost:3000/contact');
+        res.redirect("/contact");
+        companiesList = [];
         break;
-      case 'about': 
-        res.render('http://localhost:3000/about');
-        break;
-      case 'http://localhost:3000/history':
-        const userHistory = await fetchHistory(activeUser.name);
-        for (const search  of userHistory) {
-        const company = await fetchCompany(search.referencenumber);
-        if (company != null) {
-        companiesList.push({
-          address: company.address,
-          debts: company.debts,
-          depositDate: company.depositDate,
-          equities: company.equities,
-          name: company.name,
-          profit: company.profit,
-          referencenumber: company.referencenumber
-        })
-      }
-      res.render("http://localhost:3000/history", {searchedCompanies: companiesList, company: emptyCompanyData });
-      break;
     }
   }
-}
 });//history.ejs opnieuw inladen na een selectie uit de zoekgeschiedenis
 
 
