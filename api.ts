@@ -6,8 +6,6 @@ import e from "express";
 /*variables*/
 const apiKey: string = "5bca88bca6c74941af1a74c459833c52";
 const requestId: string = `${uuidv4()}`;
-
-let balans: Balans;
 let accountingDataUrl: string = "";
 /*functions*/
 async function getFetch(enterprisenumber:string):Promise<any> {
