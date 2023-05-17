@@ -1,12 +1,10 @@
 import fetch from "node-fetch";
-import { Company, fetchOptions, Balans } from "./types";
+import { Company, fetchOptions } from "./types";
 import e from "express";
 
 /*variables*/
 const apiKey: string = "5bca88bca6c74941af1a74c459833c52";
 const requestId: string = "4b8e79a0-bd54-11eb-8529-0242ac130003";
-
-let balans: Balans;
 let accountingDataUrl: string = "";
 /*functions*/
 async function getFetch(referencenumber:string):Promise<any> {

@@ -20,7 +20,7 @@ activePage}) %> <%- include('partials/nav', {activePage: activePage}) %>
         <h1 >Vergelijkingstool</h1>
         <form action="/home" name="frmComparison" id="comparison-form" method="post">
             <input placeholder="Ondernemingsnummer" type="text" id="company1" name="company1" />
-            <button id="compare-button">Vergelijk</button>
+            <button type="input" class="compare-button" id="btnCompare" onclick="this.classList.toggle('button--loading')"><span class="button_text">Vergelijk</span></button>
             <input placeholder="Ondernemingsnummer" type="text" id="company2-input" name="company2" />
         </form>
         <div id="comparison-results">
