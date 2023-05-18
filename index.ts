@@ -56,6 +56,7 @@ app.post("/login", async (req, res) => {
   for (let i: number = 0; i < DB.length; i++) {
     passwordVergelijkDB += DB[i].password;
   }
+
   const isMatch = await bcrypt.compare(
     activeUser.password,
     passwordVergelijkDB
