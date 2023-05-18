@@ -13,6 +13,7 @@ import {
   addToHistory,
   addCompany,
   inHistory,
+  client,
 } from "./db";
 import { WithId, Document } from "mongodb";
 
@@ -31,7 +32,7 @@ const emptyCompanyData: Company = {
 /*Variabelendeclaraties*/
 let activeUser: User; //De ingelogde gebruiker
 let companiesList: Company[] = [];
-
+let user: User;
 /*Synchrone functies*/
 app.set("view engine", "ejs"); //EJS-templating instelen
 app.set("port", 3000); //Luisterende poort: 3000
@@ -47,15 +48,30 @@ app.get("/login", (req: any, res: any) => {
   res.render("login");
 }); //login.ejs inladen bij '/login'
 app.post("/login", async (req, res) => {
-  const hashedPassword = await bcrypt.hash(req.body.password, 10);
+  //const hash: string = "$2b$10$GT4OAajSR4bCdoxedCgQNOSABwGrqiRe2e4r81K1CxEUYhNmMaXhS";
   activeUser = { name: req.body.email, password: req.body.password };
   //Gebruikerscontrole
-  if (await userExist(activeUser)) {
+  let DB = await client.db("NBB").collection("Users").find<User>({}).toArray(); // wachtwoord uit database halen.
+  let passwordVergelijkDB: string = ""; //Lege string.
+  for (let i: number = 0; i < DB.length; i++) {
+    //loop over de user database en voeg het password toen aan de lege string.
+    passwordVergelijkDB += DB[i].password;
+  }
+  const isMatch = await bcrypt.compare(
+    // vergelijk het password dat je ingeeft met het password dat gahasht is in de database.
+    activeUser.password,
+    passwordVergelijkDB
+  );
+  user = { name: req.body.email, password: passwordVergelijkDB }; // nieuwe user, om dan na te kijken of hij bestaat.
+
+  if (isMatch && (await userExist(user))) {
+    // (isMatch geeft true/false terug) dus als isMatch true is en de user staat in de database dan gaat het in de render.
     res.render("landing", {
       companyData: emptyCompanyData,
       company2Data: emptyCompanyData,
     });
   } else {
+    // als alles fout is.
     res.render("login", { succses: "Wrong username or password." });
   }
 });
