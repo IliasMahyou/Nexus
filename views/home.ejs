@@ -19,9 +19,10 @@ activePage}) %> <%- include('partials/nav', {activePage: activePage}) %>
 <main id="main-home">
   <section id="comparison-tool">
     <h1 class="titleHome">Vergelijkingstool</h1>
-    <% if(companyData.name == "" || company2Data.name == ""){ %>
+    <% if(locals.succses){%> <% if(companyData.name == "" || company2Data.name
+    == ""){ %>
     <span id="errNoReferencenumber">Vul twee ondernemingsnummers in</span>
-    <%}%>
+    <%}%> <%}%>
     <form
       action="/home"
       name="frmComparison"

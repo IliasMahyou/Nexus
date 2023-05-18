@@ -90,7 +90,11 @@ app.post("/home", async (req, res) => {
     addToHistory(searchCompany2Data);
     addCompany(company2Data);
   }
-  res.render("home", { companyData: companyData, company2Data: company2Data }); //home.ejs inladen bij '/home' na de input van de gebruiker
+  res.render("home", {
+    companyData: companyData,
+    company2Data: company2Data,
+    succses: "Vul twee ondernemingsnummers in",
+  }); //home.ejs inladen bij '/home' na de input van de gebruiker
 });
 
 // History //
