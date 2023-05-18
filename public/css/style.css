@@ -316,9 +316,14 @@ footer {
   padding: 8px 0 8px 8px;
 }
 
-#errNoReferencenumber{
+#errNoReferencenumber {
   text-align: center;
-  padding: 15px;
+  background-color: rgba(255, 0, 0, 0.2);
+  border-style: solid;
+  border-color: red;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 10px;
   color: red;
 }
 
