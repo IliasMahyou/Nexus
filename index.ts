@@ -51,23 +51,27 @@ app.post("/login", async (req, res) => {
   //const hash: string = "$2b$10$GT4OAajSR4bCdoxedCgQNOSABwGrqiRe2e4r81K1CxEUYhNmMaXhS";
   activeUser = { name: req.body.email, password: req.body.password };
   //Gebruikerscontrole
-  let DB = await client.db("NBB").collection("Users").find<User>({}).toArray();
-  let passwordVergelijkDB: string = "";
+  let DB = await client.db("NBB").collection("Users").find<User>({}).toArray(); // wachtwoord uit database halen.
+  let passwordVergelijkDB: string = ""; //Lege string.
   for (let i: number = 0; i < DB.length; i++) {
+    //loop over de user database en voeg het password toen aan de lege string.
     passwordVergelijkDB += DB[i].password;
   }
-
   const isMatch = await bcrypt.compare(
+    // vergelijk het password dat je ingeeft met het password dat gahasht is in de database.
     activeUser.password,
     passwordVergelijkDB
   );
-  user = { name: req.body.email, password: passwordVergelijkDB };
+  user = { name: req.body.email, password: passwordVergelijkDB }; // nieuwe user, om dan na te kijken of hij bestaat.
+
   if (isMatch && (await userExist(user))) {
+    // (isMatch geeft true/false terug) dus als isMatch true is en de user staat in de database dan gaat het in de render.
     res.render("landing", {
       companyData: emptyCompanyData,
       company2Data: emptyCompanyData,
     });
   } else {
+    // als alles fout is.
     res.render("login", { succses: "Wrong username or password." });
   }
 });
