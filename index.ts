@@ -13,6 +13,7 @@ import {
   addToHistory,
   addCompany,
   inHistory,
+  client,
 } from "./db";
 import { WithId, Document } from "mongodb";
 
@@ -31,7 +32,7 @@ const emptyCompanyData: Company = {
 /*Variabelendeclaraties*/
 let activeUser: User; //De ingelogde gebruiker
 let companiesList: Company[] = [];
-
+let user: User;
 /*Synchrone functies*/
 app.set("view engine", "ejs"); //EJS-templating instelen
 app.set("port", 3000); //Luisterende poort: 3000
@@ -47,10 +48,20 @@ app.get("/login", (req: any, res: any) => {
   res.render("login");
 }); //login.ejs inladen bij '/login'
 app.post("/login", async (req, res) => {
-  const hashedPassword = await bcrypt.hash(req.body.password, 10);
+  //const hash: string = "$2b$10$GT4OAajSR4bCdoxedCgQNOSABwGrqiRe2e4r81K1CxEUYhNmMaXhS";
   activeUser = { name: req.body.email, password: req.body.password };
   //Gebruikerscontrole
-  if (await userExist(activeUser)) {
+  let DB = await client.db("NBB").collection("Users").find<User>({}).toArray();
+  let passwordVergelijkDB: string = "";
+  for (let i: number = 0; i < DB.length; i++) {
+    passwordVergelijkDB += DB[i].password;
+  }
+  const isMatch = await bcrypt.compare(
+    activeUser.password,
+    passwordVergelijkDB
+  );
+  user = { name: req.body.email, password: passwordVergelijkDB };
+  if (isMatch && (await userExist(user))) {
     res.render("landing", {
       companyData: emptyCompanyData,
       company2Data: emptyCompanyData,
