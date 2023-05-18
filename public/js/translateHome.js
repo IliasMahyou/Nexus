@@ -14,7 +14,10 @@ link.forEach((el) => {
     let attr = el.getAttribute("language");
     talen.textContent = data[attr].talen;
     para.textContent = data[attr].para;
-    errorMelding.textContent = data[attr].errorMelding;
+    if (errorMelding)
+    {
+      errorMelding.textContent = data[attr].errorMelding;
+    }
     titleHome.textContent = data[attr].titleHome;
     compareButton.textContent = data[attr].compareButton;
     for (let i = 0; i < th.length; i++) {
