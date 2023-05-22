@@ -78,10 +78,14 @@ app.post("/login", async (req, res) => {
 
 // Home //
 app.get("/home", (req, res) => {
-  res.render("home", {
-    companyData: emptyCompanyData,
-    company2Data: emptyCompanyData,
-  }); //home.ejs inladen bij '/home'
+  if (activeUser.name != "") {
+    res.render("home", {
+      companyData: emptyCompanyData,
+      company2Data: emptyCompanyData,
+    }); //home.ejs inladen bij '/home'
+  } else {
+    res.render("login");
+  }
 });
 app.post("/home", async (req, res) => {
   let companyData = emptyCompanyData;
