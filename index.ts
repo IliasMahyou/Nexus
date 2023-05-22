@@ -145,47 +145,51 @@ app.get("/history", async (req: any, res: any) => {
   }
 }); //history.ejs inladen bij '/history'
 app.get("/history/:referencenumber", async (req, res) => {
-  const userHistory = await fetchHistory(activeUser.name);
-  for (const search of userHistory) {
-    const company = await fetchCompany(search.referencenumber);
-    if (company != null) {
-      companiesList.push({
-        address: company.address,
-        debts: company.debts,
-        depositDate: company.depositDate,
-        equities: company.equities,
-        name: company.name,
-        profit: company.profit,
-        referencenumber: company.referencenumber,
+  if (activeUser.name != "") {
+    const userHistory = await fetchHistory(activeUser.name);
+    for (const search of userHistory) {
+      const company = await fetchCompany(search.referencenumber);
+      if (company != null) {
+        companiesList.push({
+          address: company.address,
+          debts: company.debts,
+          depositDate: company.depositDate,
+          equities: company.equities,
+          name: company.name,
+          profit: company.profit,
+          referencenumber: company.referencenumber,
+        });
+      }
+    }
+    const spotlightCompanyOrLink = await fetchCompany(req.params.referencenumber);
+    if (spotlightCompanyOrLink != null) {
+      res.render("history", {
+        searchedCompanies: companiesList,
+        company: spotlightCompanyOrLink,
       });
+      companiesList = [];
+    } else {
+      switch (req.params.referencenumber) {
+        case "home":
+          res.redirect("/home");
+          companiesList = [];
+          break;
+        case "history":
+          res.redirect("/history");
+          companiesList = [];
+          break;
+        case "about":
+          res.redirect("/about");
+          companiesList = [];
+          break;
+        case "contact":
+          res.redirect("/contact");
+          companiesList = [];
+          break;
+      }
     }
-  }
-  const spotlightCompanyOrLink = await fetchCompany(req.params.referencenumber);
-  if (spotlightCompanyOrLink != null) {
-    res.render("history", {
-      searchedCompanies: companiesList,
-      company: spotlightCompanyOrLink,
-    });
-    companiesList = [];
   } else {
-    switch (req.params.referencenumber) {
-      case "home":
-        res.redirect("/home");
-        companiesList = [];
-        break;
-      case "history":
-        res.redirect("/history");
-        companiesList = [];
-        break;
-      case "about":
-        res.redirect("/about");
-        companiesList = [];
-        break;
-      case "contact":
-        res.redirect("/contact");
-        companiesList = [];
-        break;
-    }
+    res.render("login");
   }
 }); //history.ejs opnieuw inladen na een selectie uit de zoekgeschiedenis
 
