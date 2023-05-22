@@ -193,7 +193,13 @@ app.get("/history/:referencenumber", async (req, res) => {
   }
 }); //history.ejs opnieuw inladen na een selectie uit de zoekgeschiedenis
 
-app.get("/about", (req: any, res: any) => res.render("about")); //about.ejs inladen bij '/about'
+app.get("/about", (req: any, res: any) => {
+  if (activeUser.name != "") {
+    res.render("about");
+  } else {
+    res.render("login");
+  }
+}); //about.ejs inladen bij '/about'
 app.get("/contact", (req: any, res: any) => res.render("contact")); //contact.ejs inladen bij '/contact'
 
 app.listen(app.get("port"), () => {
