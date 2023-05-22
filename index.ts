@@ -30,7 +30,7 @@ const emptyCompanyData: Company = {
 };
 
 /*Variabelendeclaraties*/
-let activeUser: User; //De ingelogde gebruiker
+let activeUser: User = {name: "", password: ""}; //De ingelogde gebruiker
 let companiesList: Company[] = [];
 let user: User;
 /*Synchrone functies*/
