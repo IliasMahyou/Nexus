@@ -200,7 +200,13 @@ app.get("/about", (req: any, res: any) => {
     res.render("login");
   }
 }); //about.ejs inladen bij '/about'
-app.get("/contact", (req: any, res: any) => res.render("contact")); //contact.ejs inladen bij '/contact'
+app.get("/contact", (req: any, res: any) => {
+  if (activeUser.name != "") {
+    res.render("contact");
+  } else {
+    res.render("login");
+  }
+}); //contact.ejs inladen bij '/contact'
 
 app.listen(app.get("port"), () => {
   console.log("[server] http://localhost:" + app.get("port"));
