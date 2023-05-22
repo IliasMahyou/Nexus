@@ -30,7 +30,7 @@ const emptyCompanyData: Company = {
 };
 
 /*Variabelendeclaraties*/
-let activeUser: User; //De ingelogde gebruiker
+let activeUser: User = {name: "", password: ""}; //De ingelogde gebruiker
 let companiesList: Company[] = [];
 let user: User;
 /*Synchrone functies*/
@@ -78,10 +78,14 @@ app.post("/login", async (req, res) => {
 
 // Home //
 app.get("/home", (req, res) => {
-  res.render("home", {
-    companyData: emptyCompanyData,
-    company2Data: emptyCompanyData,
-  }); //home.ejs inladen bij '/home'
+  if (activeUser.name != "") {
+    res.render("home", {
+      companyData: emptyCompanyData,
+      company2Data: emptyCompanyData,
+    }); //home.ejs inladen bij '/home'
+  } else {
+    res.render("login");
+  }
 });
 app.post("/home", async (req, res) => {
   let companyData = emptyCompanyData;
@@ -115,74 +119,94 @@ app.post("/home", async (req, res) => {
 
 // History //
 app.get("/history", async (req: any, res: any) => {
-  const userHistory = await fetchHistory(activeUser.name);
-  for (const search of userHistory) {
-    const company = await fetchCompany(search.referencenumber);
-    if (company != null) {
-      companiesList.push({
-        address: company.address,
-        debts: company.debts,
-        depositDate: company.depositDate,
-        equities: company.equities,
-        name: company.name,
-        profit: company.profit,
-        referencenumber: company.referencenumber,
-      });
+  if (activeUser.name != "") {
+    const userHistory = await fetchHistory(activeUser.name);
+    for (const search of userHistory) {
+      const company = await fetchCompany(search.referencenumber);
+      if (company != null) {
+        companiesList.push({
+          address: company.address,
+          debts: company.debts,
+          depositDate: company.depositDate,
+          equities: company.equities,
+          name: company.name,
+          profit: company.profit,
+          referencenumber: company.referencenumber,
+        });
+      }
     }
-  }
-  res.render("history", {
-    searchedCompanies: companiesList,
-    company: emptyCompanyData,
-  });
-  companiesList = [];
-}); //history.ejs inladen bij '/history'
-app.get("/history/:referencenumber", async (req, res) => {
-  const userHistory = await fetchHistory(activeUser.name);
-  for (const search of userHistory) {
-    const company = await fetchCompany(search.referencenumber);
-    if (company != null) {
-      companiesList.push({
-        address: company.address,
-        debts: company.debts,
-        depositDate: company.depositDate,
-        equities: company.equities,
-        name: company.name,
-        profit: company.profit,
-        referencenumber: company.referencenumber,
-      });
-    }
-  }
-  const spotlightCompanyOrLink = await fetchCompany(req.params.referencenumber);
-  if (spotlightCompanyOrLink != null) {
     res.render("history", {
       searchedCompanies: companiesList,
-      company: spotlightCompanyOrLink,
+      company: emptyCompanyData,
     });
     companiesList = [];
   } else {
-    switch (req.params.referencenumber) {
-      case "home":
-        res.redirect("/home");
-        companiesList = [];
-        break;
-      case "history":
-        res.redirect("/history");
-        companiesList = [];
-        break;
-      case "about":
-        res.redirect("/about");
-        companiesList = [];
-        break;
-      case "contact":
-        res.redirect("/contact");
-        companiesList = [];
-        break;
+    res.render("login");
+  }
+}); //history.ejs inladen bij '/history'
+app.get("/history/:referencenumber", async (req, res) => {
+  if (activeUser.name != "") {
+    const userHistory = await fetchHistory(activeUser.name);
+    for (const search of userHistory) {
+      const company = await fetchCompany(search.referencenumber);
+      if (company != null) {
+        companiesList.push({
+          address: company.address,
+          debts: company.debts,
+          depositDate: company.depositDate,
+          equities: company.equities,
+          name: company.name,
+          profit: company.profit,
+          referencenumber: company.referencenumber,
+        });
+      }
     }
+    const spotlightCompanyOrLink = await fetchCompany(req.params.referencenumber);
+    if (spotlightCompanyOrLink != null) {
+      res.render("history", {
+        searchedCompanies: companiesList,
+        company: spotlightCompanyOrLink,
+      });
+      companiesList = [];
+    } else {
+      switch (req.params.referencenumber) {
+        case "home":
+          res.redirect("/home");
+          companiesList = [];
+          break;
+        case "history":
+          res.redirect("/history");
+          companiesList = [];
+          break;
+        case "about":
+          res.redirect("/about");
+          companiesList = [];
+          break;
+        case "contact":
+          res.redirect("/contact");
+          companiesList = [];
+          break;
+      }
+    }
+  } else {
+    res.render("login");
   }
 }); //history.ejs opnieuw inladen na een selectie uit de zoekgeschiedenis
 
-app.get("/about", (req: any, res: any) => res.render("about")); //about.ejs inladen bij '/about'
-app.get("/contact", (req: any, res: any) => res.render("contact")); //contact.ejs inladen bij '/contact'
+app.get("/about", (req: any, res: any) => {
+  if (activeUser.name != "") {
+    res.render("about");
+  } else {
+    res.render("login");
+  }
+}); //about.ejs inladen bij '/about'
+app.get("/contact", (req: any, res: any) => {
+  if (activeUser.name != "") {
+    res.render("contact");
+  } else {
+    res.render("login");
+  }
+}); //contact.ejs inladen bij '/contact'
 
 app.listen(app.get("port"), () => {
   console.log("[server] http://localhost:" + app.get("port"));
