@@ -20,7 +20,7 @@ body {
   padding: 0;
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
-  letter-spacing: 0.1rem;
+  letter-spacing: 0.05rem;
 }
 
 body {
@@ -30,6 +30,7 @@ body {
     "header header header header header"
     "main   main   main   main   main   "
     "footer footer footer footer footer";
+    grid-template-rows: auto auto 1fr auto;
 }
 
 nav {
@@ -40,6 +41,7 @@ nav {
   padding: 10px;
   background-color: var(--nexus-blue);
   box-shadow: 0px 0px 9px 3px rgba(41, 41, 41, 0.25);
+  height: 3rem;
 }
 
 nav ul {
@@ -118,6 +120,7 @@ nav ul li a.active {
 
 main {
   grid-area: main;
+  height: 100%;
 }
 
 main h1 {
@@ -547,22 +550,76 @@ figure img:hover {
 
 /* History page */
 #main-history {
-  display: grid;
-  grid-template-areas: "history companyInfo companyInfo companyInfo companyInfo";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    0deg,
+    rgba(var(--nexus-blue-rgb), 0.8),
+    rgba(var(--nexus-dark-purple-rgb), 0.8)
+  ),
+  url("../img/header-home.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+
 #section-history {
-  grid-area: history;
   background-color: rgba(var(--nexus-blue-rgb), 0.8);
-}
-#section-history h2 {
-  color: white;
   padding: 20px;
+  overflow-y: scroll;
+  height: 40%;
 }
+
+#section-history h2 {
+  color: var(--nexus-dark-purple);
+  text-transform: uppercase;
+  padding-bottom: 20px;
+}
+
+#section-history a {
+  text-decoration: none;
+  color: white;
+}
+
+#section-history article h3,
+#section-history article p {
+  margin: 0;
+}
+
+#section-history article h3 {
+  margin: 20px 0 10px 0;
+}
+
+#section-history article p {
+  margin-bottom: 20px;
+}
+
+
 #section-companyInfo {
-  grid-area: companyInfo;
+  padding: 20px;
+  background-color: rgba(0,0,0, 0.5);
+  color: white;
+  height: 40%;
 }
+
 #table-companyInfo {
+  width: 25vw;
+  line-height: 1.5;
+}
+
+#table-companyInfo caption {
+  margin-top: 15px;
+  padding-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+#table-companyInfo th {
   text-align: left;
+}
+
+#table-companyInfo td {
+  text-align: right;
 }
 
 /* About page */

@@ -19,19 +19,19 @@
            <table id="table-companyInfo">
                 <caption><%- company.name %></caption>
                 <tr>
-                    <th scope="row">Ondernemingsnummer</th>
+                    <th scope="row">Ondernemingsnummer:</th>
                     <td><%- company.referencenumber %></td>
                 </tr>
                 <tr>
-                    <th scope="row">Adres</th>
+                    <th scope="row">Adres:</th>
                     <td><%- company.address %></td>
                 </tr>
                 <tr>
-                    <th scope="row">Datum neerlegging</th>
+                    <th scope="row">Datum neerlegging:</th>
                     <td><%- company.depositDate %></td>
                 </tr>
                 <tr>
-                    <th scope="row">Eigen vermogen</th>
+                    <th scope="row">Eigen vermogen:</th>
                     <td>
                     <% if(company.equities === 0) { %>
                         <%- "" %>
@@ -41,7 +41,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <th scope="row">Schulden</th>
+                    <th scope="row">Schulden:</th>
                     <td>
                         <% if(company.debts === 0) { %>
                             <%- "" %>
@@ -51,7 +51,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <th scope="row">Winst</th>
+                    <th scope="row">Winst:</th>
                     <td>
                         <% if(company.profit === 0) { %>
                             <%- "" %>
