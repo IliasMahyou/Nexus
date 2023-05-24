@@ -30,7 +30,7 @@ body {
     "header header header header header"
     "main   main   main   main   main   "
     "footer footer footer footer footer";
-    grid-template-rows: auto auto 1fr auto;
+  grid-template-rows: auto auto 1fr auto;
 }
 
 nav {
@@ -62,7 +62,11 @@ nav ul li a {
   margin: 0rem 1.5rem 0 0;
 }
 
-nav ul li a.active {
+nav ul li a .active {
+  color: var(--nexus-dark-purple);
+}
+
+.active{
   color: var(--nexus-dark-purple);
 }
 
@@ -443,11 +447,12 @@ dialog button:hover {
   border-radius: 0;
   width: 5.5rem;
   height: auto;
-  margin: 2rem;
+  margin-top: 2rem;
 }
 
 .login-button {
-  margin: 2rem;
+  margin-top: 2rem;
+  margin-right: 1rem;
   border: none;
   color: #fff;
   background-image: linear-gradient(
@@ -605,11 +610,11 @@ figure img:hover {
   justify-content: center;
   align-items: center;
   background: linear-gradient(
-    0deg,
-    rgba(var(--nexus-blue-rgb), 0.8),
-    rgba(var(--nexus-dark-purple-rgb), 0.8)
-  ),
-  url("../img/header-home.jpg");
+      0deg,
+      rgba(var(--nexus-blue-rgb), 0.8),
+      rgba(var(--nexus-dark-purple-rgb), 0.8)
+    ),
+    url("../img/header-home.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -646,10 +651,9 @@ figure img:hover {
   margin-bottom: 20px;
 }
 
-
 #section-companyInfo {
   padding: 20px;
-  background-color: rgba(0,0,0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   color: white;
   height: 40%;
 }
@@ -978,6 +982,10 @@ figure img:hover {
   letter-spacing: 0.1rem;
 }
 
+.hamburger {
+  display: none;
+}
+
 /* Media queries */
 @media screen and (max-width: 767px) {
   .translator {
@@ -1053,5 +1061,57 @@ figure img:hover {
     flex-basis: 100%;
     width: 100vw;
     order: 2;
+  }
+
+  .menuItem {
+    color: white;
+    text-decoration: none;
+  }
+
+  .hamburger {
+    display: block;
+    position: relative;
+    z-index: 100;
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+
+  .hamburger .closeIcon {
+    display: none;
+  }
+
+  .menu {
+    position: fixed;
+    transform: translateY(-110%);
+    transition: transform 0.2s;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    background: var(--nexus-blue);
+    color: white;
+    list-style: none;
+    padding: 4rem 0 0 0;
+    flex-wrap: wrap;
+    text-align: center;
+    height: 100vh;
+  }
+
+  .menu li {
+    width: 100vw;
+    margin: 0;
+    margin-top: 4rem;
+  }
+
+  nav ul li a {
+    font-size: 1.4rem;
+    margin: 0;
+  }
+
+  .showMenu {
+    transform: translateY(-2%);
   }
 }
