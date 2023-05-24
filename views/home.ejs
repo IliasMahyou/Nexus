@@ -21,7 +21,7 @@ activePage}) %> <%- include('partials/nav', {activePage: activePage}) %>
     <h1 class="titleHome">Vergelijkingstool</h1>
     <% if(locals.succses){%> <% if(companyData.name == "" || company2Data.name
     == ""){ %>
-    <span id="errNoReferencenumber">Vul twee ondernemingsnummers in</span>
+    <span id="errNoReferencenumber">Vul twee geldige ondernemingsnummers in</span>
     <%}%> <%}%>
     <form
       action="/home"
@@ -30,10 +30,11 @@ activePage}) %> <%- include('partials/nav', {activePage: activePage}) %>
       method="post"
     >
       <input
-        placeholder="Ondernemingsnummer"
+        placeholder="0123123123"
         type="text"
         id="company1"
         name="company1"
+        maxlength="10"
       />
       <button
         type="input"
@@ -44,10 +45,12 @@ activePage}) %> <%- include('partials/nav', {activePage: activePage}) %>
         <span class="button__text">Vergelijk</span>
       </button>
       <input
-        placeholder="Ondernemingsnummer"
+        placeholder="0123123123"
         type="text"
         id="company2-input"
         name="company2"
+        maxlength="10"
+
       />
     </form>
     <div class="comparison-results">
