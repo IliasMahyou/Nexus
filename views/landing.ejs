@@ -5,13 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- CSS -->
-    <link rel="stylesheet" href="./css/style.css" />
-    <link
+    <link rel="stylesheet" href="./css/style.css" /><link
       href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
       rel="stylesheet"
     />
     <link rel="icon" type="image/x-icon" href="/img/Logo.PNG" />
     <script type="text/javascript" src="./js/darkLight.js" defer></script>
+   <script type="text/javascript" src="./js/landingDialog.js" defer></script>
     <title>Landing Page</title>
   </head>
   <body id="body-landing" class="light">
@@ -19,40 +19,73 @@
       <div>
         <img class="logo" src="./img/logo.png" alt="Logo-Nexus" />
       </div>
-      <a href="login"><button class="login-button">Login</button></a>
+      <a href="login"><button class="login-button">Meld aan</button></a>
     </nav>
 
     <main id="main-landing">
-      <figure>
+      <figure onclick="openDialog('fortnite')">
         <img src="./img/Fortnite.png" width="400px" height="300px" />
+      
         <figcaption>Fortnite</figcaption>
       </figure>
-      <figure>
+      <dialog id="fortniteDialog">
+        <p>Dit is niet ons project - Fortnite</p>
+        <button onclick="closeDialog('fortnite')">Sluit</button>
+      </dialog>
+
+      <figure onclick="openDialog('fifa')">
         <img src="./img/fifa.png" width="400px" height="300px" />
         <figcaption>Fifa</figcaption>
       </figure>
-      <figure>
+      <dialog id="fifaDialog">
+        <p>Dit is niet ons project - Fifa</p>
+        <button onclick="closeDialog('fifa')">Sluit</button>
+      </dialog>
+
+      <figure onclick="openDialog('mtg')">
         <img src="./img/MTG.png" width="400px" height="300px" />
         <figcaption>MTG</figcaption>
       </figure>
-      <figure>
+      <dialog id="mtgDialog">
+        <p>Dit is niet ons project - MTG</p>
+        <button onclick="closeDialog('mtg')">Sluit</button>
+      </dialog>
+
+      <figure onclick="openDialog('pokemon')">
         <img src="./img/pokemon.png" width="400px" height="300px" />
         <figcaption>Pokemon</figcaption>
       </figure>
+      <dialog id="pokemonDialog">
+        <p>Dit is niet ons project - Pokemon</p>
+        <button onclick="closeDialog('pokemon')">Sluit</button>
+      </dialog>
+
       <figure>
-        <a href="home"
-          ><img src="./img/NBB.png" width="400px" height="300px"
-        /></a>
+        <a href="home">
+          <img src="./img/NBB.png" width="400px" height="300px" />
+        </a>
         <figcaption>NBB</figcaption>
       </figure>
-      <figure>
+      <figure onclick="openDialog('legomasters')">
         <img src="./img/lego-masters.png" width="400px" height="300px" />
         <figcaption>LegoMasters</figcaption>
       </figure>
-      <figure>
+      <dialog id="legomastersDialog">
+        <p> Dit is niet ons project - LegoMasters</p>
+        <button onclick="closeDialog('legomasters')">Sluit</button>
+      </dialog>
+
+      <figure onclick="openDialog('lotr')">
         <img src="./img/lord-of-the-rings.png" width="400px" height="300px" />
         <figcaption>LoTR</figcaption>
       </figure>
+      <dialog id="lotrDialog">
+        <p> Dit is niet ons project - LoTR</p>
+        <button onclick="closeDialog('lotr')">Sluit</button>
+      </dialog>
     </main>
+  
+
   </body>
+  
 </html>
