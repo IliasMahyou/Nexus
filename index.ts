@@ -78,6 +78,15 @@ app.post("/login", async (req, res) => {
     res.render("login", { succses: "Wrong username or password." });
   }
 });
+app.get("/logout", (req, res) => {
+  activeUser = {name: "", password: ""};
+  isLoggedIn = false;
+    res.render("landing", {
+      companyData: emptyCompanyData,
+      company2Data: emptyCompanyData,
+      isLoggedIn: isLoggedIn
+    });
+});
 
 // Home //
 app.get("/home", (req, res) => {

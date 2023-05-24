@@ -19,7 +19,11 @@
       <div>
         <img class="logo-landing" src="./img/logo.png" alt="Logo-Nexus" />
       </div>
+      <% if(!isLoggedIn) { %>
       <a href="login"><button class="login-button">Meld aan</button></a>
+      <% } else { %>
+        <a href="logout"><button class="login-button">Meld af</button></a>
+      <% } %> 
     </nav>
 
     <main id="main-landing">
