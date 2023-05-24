@@ -28,8 +28,17 @@ async function firstApiCall(companyData: Company):Promise<string>{
   let bool = false;
     for (let i = 0; i < responseData.length; i++) {
       if (responseData[i].ExerciseDates.startDate >= "2022-01-01") {
+        if(responseData[i].AccountingDataURL == null) {
+          accountingDataUrl = "data not found";
+        } else {
         accountingDataUrl = responseData[i].AccountingDataURL;
+        }
         companyData.depositDate = responseData[i].DepositDate;
+        if(responseData[i].EnterpriseName == undefined) {
+          companyData.name = "No data found";
+        } else {
+        companyData.name = responseData[i].EnterpriseName;
+        }
         bool = true;
         break;
       }
@@ -37,8 +46,17 @@ async function firstApiCall(companyData: Company):Promise<string>{
     if (bool == false) {
       for (let i = 0; i < responseData.length; i++) {
         if (responseData[i].ExerciseDates.startDate >= "2021-01-01") {
+          if(responseData[i].AccountingDataURL == null) {
+            accountingDataUrl = "data not found";
+          } else {
           accountingDataUrl = responseData[i].AccountingDataURL;
+          }
           companyData.depositDate = responseData[i].DepositDate;
+          if(responseData[i].EnterpriseName == undefined) {
+            companyData.name = "No data found";
+          } else {
+          companyData.name = responseData[i].EnterpriseName;
+          }
           bool = true;
           break;
         }
@@ -47,8 +65,17 @@ async function firstApiCall(companyData: Company):Promise<string>{
     if (bool == false) {
       for (let i = 0; i < responseData.length; i++) {
         if (responseData[i].ExerciseDates.startDate >= "2020-01-01") {
+          if(responseData[i].AccountingDataURL == null) {
+            accountingDataUrl = "data not found";
+          } else {
           accountingDataUrl = responseData[i].AccountingDataURL;
+          }
           companyData.depositDate = responseData[i].DepositDate;
+          if(responseData[i].EnterpriseName == undefined) {
+            companyData.name = "No data found";
+          } else {
+          companyData.name = responseData[i].EnterpriseName;
+          }
           bool = true;
           break;
         }
@@ -57,8 +84,17 @@ async function firstApiCall(companyData: Company):Promise<string>{
     if (bool == false) {
       for (let i = 0; i < responseData.length; i++) {
         if (responseData[i].ExerciseDates.startDate >= "2019-01-01") {
+          if(responseData[i].AccountingDataURL == null) {
+            accountingDataUrl = "data not found";
+          } else {
           accountingDataUrl = responseData[i].AccountingDataURL;
+          }
           companyData.depositDate = responseData[i].DepositDate;
+          if(responseData[i].EnterpriseName == undefined) {
+            companyData.name = "No data found";
+          } else {
+          companyData.name = responseData[i].EnterpriseName;
+          }
           bool = true;
           break;
         }
@@ -82,9 +118,9 @@ async function secondApiCall(accountingDataUrl:string,companyData: Company):Prom
     timeout: 12000,
   };
   if(accountingDataUrl == "data not found") {
-    companyData.name = "No data found";
-    companyData.address = "";
-    companyData.depositDate = "";
+    companyData.name;
+    companyData.address = "no data found";
+    companyData.depositDate = "no data found";
     companyData.equities = 0;
     companyData.debts = 0;
     companyData.profit = 0;
@@ -93,15 +129,6 @@ async function secondApiCall(accountingDataUrl:string,companyData: Company):Prom
 
   let response = await fetch(accountingDataUrl, fetchOptions);
   let data = await response.json();
-  
-      if (data.EnterpriseName == undefined) {
-          companyData.name = "No data found";
-          return companyData;
-      }
-      else {
-          companyData.name = data.EnterpriseName;
-      }
-
       if (data.Address.Street == undefined || data.Address.Number == undefined) {
           companyData.address = "No data found";
           return companyData;
