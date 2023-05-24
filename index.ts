@@ -94,21 +94,25 @@ app.post("/home", async (req, res) => {
   const referencenumberCompany2: string = req.body.company2 as string;
   if (referencenumberCompany1 != "") {
     companyData = await getCompanyData(referencenumberCompany1);
-    const searchCompanyData = {
-      username: activeUser.name,
-      referencenumber: companyData.referencenumber,
-    };
-    addToHistory(searchCompanyData);
-    addCompany(companyData);
+    if (companyData.name != "No data found") {
+      const searchCompanyData = {
+        username: activeUser.name,
+        referencenumber: companyData.referencenumber,
+      };
+      addToHistory(searchCompanyData);
+      addCompany(companyData);
+    }
   }
   if (referencenumberCompany2 != "") {
     company2Data = await getCompanyData(referencenumberCompany2);
-    const searchCompany2Data = {
-      username: activeUser.name,
-      referencenumber: company2Data.referencenumber,
-    };
-    addToHistory(searchCompany2Data);
-    addCompany(company2Data);
+    if (company2Data.name != "No data found" ){
+      const searchCompany2Data = {
+        username: activeUser.name,
+        referencenumber: company2Data.referencenumber,
+      };
+      addToHistory(searchCompany2Data);
+      addCompany(company2Data);
+    }
   }
   res.render("home", {
     companyData: companyData,

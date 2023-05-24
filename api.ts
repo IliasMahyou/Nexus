@@ -111,13 +111,13 @@ async function secondApiCall(accountingDataUrl:string,companyData: Company):Prom
       }
       for(let i = 0; i < data.Rubrics.length; i++) {
           if (data.Rubrics[i].Code == "10/15" && data.Rubrics[i].Period == "N") {
-              companyData.equities = data.Rubrics[i].Value;
+              companyData.equities = parseFloat(data.Rubrics[i].Value);
           }
           if (data.Rubrics[i].Code == "17/49" && data.Rubrics[i].Period == "N") {
-              companyData.debts = data.Rubrics[i].Value;
+              companyData.debts = parseFloat(data.Rubrics[i].Value);
           }
           if (data.Rubrics[i].Code == "9905" && data.Rubrics[i].Period == "N") {
-              companyData.profit = data.Rubrics[i].Value;
+              companyData.profit = parseFloat(data.Rubrics[i].Value);
           }
       }
       return companyData;
