@@ -23,42 +23,49 @@
     </nav>
 
     <main id="main-landing">
-      <figure onclick="openDialog('fortnite')">
+      <figure>
         <img src="./img/Fortnite.png" width="400px" height="300px" />
-      
         <figcaption>Fortnite</figcaption>
       </figure>
-      <dialog id="fortniteDialog">
+      <% if(isLoggedIn){ %>
+      <dialog>
         <p>Dit is niet ons project - Fortnite</p>
-        <button onclick="closeDialog('fortnite')">Sluit</button>
+        <button>Sluit</button>
       </dialog>
+      <% } %>
 
-      <figure onclick="openDialog('fifa')">
-        <img src="./img/fifa.png" width="400px" height="300px" />
+      <figure>
+        <img src="./img/fifa.png" width="400px" height="300px"/>
         <figcaption>Fifa</figcaption>
       </figure>
-      <dialog id="fifaDialog">
+      <% if(isLoggedIn){ %>
+      <dialog>
         <p>Dit is niet ons project - Fifa</p>
-        <button onclick="closeDialog('fifa')">Sluit</button>
+        <button>Sluit</button>
       </dialog>
+      <% } %>
 
-      <figure onclick="openDialog('mtg')">
+      <figure>
         <img src="./img/MTG.png" width="400px" height="300px" />
         <figcaption>MTG</figcaption>
       </figure>
-      <dialog id="mtgDialog">
+      <% if(isLoggedIn){ %>
+      <dialog>
         <p>Dit is niet ons project - MTG</p>
-        <button onclick="closeDialog('mtg')">Sluit</button>
+        <button>Sluit</button>
       </dialog>
+      <% } %>
 
-      <figure onclick="openDialog('pokemon')">
+      <figure>
         <img src="./img/pokemon.png" width="400px" height="300px" />
         <figcaption>Pokemon</figcaption>
       </figure>
-      <dialog id="pokemonDialog">
+      <% if(isLoggedIn){ %>
+      <dialog>
         <p>Dit is niet ons project - Pokemon</p>
-        <button onclick="closeDialog('pokemon')">Sluit</button>
+        <button>Sluit</button>
       </dialog>
+      <% } %>
 
       <figure>
         <a href="home">
@@ -66,23 +73,28 @@
         </a>
         <figcaption>NBB</figcaption>
       </figure>
-      <figure onclick="openDialog('legomasters')">
+
+      <figure>
         <img src="./img/lego-masters.png" width="400px" height="300px" />
         <figcaption>LegoMasters</figcaption>
       </figure>
-      <dialog id="legomastersDialog">
+      <% if(isLoggedIn){ %>
+      <dialog>
         <p> Dit is niet ons project - LegoMasters</p>
-        <button onclick="closeDialog('legomasters')">Sluit</button>
+        <button>Sluit</button>
       </dialog>
+      <% } %>
 
-      <figure onclick="openDialog('lotr')">
+      <figure>
         <img src="./img/lord-of-the-rings.png" width="400px" height="300px" />
         <figcaption>LoTR</figcaption>
       </figure>
-      <dialog id="lotrDialog">
+      <% if(isLoggedIn){ %>
+      <dialog>
         <p> Dit is niet ons project - LoTR</p>
-        <button onclick="closeDialog('lotr')">Sluit</button>
+        <button>Sluit</button>
       </dialog>
+      <% } %>
     </main>
   
 
