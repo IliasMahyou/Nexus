@@ -383,40 +383,40 @@ dialog {
   display: block;
 }
 dialog {
-  animation: hide 30s 1;
+  animation: hide 30s;
 }
 @keyframes hide {
-  50% {
-    opacity: 0.5;
+  10% {
+    opacity: 0.1;
   }
-  75% {
+  20% {
     opacity: 0.2;
+  }
+  30% {
+    opacity: 0.3;
+  }
+  40% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.5
+  }
+  60% {
+    opacity: 0.6;
+  }
+  70% {
+    opacity: 0.7;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.9;
   }
   100% {
     display: none;
   }
 }
-dialog button {
-  margin: 2rem auto;
-  border: none;
-  color: white;
-  background-color: var(--nexus-dark-purple);
-  padding: 0.5em 1em;
-  font-family: inherit;
-  font-size: 15px;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  width: 120px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-dialog button:hover {
-  background-color: var(--nexus-blue);
-}
-
 
 #main-landing {
   display: flex;
