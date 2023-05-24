@@ -1,39 +1,64 @@
 <% const activePage = "Zoekgeschiedenis" %>
 <%- include('partials/heading', {activePage: activePage}) %>
 <%- include('partials/nav', {activePage: activePage}) %>
+
     <main id="main-history">
         <section id="section-history">
             <h2>Zoekgeschiedenis</h2>
+            <% for(const company of searchedCompanies) { %>
+                <a href="http://localhost:3000/history/<%- company.referencenumber %>">
+                    <article>
+                        <h3><%- company.name %></h3>
+                        <p><%- company.address %></p>
+                        <hr>
+                    </article>
+                </a>
+            <% } %>
         </section>
         <section id="section-companyInfo">
            <table id="table-companyInfo">
-                <caption id="companyName"></caption>
+                <caption><%- company.name %></caption>
                 <tr>
-                    <th scope="row">Ondernemingsnummer</th>
-                    <td id="companyNumber"></td>
+                    <th scope="row">Ondernemingsnummer:</th>
+                    <td><%- company.referencenumber %></td>
                 </tr>
                 <tr>
-                    <th scope="rowgroup" rowspan="2">Adres</th>
-                    <td id="companyAddress"></td>
+                    <th scope="row">Adres:</th>
+                    <td><%- company.address %></td>
                 </tr>
                 <tr>
-                    <td id="companyCity"></td>
+                    <th scope="row">Datum neerlegging:</th>
+                    <td><%- company.depositDate %></td>
                 </tr>
                 <tr>
-                    <th scope="row">Datum neerlegging</th>
-                    <td id="companyDate"></td>
+                    <th scope="row">Eigen vermogen:</th>
+                    <td>
+                    <% if(company.equities === 0) { %>
+                        <%- "" %>
+                    <% } else { %>
+                        <%- company.equities %>
+                    <% } %>
+                    </td>
                 </tr>
                 <tr>
-                    <th scope="row">Eigen vermogen</th>
-                    <td id="companyEquity"></td>
+                    <th scope="row">Schulden:</th>
+                    <td>
+                        <% if(company.debts === 0) { %>
+                            <%- "" %>
+                        <% } else { %>
+                            <%- company.debts %>
+                        <% } %>
+                    </td>
                 </tr>
                 <tr>
-                    <th scope="row">Schulden</th>
-                    <td id="companyDebts"></td>
-                </tr>
-                <tr>
-                    <th scope="row">Winst</th>
-                    <td id="companyProfit"></td>
+                    <th scope="row">Winst:</th>
+                    <td>
+                        <% if(company.profit === 0) { %>
+                            <%- "" %>
+                        <% } else { %>
+                            <%- company.profit %>
+                        <% } %>
+                    </td>
                 </tr>
            </table> 
         </section>
