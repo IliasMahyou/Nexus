@@ -33,6 +33,7 @@ const emptyCompanyData: Company = {
 let activeUser: User = {name: "", password: ""}; //De ingelogde gebruiker
 let companiesList: Company[] = [];
 let user: User;
+let isLoggedIn: Boolean = false;
 /*Synchrone functies*/
 app.set("view engine", "ejs"); //EJS-templating instelen
 app.set("port", 3000); //Luisterende poort: 3000
@@ -41,7 +42,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public")); //Statische assets leesbaar maken
 
 // Index/landing //
-app.get("/", (req: any, res: any) => res.render("landing")); //landing.ejs inladen bij '/'
+app.get("/", (req: any, res: any) => res.render("landing", {isLoggedIn: isLoggedIn})); //landing.ejs inladen bij '/'
 
 // login //
 app.get("/login", (req: any, res: any) => {
@@ -66,14 +67,25 @@ app.post("/login", async (req, res) => {
 
   if (isMatch && (await userExist(user))) {
     // (isMatch geeft true/false terug) dus als isMatch true is en de user staat in de database dan gaat het in de render.
+    isLoggedIn = true;
     res.render("landing", {
       companyData: emptyCompanyData,
       company2Data: emptyCompanyData,
+      isLoggedIn: isLoggedIn
     });
   } else {
     // als alles fout is.
     res.render("login", { succses: "Wrong username or password." });
   }
+});
+app.get("/logout", (req, res) => {
+  activeUser = {name: "", password: ""};
+  isLoggedIn = false;
+    res.render("landing", {
+      companyData: emptyCompanyData,
+      company2Data: emptyCompanyData,
+      isLoggedIn: isLoggedIn
+    });
 });
 
 // Home //
