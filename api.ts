@@ -119,8 +119,8 @@ async function secondApiCall(accountingDataUrl:string,companyData: Company):Prom
   };
   if(accountingDataUrl == "data not found") {
     companyData.name;
-    companyData.address = "no data found";
-    companyData.depositDate = "no data found";
+    companyData.address = "No data found";
+    companyData.depositDate = "No data found";
     companyData.equities = 0;
     companyData.debts = 0;
     companyData.profit = 0;

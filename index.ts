@@ -106,7 +106,7 @@ app.post("/home", async (req, res) => {
   const referencenumberCompany2: string = req.body.company2 as string;
   if (referencenumberCompany1 != "") {
     companyData = await getCompanyData(referencenumberCompany1);
-    if (companyData.name != "No data found") {
+    if (companyData.address != "No data found") {
       const searchCompanyData = {
         username: activeUser.name,
         referencenumber: companyData.referencenumber,
@@ -117,7 +117,7 @@ app.post("/home", async (req, res) => {
   }
   if (referencenumberCompany2 != "") {
     company2Data = await getCompanyData(referencenumberCompany2);
-    if (company2Data.name != "No data found" ){
+    if (company2Data.address != "No data found" ){
       const searchCompany2Data = {
         username: activeUser.name,
         referencenumber: company2Data.referencenumber,
