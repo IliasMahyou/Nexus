@@ -909,7 +909,7 @@ figure img:hover {
   display: flex;
   align-items: stretch;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
 }
 
 #contact-info {
@@ -988,6 +988,24 @@ figure img:hover {
 }
 
 /* Media queries */
+@media screen and (max-width: 776px) {
+  #header-home {
+    height: 25vw;
+  }
+  
+  #header-home p {
+    display: none;
+  }
+
+  #header-about {
+    height: 25vw;
+  }
+
+  #header-about p {
+    display: none;
+  }
+}
+
 @media screen and (max-width: 767px) {
   .translator {
     display: none;
@@ -1060,7 +1078,7 @@ figure img:hover {
 
   .map {
     flex-basis: 100%;
-    width: 100vw;
+    width: 100%;
     order: 2;
   }
 
