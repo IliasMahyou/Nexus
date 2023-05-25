@@ -607,6 +607,7 @@ figure img:hover {
 /* History page */
 #main-history {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   background: linear-gradient(
@@ -623,9 +624,9 @@ figure img:hover {
 
 #section-history {
   background-color: rgba(var(--nexus-blue-rgb), 0.8);
-  padding: 20px;
+  padding: 40px;
   overflow-y: scroll;
-  height: 40%;
+  height: 60%;
 }
 
 #section-history h2 {
@@ -645,7 +646,7 @@ figure img:hover {
 }
 
 #section-history article h3 {
-  margin: 20px 0 10px 0;
+  margin: 0;
 }
 
 #section-history article p {
@@ -653,20 +654,22 @@ figure img:hover {
 }
 
 #section-companyInfo {
-  padding: 20px;
+  padding: 40px;
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
-  height: 40%;
+  height: 60%;
+
 }
 
 #table-companyInfo {
   width: 25vw;
-  line-height: 1.5;
+  line-height: 2.5;
+  text-align: center;
 }
 
 #table-companyInfo caption {
   margin-top: 15px;
-  padding-bottom: 20px;
+  padding-bottom: 3rem;
   font-size: 1.5rem;
 }
 
@@ -1132,5 +1135,28 @@ figure img:hover {
 
   .showMenu {
     transform: translateY(-2%);
+  }
+
+  #section-history {
+    padding: 10px;
+    height: 55%;
+    width: 80%;
+  }
+  #section-companyInfo {
+    padding: 10px;
+    height: 40%;
+    width: 80%;
+    margin: 0;
+  }
+  
+  #table-companyInfo {
+    line-height: 1.5rem;
+    text-align: center;
+    margin: 0 auto;
+  }
+  
+  #table-companyInfo caption {
+    padding-bottom: 1rem;
+    font-size: 1rem;
   }
 }
