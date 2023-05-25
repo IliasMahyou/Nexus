@@ -988,6 +988,24 @@ figure img:hover {
 }
 
 /* Media queries */
+@media screen and (max-width: 776px) {
+  #header-home {
+    height: 25vw;
+  }
+  
+  #header-home p {
+    display: none;
+  }
+
+  #header-about {
+    height: 25vw;
+  }
+
+  #header-about p {
+    display: none;
+  }
+}
+
 @media screen and (max-width: 767px) {
   .translator {
     display: none;
