@@ -139,9 +139,9 @@ main button {
 
 footer {
   grid-area: footer;
-  background-color: lightgrey;
-  color: black;
-  padding: 20px;
+  background-color: var(--nexus-blue);
+  color: white;
+  padding: 10px;
   text-align: center;
 }
 
