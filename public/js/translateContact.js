@@ -6,11 +6,21 @@ let darkH = document.querySelector(".darkH");
 link.forEach((el) => {
   el.addEventListener("click", () => {
     let attr = el.getAttribute("language");
-    talen.textContent = data[attr].talen;
-    darkH.textContent = data[attr].darkH;
+    localStorage.setItem("language", attr);
+    let selectedLanguage = localStorage.getItem("language");
+    
+    talen.textContent = data[selectedLanguage].talen;
+    darkH.textContent = data[selectedLanguage].darkH;
   });
 });
 
+window.addEventListener("load", () => {
+  let selectedLanguage = localStorage.getItem("language");
+  if (selectedLanguage) {
+    talen.textContent = data[selectedLanguage].talen;
+    darkH.textContent = data[selectedLanguage].darkH;
+  }
+});
 let data = {
   dutch: {
     talen: "NL",

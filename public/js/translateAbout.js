@@ -8,11 +8,24 @@ let darkH = document.querySelector(".darkH");
 link.forEach((el) => {
   el.addEventListener("click", () => {
     let attr = el.getAttribute("language");
-    talen.textContent = data[attr].talen;
-    titleAbout.textContent = data[attr].titleAbout;
-    para.textContent = data[attr].para;
-    darkH.textContent = data[attr].darkH;
+    localStorage.setItem("language", attr);
+    let selectedLanguage = localStorage.getItem("language");
+    
+    talen.textContent = data[selectedLanguage].talen;
+    titleAbout.textContent = data[selectedLanguage].titleAbout;
+    para.textContent = data[selectedLanguage].para;
+    darkH.textContent = data[selectedLanguage].darkH;
   });
+});
+
+window.addEventListener("load", () => {
+  let selectedLanguage = localStorage.getItem("language");
+  if (selectedLanguage) {
+    talen.textContent = data[selectedLanguage].talen;
+    titleAbout.textContent = data[selectedLanguage].titleAbout;
+    para.textContent = data[selectedLanguage].para;
+    darkH.textContent = data[selectedLanguage].darkH;
+  }
 });
 
 let data = {

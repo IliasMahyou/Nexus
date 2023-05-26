@@ -3,23 +3,34 @@ let h2 = document.querySelector("h2");
 let th = document.querySelectorAll("th");
 let langs = document.querySelector("body");
 let link = document.querySelectorAll("a");
-let para = document.querySelector("p");
-let titleHome = document.querySelector(".titleHome");
-let errorMelding = document.getElementById("errNoReferencenumber");
-let compareButton = document.querySelector(".compare-button");
+
 
 link.forEach((el) => {
     el.addEventListener("click", () => {
-        let attr = el.getAttribute("language");
-        talen.textContent = data[attr].talen;
-        h2.textContent = data[attr].h2;
-        for (let i = 0; i < th.length; i++) {
-        th[i].textContent = data[attr].th[i];
-        }
+      let attr = el.getAttribute("language");
+      localStorage.setItem("language", attr);
+      let selectedLanguage = localStorage.getItem("language");
+      
+      talen.textContent = data[selectedLanguage].talen;
+      h2.textContent = data[selectedLanguage].h2;
+      for (let i = 0; i < th.length; i++) {
+      th[i].textContent = data[selectedLanguage].th[i];
+      }
     });
-    }
-);
+  });
+  
 
+ window.addEventListener("load", () => {
+    let selectedLanguage = localStorage.getItem("language");
+    if (selectedLanguage) {
+        talen.textContent = data[selectedLanguage].talen;
+        h2.textContent = data[selectedLanguage].h2;
+        for (let i = 0; i < th.length; i++) {
+        th[i].textContent = data[selectedLanguage].th[i];
+        }
+    }
+  });
+  
 let data = {
     dutch: {
         talen: "NL",

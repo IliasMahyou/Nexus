@@ -10,22 +10,46 @@ let th = document.querySelectorAll("th");
 link.forEach((el) => {
   el.addEventListener("click", () => {
     let attr = el.getAttribute("language");
-    talen.textContent = data[attr].talen;
-    para.textContent = data[attr].para;
+    localStorage.setItem("language", attr);
+    let selectedLanguage = localStorage.getItem("language");
+    
+    talen.textContent = data[selectedLanguage].talen;
+    para.textContent = data[selectedLanguage].para;
     if (errorMelding)
     {
-      errorMelding.textContent = data[attr].errorMelding;
+      errorMelding.textContent = data[selectedLanguage].errorMelding;
     }
-    titleHome.textContent = data[attr].titleHome;
-    compareButton.textContent = data[attr].compareButton;
+    titleHome.textContent = data[selectedLanguage].titleHome;
+    compareButton.textContent = data[selectedLanguage].compareButton;
     for (let i = 0; i < th.length; i++) {
-      th[i].textContent = data[attr].th[i];
+      th[i].textContent = data[selectedLanguage].th[i];
     }
-    translateHistory.textContent = data[attr].translateHistory;
+    translateHistory.textContent = data[selectedLanguage].translateHistory;
     for (let i = 0; i < li.length; i++) {
-      li[i].textContent = data[attr].li[i];
+      li[i].textContent = data[selectedLanguage].li[i];
     }
   });
+});
+
+window.addEventListener("load", () => {
+  let selectedLanguage = localStorage.getItem("language");
+  if (selectedLanguage) {
+    talen.textContent = data[selectedLanguage].talen;
+    para.textContent = data[selectedLanguage].para;
+    if (errorMelding)
+    {
+      errorMelding.textContent = data[selectedLanguage].errorMelding;
+    }
+    titleHome.textContent = data[selectedLanguage].titleHome;
+    compareButton.textContent = data[selectedLanguage].compareButton;
+    for (let i = 0; i < th.length; i++) {
+      th[i].textContent = data[selectedLanguage].th[i];
+    }
+    translateHistory.textContent = data[selectedLanguage].translateHistory;
+    for (let i = 0; i < li.length; i++) {
+      li[i].textContent = data[selectedLanguage].li[i];
+    }
+  }
 });
 
 let data = {
