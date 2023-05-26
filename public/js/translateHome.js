@@ -6,8 +6,6 @@ let titleHome = document.querySelector(".titleHome");
 let errorMelding = document.getElementById("errNoReferencenumber");
 let compareButton = document.querySelector(".compare-button");
 let th = document.querySelectorAll("th");
-let translateHistory = document.querySelector(".translateHistory");
-let li = document.querySelectorAll(".li");
 
 link.forEach((el) => {
   el.addEventListener("click", () => {
@@ -51,19 +49,6 @@ let data = {
       "Schulden:",
       "BedrijfsWinst:",
     ],
-    translateHistory: "Recent zoekopdrachten",
-    li: [
-      "Bedrijf A",
-      "Bedrijf B",
-      "Bedrijf C",
-      "Bedrijf D",
-      "Bedrijf E",
-      "Bedrijf F",
-      "Bedrijf G",
-      "Bedrijf H",
-      "Bedrijf I",
-      "Bedrijf J",
-    ],
   },
   english: {
     talen: "EN",
@@ -85,19 +70,6 @@ let data = {
       "Debts:",
       "Operating profit:",
     ],
-    translateHistory: "Recent searches",
-    li: [
-      "Company A",
-      "Company B",
-      "Company C",
-      "Company D",
-      "Company E",
-      "Company F",
-      "Company G",
-      "Company H",
-      "Company I",
-      "Company J",
-    ],
   },
   french: {
     talen: "FR",
@@ -109,28 +81,15 @@ let data = {
       "Nom:",
       "Adresse:",
       "Date de dépôt:",
-      "Capital:",
+      "Capitaux propres:",
       "Dettes:",
       "Résultat d'exploitation:",
       "Nom:",
       "Adresse:",
       "Date de dépôt:",
-      "Capital:",
+      "Capitaux propres:",
       "Dettes:",
       "Résultat d'exploitation:",
-    ],
-    translateHistory: "Recherches récentes",
-    li: [
-      "Entreprise A",
-      "Entreprise B",
-      "Entreprise C",
-      "Entreprise D",
-      "Entreprise E",
-      "Entreprise F",
-      "Entreprise G",
-      "Entreprise H",
-      "Entreprise I",
-      "Entreprise J",
     ],
   },
 };
