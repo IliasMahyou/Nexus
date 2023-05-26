@@ -104,7 +104,21 @@ app.post("/home", async (req, res) => {
   let company2Data = emptyCompanyData;
   const referencenumberCompany1: string = req.body.company1 as string;
   const referencenumberCompany2: string = req.body.company2 as string;
-  if (referencenumberCompany1 != "") {
+  if (referencenumberCompany1 == "" || referencenumberCompany2 == "") {
+    res.render("home", {
+      companyData: emptyCompanyData,
+      company2Data: emptyCompanyData,
+      succses: "Vul twee ondernemingsnummers in",
+    });
+  }
+  else if (referencenumberCompany1 == referencenumberCompany2) {
+    res.render("home", {
+      companyData: emptyCompanyData,
+      company2Data: emptyCompanyData,
+      succses: "Vul twee verschillende ondernemingsnummers in",
+    });
+  }
+  else {
     companyData = await getCompanyData(referencenumberCompany1);
     if (companyData.address != "No data found") {
       const searchCompanyData = {
@@ -114,8 +128,7 @@ app.post("/home", async (req, res) => {
       addToHistory(searchCompanyData);
       addCompany(companyData);
     }
-  }
-  if (referencenumberCompany2 != "") {
+
     company2Data = await getCompanyData(referencenumberCompany2);
     if (company2Data.address != "No data found" ){
       const searchCompany2Data = {
@@ -125,12 +138,13 @@ app.post("/home", async (req, res) => {
       addToHistory(searchCompany2Data);
       addCompany(company2Data);
     }
-  }
+
   res.render("home", {
     companyData: companyData,
     company2Data: company2Data,
-    succses: "Vul twee ondernemingsnummers in",
+    succses: "Vul twee geldige ondernemingsnummers in",
   }); //home.ejs inladen bij '/home' na de input van de gebruiker
+  }
 });
 
 // History //
