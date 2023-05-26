@@ -21,8 +21,8 @@
   </head>
   <body id="login-body">
     <div id="login-box">
-      <h1>Welcome back</h1>
-      <p>Enter your details</p>
+      <h1>Welkom terug</h1>
+      <p>Vul uw gegevens in</p>
       <form name="frmLogin" action="/login" method="post">
         <div class="form-group">
           <label for="email">Gebruikersnaam</label>
@@ -47,7 +47,7 @@
           />
         </div>
         <% if(locals.succses){%>
-        <div class="login-fout">Wrong username or password.</div>
+        <div class="login-fout">Verkeerde gebruikersnaam of wachtwoord.</div>
         <%}%>
         <input type="submit" value="Log In" id="submit-button-login" />
       </form>
