@@ -4,7 +4,7 @@ let talen = document.querySelector(".talen");
 let para = document.querySelector("p");
 let titleHome = document.querySelector(".titleHome");
 let errorMelding = document.getElementById("errNoReferencenumber");
-let compareButton = document.querySelector(".compare-button");
+let compareButton = document.querySelector(".button__text");
 let th = document.querySelectorAll("th");
 
 link.forEach((el) => {

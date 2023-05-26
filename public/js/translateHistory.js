@@ -1,6 +1,12 @@
 let talen = document.querySelector(".talen");
 let h2 = document.querySelector("h2");
 let th = document.querySelectorAll("th");
+let langs = document.querySelector("body");
+let link = document.querySelectorAll("a");
+let para = document.querySelector("p");
+let titleHome = document.querySelector(".titleHome");
+let errorMelding = document.getElementById("errNoReferencenumber");
+let compareButton = document.querySelector(".compare-button");
 
 link.forEach((el) => {
     el.addEventListener("click", () => {
