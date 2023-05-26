@@ -7,51 +7,6 @@ let errorMelding = document.getElementById("errNoReferencenumber");
 let compareButton = document.querySelector(".button__text");
 let th = document.querySelectorAll("th");
 
-link.forEach((el) => {
-  el.addEventListener("click", () => {
-    let attr = el.getAttribute("language");
-    localStorage.setItem("language", attr);
-    let selectedLanguage = localStorage.getItem("language");
-    
-    talen.textContent = data[selectedLanguage].talen;
-    para.textContent = data[selectedLanguage].para;
-    if (errorMelding)
-    {
-      errorMelding.textContent = data[selectedLanguage].errorMelding;
-    }
-    titleHome.textContent = data[selectedLanguage].titleHome;
-    compareButton.textContent = data[selectedLanguage].compareButton;
-    for (let i = 0; i < th.length; i++) {
-      th[i].textContent = data[selectedLanguage].th[i];
-    }
-    translateHistory.textContent = data[selectedLanguage].translateHistory;
-    for (let i = 0; i < li.length; i++) {
-      li[i].textContent = data[selectedLanguage].li[i];
-    }
-  });
-});
-
-window.addEventListener("load", () => {
-  let selectedLanguage = localStorage.getItem("language");
-  if (selectedLanguage) {
-    talen.textContent = data[selectedLanguage].talen;
-    para.textContent = data[selectedLanguage].para;
-    if (errorMelding)
-    {
-      errorMelding.textContent = data[selectedLanguage].errorMelding;
-    }
-    titleHome.textContent = data[selectedLanguage].titleHome;
-    compareButton.textContent = data[selectedLanguage].compareButton;
-    for (let i = 0; i < th.length; i++) {
-      th[i].textContent = data[selectedLanguage].th[i];
-    }
-    translateHistory.textContent = data[selectedLanguage].translateHistory;
-    for (let i = 0; i < li.length; i++) {
-      li[i].textContent = data[selectedLanguage].li[i];
-    }
-  }
-});
-
 let data = {
   dutch: {
     talen: "NL",
@@ -117,3 +72,30 @@ let data = {
     ],
   },
 };
+
+link.forEach((el) => {
+  el.addEventListener("click", () => {
+    let attr = el.getAttribute("language");
+    localStorage.setItem("language", attr);
+    updateLanguage();
+  });
+});
+
+function updateLanguage() {
+  let selectedLanguage = localStorage.getItem("language");
+  if (selectedLanguage) {
+    talen.textContent = data[selectedLanguage].talen;
+    para.textContent = data[selectedLanguage].para;
+    if (errorMelding)
+    {
+      errorMelding.textContent = data[selectedLanguage].errorMelding;
+    }
+    titleHome.textContent = data[selectedLanguage].titleHome;
+    compareButton.textContent = data[selectedLanguage].compareButton;
+    for (let i = 0; i < th.length; i++) {
+      th[i].textContent = data[selectedLanguage].th[i];
+    }
+  }
+}
+
+window.addEventListener("pageshow", updateLanguage); 

@@ -5,29 +5,6 @@ let para = document.querySelector("p");
 let titleAbout = document.querySelector(".titleAbout");
 let darkH = document.querySelector(".darkH");
 
-link.forEach((el) => {
-  el.addEventListener("click", () => {
-    let attr = el.getAttribute("language");
-    localStorage.setItem("language", attr);
-    let selectedLanguage = localStorage.getItem("language");
-    
-    talen.textContent = data[selectedLanguage].talen;
-    titleAbout.textContent = data[selectedLanguage].titleAbout;
-    para.textContent = data[selectedLanguage].para;
-    darkH.textContent = data[selectedLanguage].darkH;
-  });
-});
-
-window.addEventListener("load", () => {
-  let selectedLanguage = localStorage.getItem("language");
-  if (selectedLanguage) {
-    talen.textContent = data[selectedLanguage].talen;
-    titleAbout.textContent = data[selectedLanguage].titleAbout;
-    para.textContent = data[selectedLanguage].para;
-    darkH.textContent = data[selectedLanguage].darkH;
-  }
-});
-
 let data = {
   dutch: {
     talen: "NL",
@@ -48,3 +25,23 @@ let data = {
     darkH: "Rencontrez l'équipe",
   },
 };
+
+link.forEach((el) => {
+  el.addEventListener("click", () => {
+    let attr = el.getAttribute("language");
+    localStorage.setItem("language", attr);
+    updateLanguage();
+  });
+});
+
+function updateLanguage() {
+  let selectedLanguage = localStorage.getItem("language");
+  if (selectedLanguage) {
+    talen.textContent = data[selectedLanguage].talen;
+    titleAbout.textContent = data[selectedLanguage].titleAbout;
+    para.textContent = data[selectedLanguage].para;
+    darkH.textContent = data[selectedLanguage].darkH;
+  }
+}
+
+window.addEventListener("pageshow", updateLanguage);
