@@ -1138,15 +1138,16 @@ figure img:hover {
   }
 
   #section-history {
+    margin-top: 4%;
     padding: 10px;
-    height: 55%;
+    height: 50%;
     width: 80%;
   }
   #section-companyInfo {
     padding: 10px;
     height: 40%;
     width: 80%;
-    margin: 0;
+    margin-bottom: 5%;
   }
   
   #table-companyInfo {
