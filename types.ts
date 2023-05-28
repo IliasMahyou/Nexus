@@ -1,7 +1,7 @@
 /*Importatie*/
 import { ObjectId } from "mongodb";//Het ObjectId-type
 
-/*Interfaces*/
+/*Interfacedefinities*/
 //Een bedrijf
 interface Company {
     _id?:ObjectId,//Het automatisch gegeven id wanneer het bedrijf wordt opgeslagen in de databank
