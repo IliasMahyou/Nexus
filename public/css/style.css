@@ -823,6 +823,10 @@ figure img:hover {
   transition: 0.3s ease-out;
 }
 
+.equalAmounts {
+  color: black;
+}
+
 #toggle {
   display: none;
 }
