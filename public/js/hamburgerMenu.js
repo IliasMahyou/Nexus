@@ -21,3 +21,6 @@ hamburger.addEventListener("click", toggleMenu);
 menuItems.forEach(function (menuItem) {
   menuItem.addEventListener("click", toggleMenu);
 });
+
+
+/* Bron -> https://dev.to/ljcdev/easy-hamburger-menu-with-js-2do0 */

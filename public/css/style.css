@@ -183,7 +183,7 @@ footer {
   color: red;
 }
 
-.compare-button {
+.compare-button { 
   position: relative;
   padding: 8px 16px;
   background: #009579;
@@ -193,21 +193,21 @@ footer {
   cursor: pointer;
 }
 
-.compare-button:active {
+.compare-button:active { /* Bron -> https://dev.to/dcodeyt/create-a-button-with-a-loading-spinner-in-html-css-1c0h */
   background: #007a63;
 }
 
-.button__text {
+.button__text { /* Bron -> https://dev.to/dcodeyt/create-a-button-with-a-loading-spinner-in-html-css-1c0h */
   color: #ffffff;
   transition: all 0.2s;
 }
 
-.button--loading .button__text {
+.button--loading .button__text { /* Bron -> https://dev.to/dcodeyt/create-a-button-with-a-loading-spinner-in-html-css-1c0h */
   visibility: hidden;
   opacity: 0;
 }
 
-.button--loading::after {
+.button--loading::after { /* Bron -> https://dev.to/dcodeyt/create-a-button-with-a-loading-spinner-in-html-css-1c0h */
   content: "";
   position: absolute;
   width: 16px;
@@ -223,7 +223,7 @@ footer {
   animation: button-loading-spinner 1s ease infinite;
 }
 
-@keyframes button-loading-spinner {
+@keyframes button-loading-spinner { /* Bron -> https://dev.to/dcodeyt/create-a-button-with-a-loading-spinner-in-html-css-1c0h */
   from {
     transform: rotate(0turn);
   }
@@ -450,7 +450,7 @@ dialog {
   margin-top: 2rem;
 }
 
-.login-button {
+.login-button { /* Bron ->  https://uiverse.io/niat786/perfect-warthog-57 */
   margin-top: 2rem;
   margin-right: 1rem;
   border: none;
@@ -467,14 +467,14 @@ dialog {
   padding: 0.6em 1.5em;
   cursor: pointer;
   -webkit-animation: pulse 2s infinite;
-  animation: pulse512 1.5s infinite;
+  animation: pulse 1.5s infinite;
 }
 
 .login-button:hover {
   cursor: pointer;
 }
 
-@keyframes pulse512 {
+@keyframes pulse {
   0% {
     box-shadow: 0 0 0 0 var(--nexus-light-blue);
   }
