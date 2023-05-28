@@ -1,5 +1,6 @@
 /*Importatie*/
 import { ObjectId } from "mongodb";//Het ObjectId-type
+
 /*Interfaces*/
 //Een bedrijf
 interface Company {
@@ -33,5 +34,6 @@ interface fetchOptions {
     };
     timeout: number;//De time-out tijd van de API-oproep
 }
+
 /*Exporatie*/
 export { Company, User, History, fetchOptions }//De te gebruiken interfaces
