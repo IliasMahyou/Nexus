@@ -20,10 +20,13 @@ activePage}) %> <%- include('partials/nav', {activePage: activePage}) %>
     <h1 class="titleHome">Vergelijkingstool</h1>
     <% if(locals.succses){%> <% if(companyData.name == "" || company2Data.name
     == ""){ %>
-    <span id="errNoReferencenumber"><%= succses %></span>
-    <%}%> <%}%>
+    <span id="errNoReferencenumber">Vul twee geldige ondernemingsnummers in</span>
+    <%}%> <% } %>
+   <script>
+        if (window.history.replaceState) { window.history.replaceState(null, null, window.location.href)};//https://itpresent.com/web/javascript/stop_resubmit_html_form_refresh.php
+   </script> 
     <form
-      action="/home"
+      action="/home" 
       name="frmComparison"
       class="comparison-form"
       method="post"
