@@ -27,81 +27,95 @@
     </nav>
 
     <main id="main-landing">
-      <figure>
-        <img <% if(!isLoggedIn) { %> onclick="document.getElementById('dialogFortnite').classList.toggle('dialog--visible')" <% } %> src="./img/Fortnite.png" width="400px" height="300px"
-        <% if(isLoggedIn){ %>
-          style="opacity: 0.2;"
-        <% } %> />
-        <figcaption>Fortnite</figcaption>
-      </figure>
-      <dialog id="dialogFortnite">
-        <p>Log eerst in!</p>
-      </dialog>
+      <article class="project">
+        <figure>
+          <img <% if(!isLoggedIn) { %> onclick="document.getElementById('dialogFortnite').classList.toggle('dialog--visible')" <% } %> src="./img/Fortnite.png" width="400px" height="300px"
+          <% if(isLoggedIn){ %>
+            style="opacity: 0.2;"
+          <% } %> />
+          <figcaption>Fortnite</figcaption>
+        </figure>
+        <dialog id="dialogFortnite">
+          <p>Log eerst in!</p>
+        </dialog>
+      </article>
 
-      <figure>
-        <img <% if(!isLoggedIn) { %> onclick="document.getElementById('dialogFifa').classList.toggle('dialog--visible')" <% } %> src="./img/fifa.png" width="400px" height="300px"
-        <% if(isLoggedIn){ %>
-          style="opacity: 0.2;"
-        <% } %> />
-        <figcaption>Fifa</figcaption>
-      </figure>
-      <dialog id="dialogFifa">
-        <p>Log eerst in!</p>
-      </dialog>
+      <article class="project">
+        <figure>
+          <img <% if(!isLoggedIn) { %> onclick="document.getElementById('dialogFifa').classList.toggle('dialog--visible')" <% } %> src="./img/fifa.png" width="400px" height="300px"
+          <% if(isLoggedIn){ %>
+            style="opacity: 0.2;"
+          <% } %> />
+          <figcaption>Fifa</figcaption>
+        </figure>
+        <dialog id="dialogFifa">
+          <p>Log eerst in!</p>
+        </dialog>
+      </article>
 
-      <figure>
-        <img <% if(!isLoggedIn) { %> onclick="document.getElementById('dialogMTG').classList.toggle('dialog--visible')" <% } %> src="./img/MTG.png" width="400px" height="300px" 
-        <% if(isLoggedIn){ %>
-          style="opacity: 0.2;"
-        <% } %> />
-        <figcaption>MTG</figcaption>
-      </figure>
-      <dialog id="dialogMTG">
-        <p>Log eerst in!</p>
-      </dialog>
+      <article class="project">
+        <figure>
+          <img <% if(!isLoggedIn) { %> onclick="document.getElementById('dialogMTG').classList.toggle('dialog--visible')" <% } %> src="./img/MTG.png" width="400px" height="300px" 
+          <% if(isLoggedIn){ %>
+            style="opacity: 0.2;"
+          <% } %> />
+          <figcaption>MTG</figcaption>
+        </figure>
+        <dialog id="dialogMTG">
+          <p>Log eerst in!</p>
+        </dialog>
+      </article>
 
-      <figure>
-        <img <% if(!isLoggedIn) { %> onclick="document.getElementById('dialogPokemon').classList.toggle('dialog--visible')" <% } %> src="./img/pokemon.png" width="400px" height="300px"
-        <% if(isLoggedIn){ %>
-          style="opacity: 0.2;"
-        <% } %> />
-        <figcaption>Pokemon</figcaption>
-      </figure>
-      <dialog id="dialogPokemon">
-        <p>Log eerst in!</p>
-      </dialog>
+      <article class="project">
+        <figure>
+          <img <% if(!isLoggedIn) { %> onclick="document.getElementById('dialogPokemon').classList.toggle('dialog--visible')" <% } %> src="./img/pokemon.png" width="400px" height="300px"
+          <% if(isLoggedIn){ %>
+            style="opacity: 0.2;"
+          <% } %> />
+          <figcaption>Pokemon</figcaption>
+        </figure>
+        <dialog id="dialogPokemon">
+          <p>Log eerst in!</p>
+        </dialog>
+      </article>
 
-      <figure>
-        <% if(isLoggedIn) { %> <a href="home"> <% } %>
-          <img <% if(!isLoggedIn) { %> onclick="document.getElementById('dialogNBB').classList.toggle('dialog--visible')" <% } %> src="./img/NBB.png" width="400px" height="300px"/>
-        <% if(isLoggedIn) { %> </a> <% } %>
-        <figcaption>NBB</figcaption>
-      </figure>
-      <dialog id="dialogNBB">
-        <p>Log eerst in!</p>
-      </dialog>
+      <article class="project">
+        <figure>
+          <% if(isLoggedIn) { %> <a href="home"> <% } %>
+            <img <% if(!isLoggedIn) { %> onclick="document.getElementById('dialogNBB').classList.toggle('dialog--visible')" <% } %> src="./img/NBB.png" width="400px" height="300px"/>
+          <% if(isLoggedIn) { %> </a> <% } %>
+          <figcaption>NBB</figcaption>
+        </figure>
+        <dialog id="dialogNBB">
+          <p>Log eerst in!</p>
+        </dialog>
+      </article>
 
-      <figure>
-        <img <% if(!isLoggedIn) { %> onclick="document.getElementById('dialogLegoMasters').classList.toggle('dialog--visible')" <% } %> src="./img/lego-masters.png" width="400px" height="300px"
-        <% if(isLoggedIn){ %>
-          style="opacity: 0.2;"
-        <% } %>/>
-        <figcaption>LegoMasters</figcaption>
-      </figure>
-      <dialog id="dialogLegoMasters">
-        <p>Log eerst in!</p>
-      </dialog>
+      <article class="project">
+        <figure>
+          <img <% if(!isLoggedIn) { %> onclick="document.getElementById('dialogLegoMasters').classList.toggle('dialog--visible')" <% } %> src="./img/lego-masters.png" width="400px" height="300px"
+          <% if(isLoggedIn){ %>
+            style="opacity: 0.2;"
+          <% } %>/>
+          <figcaption>LegoMasters</figcaption>
+        </figure>
+        <dialog id="dialogLegoMasters">
+          <p>Log eerst in!</p>
+        </dialog>
+      </article>
 
-      <figure>
-        <img <% if(!isLoggedIn) { %> onclick="document.getElementById('dialogLoTR').classList.toggle('dialog--visible')" <% } %> src="./img/lord-of-the-rings.png" width="400px" height="300px"
-        <% if(isLoggedIn){ %>
-          style="opacity: 0.2;"
-        <% } %> />
-        <figcaption>LoTR</figcaption>
-      </figure>
-      <dialog id="dialogLoTR">
-        <p>Log eerst in!</p>
-      </dialog>
+      <article class="project">
+        <figure>
+          <img <% if(!isLoggedIn) { %> onclick="document.getElementById('dialogLoTR').classList.toggle('dialog--visible')" <% } %> src="./img/lord-of-the-rings.png" width="400px" height="300px"
+          <% if(isLoggedIn){ %>
+            style="opacity: 0.2;"
+          <% } %> />
+          <figcaption>LoTR</figcaption>
+        </figure>
+        <dialog id="dialogLoTR">
+          <p>Log eerst in!</p>
+        </dialog>
+      </article>
     </main>
   </body>
 </html>

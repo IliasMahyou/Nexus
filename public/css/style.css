@@ -377,7 +377,9 @@ dialog {
   border-radius: 5px;
   display: none;
   text-align: center;
-  transform: translateY(500px)
+  position:  absolute;
+  transform: translatey(-250px);
+  z-index: 1;
 }
 .dialog--visible {
   display: block;
@@ -424,7 +426,7 @@ dialog {
   max-width: 1700px;
   margin: 0 auto;
   gap: 20px;
-  justify-content: center;
+  justify-content:space-evenly;
 }
 
 #body-landing nav {
