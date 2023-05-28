@@ -978,13 +978,18 @@ figure img:hover {
 .contact-form .submit-button {
   padding: 0.5rem 1rem;
   margin-top: 5%;
-  background-color: var(--nexus-purple);
+  background-color: var(--nexus-blue);
   color: white;
   border: none;
   cursor: pointer;
   align-self: flex-start;
   letter-spacing: 0.1rem;
-}
+  transition: 1s;
+  }
+  
+  .contact-form .submit-button:hover{
+  background-color: var(--nexus-dark-purple);
+  }
 
 .hamburger {
   display: none;
