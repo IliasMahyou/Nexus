@@ -26,10 +26,8 @@ let activeUser: User = {
   username: "",
   password: ""
 };
-//De lijst met de door ingelogde gebruiker opgezochte bedrijven
-let companiesList: Company[] = [];
-//Als de actieve gebruiker al dan niet is ingelogd
-let isLoggedIn: Boolean = false;
+let companiesList: Company[] = [];//De lijst met de door ingelogde gebruiker opgezochte bedrijven
+let isLoggedIn: Boolean = false;//Als de actieve gebruiker al dan niet is ingelogd
 
 /*Functiedefinities*/
 app.set("view engine", "ejs");//EJS-templating instellen
