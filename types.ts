@@ -25,7 +25,7 @@ interface History {
     referencenumber:string,//Het ondernemingsnummer van het bedrijf die de gebruiker opzocht
 }
 //Een set van ophaalopties voor de API-oproep
-interface fetchOptions {
+interface FetchOptions {
     method: string;//Een mee te geven methode
     headers: {
       nbbCbsoSubscriptionKey: string;//Een geldige subscriptiesleutel
