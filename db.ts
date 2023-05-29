@@ -52,4 +52,5 @@ async function addToHistory(search: History): Promise<void>{
 }
 
 /*Exportatie*/
-export { userExist, fetchHistory, fetchCompany, connect, addToHistory, addCompany };//De te gebruiken functies
+export { userExist, fetchHistory, fetchCompany, connect, addToHistory, addCompany }//De te gebruiken functies
+export { client }//De te gebruiken constanten
