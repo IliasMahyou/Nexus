@@ -36,4 +36,4 @@ interface FetchOptions {
 }
 
 /*Exporatie*/
-export { Company, User, History, fetchOptions }//De te gebruiken interfaces
+export { Company, User, History, FetchOptions }//De te gebruiken interfaces
