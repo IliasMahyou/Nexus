@@ -5,7 +5,7 @@ import bcrypt from "bcrypt";//Encryptiemethoden
 import { getCompanyData } from "./api";//Te gebruiken API-functies
 import { User, Company, History } from "./types";//Te gebruiken interfaces
 import { userExist, fetchHistory, fetchCompany, connect, addToHistory, addCompany, client } from "./db";//Te gebruiken databankfuncties
-import { WithId, Document, W} from "mongodb";//Te gebruiken MongoDb-interfaces
+import { WithId, Document } from "mongodb";//Te gebruiken MongoDb-interfaces
 
 /*Constantedeclaraties*/
 const app = express(); //Express-applicatie
