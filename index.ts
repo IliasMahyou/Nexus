@@ -49,34 +49,23 @@ app.get("/login", (req: any, res: any) => {
   res.render("login");
 }); //login.ejs inladen bij '/login'
 app.post("/login", async (req, res) => {
-  //const hash: string = "$2b$10$GT4OAajSR4bCdoxedCgQNOSABwGrqiRe2e4r81K1CxEUYhNmMaXhS";
   activeUser = { name: req.body.email, password: req.body.password };
-  //Gebruikerscontrole
-  let DB = await client.db("NBB").collection("Users").find<User>({}).toArray(); // wachtwoord uit database halen.
-  let passwordVergelijkDB: string = ""; //Lege string.
-  for (let i: number = 0; i < DB.length; i++) {
-    //loop over de user database en voeg het password toen aan de lege string.
-    passwordVergelijkDB += DB[i].password;
-  }
-  const isMatch = await bcrypt.compare(
-    // vergelijk het password dat je ingeeft met het password dat gahasht is in de database.
-    activeUser.password,
-    passwordVergelijkDB
-  );
-  user = { name: req.body.email, password: passwordVergelijkDB }; // nieuwe user, om dan na te kijken of hij bestaat.
-
-  if (isMatch && (await userExist(user))) {
-    // (isMatch geeft true/false terug) dus als isMatch true is en de user staat in de database dan gaat het in de render.
-    isLoggedIn = true;
-    res.render("landing", {
-      companyData: emptyCompanyData,
-      company2Data: emptyCompanyData,
-      isLoggedIn: isLoggedIn
-    });
-  } else {
-    // als alles fout is.
-    res.render("login", { succses: "Wrong username or password." });
-  }
+  let dbUser = await client.db("NBB").collection("Users").findOne({ name: activeUser.name });
+        if(dbUser == null){
+          res.render("login", { succses: "Wrong username or password." });
+        }else{
+            const hash = await bcrypt.compare(activeUser.password,dbUser.password);
+            if(hash){
+              isLoggedIn = true;
+              res.render("landing", {
+                companyData: emptyCompanyData,
+                company2Data: emptyCompanyData,
+                isLoggedIn: isLoggedIn
+              }); 
+              }else{
+                res.render("login", { succses: "Wrong username or password." });
+            }
+        }
 });
 app.get("/logout", (req, res) => {
   activeUser = {name: "", password: ""};
