@@ -155,7 +155,6 @@ app.get("/contact", (req: any, res: any) => {
     res.render("login");
   }
 });
-
 //Het evalueren van de actieve gebruiker na het ingeven van de inloggegevens
 app.post("/login", async (req: any, res: any) => {
   //De inloggegevens ophalen
@@ -166,7 +165,7 @@ app.post("/login", async (req: any, res: any) => {
   const correctUserdata: User | null = await client.db("NBB").collection("Users").findOne<User>({name: activeUser.username});//De correcte gebruikergegevens
   const correctPw: string = correctUserdata !== null ? correctUserdata.password : "";//Het correcte wachtwoord
   const isMatch: Boolean = await bcrypt.compare( activeUser.password, correctPw);//Als het ingegeven wachtwoord al dan niet correct is
-  //Als het wachtwoord overeenkomt (en de gebruiker dus bestaat), dan wordt er ingelogd, anders wordt er een foutmelding meegegeven
+  //Als het wachtwoord overeenkomt (en de gebruiker dus bestaat), dan wordt erz, anders wordt er een foutmelding meegegeven
   if(isMatch){
     isLoggedIn = true;
     res.render("landing", { companyData: emptyCompanyData, company2Data: emptyCompanyData, isLoggedIn: isLoggedIn });
