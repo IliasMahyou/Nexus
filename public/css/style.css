@@ -634,7 +634,7 @@ figure img:hover {
 #section-history h2 {
   color: var(--nexus-dark-purple);
   text-transform: uppercase;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
 }
 
 #section-history a {
@@ -682,6 +682,59 @@ figure img:hover {
 #table-companyInfo td {
   text-align: right;
 }
+/* SearchBar */
+/* Bron: https://codepen.io/omarsherifs/pen/KGLYYW */
+.searchBox {
+  position: relative;
+  left: 50%;
+  bottom: 10%;
+  transform:  translate(-50%,50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 40px;
+  border-radius: 10px;
+  padding: 8px;
+}
+
+.searchBox:hover {
+  background-color:  rgba(0, 0, 0, 0.6);
+  transition: 0.6s;
+}
+.searchBox:hover .searchInput {
+  width: 150px;
+  padding: 0 6px;
+}
+
+.searchBox:hover .searchButton {
+ cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.searchButton {
+  color: var(--nexus-blue);
+  float: right;
+  width: 40px;
+  height: 40px;
+  border-radius: 30%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.6s;
+}
+
+.searchInput {
+  border:none;
+  background: none;
+  outline:none;
+  float:left;
+  padding: 0;
+  color: white;
+  font-size: 18px;
+  transition: 0.6s;
+  line-height: 40px;
+  width: 0px;
+}
+
 
 /* About page */
 #header-about {
