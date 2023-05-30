@@ -2,12 +2,12 @@
 import { MongoClient, WithId, Document } from "mongodb";//Te gebruiken MongoDb-interfaces
 import { Company, User, History } from "./types";//Te gebruiken interfaces
 
-/*Constantedeclaraties*/
+/*Constanten*/
 const uri = "mongodb+srv://nexus_admin:Nexus123@nexus.09eb4ta.mongodb.net/?retryWrites=true&w=majority";//De connectielink naar de Nexus-databank
 const client = new MongoClient(uri);//De connectie naar de Nexus-databank
 const connect = async () => await client.connect();//Opent de connectie met de databank
 
-/*Functiedefinities*/
+/*Functies*/
 //Haalt bedrijfsgegeven op van het bedrijf met het meegegeven ondernemingsnummer
 //@param  referencenumber Het ondernemingsnummer van het gewenste bedrijf
 //@return MongoDb-data van het bedrijf als deze bestaat, anders niks
