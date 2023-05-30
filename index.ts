@@ -33,18 +33,31 @@ let isLoggedIn: Boolean = false;//Als de actieve gebruiker al dan niet is ingelo
 app.set("view engine", "ejs");//EJS-templating instellen
 app.set("port", 3000);//Poort 3000 als luisterende poort instellen
 
-app.use(express.json({ limit: "1mb" }));//De maximale grootte van de retournerende JSON-bestanden
-app.use(express.urlencoded({ extended: true }));//Request-objecten laten uitlezen als strings of reeksen
-app.use(express.static("public"));//Statische assets leesbaar maken
-
-app.get("/", (req: any, res: any) => res.render("landing", { isLoggedIn: isLoggedIn }));//Landingspagina inladen bij de URL: '/'
-app.get("/login", (req: any, res: any) => res.render("login"));//Logingpagina inladen bij de URL: '/login'
-//Landingpagina inladen bij de URL: '/logout' en de actieve gebruiker uitloggen
-app.get("/logout", (req: any, res: any) => {
-  activeUser = {
-    username: "",
-    password: ""
-  };
+// login //
+app.get("/login", (req: any, res: any) => {
+  res.render("login");
+}); //login.ejs inladen bij '/login'
+app.post("/login", async (req, res) => {
+  activeUser = { username: req.body.email, password: req.body.password };
+  let dbUser = await client.db("NBB").collection("Users").findOne({ name: activeUser.username });
+        if(dbUser == null){
+          res.render("login", { succses: "Wrong username or password." });
+        }else{
+            const hash = await bcrypt.compare(activeUser.password,dbUser.password);
+            if(hash){
+              isLoggedIn = true;
+              res.render("landing", {
+                companyData: emptyCompanyData,
+                company2Data: emptyCompanyData,
+                isLoggedIn: isLoggedIn
+              }); 
+              }else{
+                res.render("login", { succses: "Wrong username or password." });
+            }
+        }
+});
+app.get("/logout", (req, res) => {
+  activeUser = {username: "", password: ""};
   isLoggedIn = false;
   res.render("landing", { companyData: emptyCompanyData, company2Data: emptyCompanyData, isLoggedIn: isLoggedIn });
 });
