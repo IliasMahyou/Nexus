@@ -4,7 +4,7 @@ import ejs from "ejs";//EJS-templating
 import bcrypt from "bcrypt";//Encryptiemethoden
 import { getCompanyData } from "./api";//Te gebruiken API-functies
 import { User, Company, History } from "./types";//Te gebruiken interfaces
-import { userExist, fetchHistory, fetchCompany, connect, addToHistory, addCompany, client } from "./db";//Te gebruiken databankfuncties
+import { fetchHistory, fetchCompany, connect, addToHistory, addCompany, client } from "./db";//Te gebruiken databankfuncties
 import { WithId, Document } from "mongodb";//Te gebruiken MongoDb-interfaces
 
 /*Constantedeclaraties*/
@@ -30,32 +30,22 @@ let companiesList: Company[] = [];//De lijst met de door ingelogde gebruiker opg
 let isLoggedIn: Boolean = false;//Als de actieve gebruiker al dan niet is ingelogd
 
 /*Functiedefinities*/
-app.set("view engine", "ejs");//EJS-templating instellen
-app.set("port", 3000);//Poort 3000 als luisterende poort instellen
+//EJS-templating instellen
+app.set("view engine", "ejs");
+//Statische assets inladen
+app.use(express.static("public"));
+//Datagrootte van verkregen JSON-bestanden op een limiet zetten van 1 mb
+app.use(express.json({limit: "1mb"}))
+//Request-objecten laten uitlezen als string
+app.use(express.urlencoded({extended: true}))
+//Poort 3000 als luisterende poort instellen
+app.set("port", 3000);
 
-// login //
-app.get("/login", (req: any, res: any) => {
-  res.render("login");
-}); //login.ejs inladen bij '/login'
-app.post("/login", async (req, res) => {
-  activeUser = { username: req.body.email, password: req.body.password };
-  let dbUser = await client.db("NBB").collection("Users").findOne({ name: activeUser.username });
-        if(dbUser == null){
-          res.render("login", { succses: "Wrong username or password." });
-        }else{
-            const hash = await bcrypt.compare(activeUser.password,dbUser.password);
-            if(hash){
-              isLoggedIn = true;
-              res.render("landing", {
-                companyData: emptyCompanyData,
-                company2Data: emptyCompanyData,
-                isLoggedIn: isLoggedIn
-              }); 
-              }else{
-                res.render("login", { succses: "Wrong username or password." });
-            }
-        }
-});
+//De landingpagina openen bij het starten van de webapplicatie en bij de URL: '/'
+app.get("/", (req: any, res: any) => res.render("landing", {isLoggedIn: isLoggedIn}));
+//De loginpagina openen bij de URL: '/login'
+app.get("/login", (req: any, res: any) => res.render("login"));
+//De gebruiker uitloggen en terugbrengen naar de logoutpagina
 app.get("/logout", (req, res) => {
   activeUser = {username: "", password: ""};
   isLoggedIn = false;
@@ -173,11 +163,11 @@ app.post("/login", async (req: any, res: any) => {
     username: req.body.email,
     password: req.body.password
   }
-  const correctUserdata: User | null = await client.db("NBB").collection("Users").findOne<User>({});//De correcte gebruikergegevens
+  const correctUserdata: User | null = await client.db("NBB").collection("Users").findOne<User>({name: activeUser.username});//De correcte gebruikergegevens
   const correctPw: string = correctUserdata !== null ? correctUserdata.password : "";//Het correcte wachtwoord
   const isMatch: Boolean = await bcrypt.compare( activeUser.password, correctPw);//Als het ingegeven wachtwoord al dan niet correct is
-  //Als de gebruiker bestaat dan wordt de gebruiker ingelogd en naar de landingspagina gebracht, anders wordt er een foutmelding meegegeven
-  if(isMatch && (await userExist({ username: req.body.email, password: correctPw }))){
+  //Als het wachtwoord overeenkomt (en de gebruiker dus bestaat), dan wordt er ingelogd, anders wordt er een foutmelding meegegeven
+  if(isMatch){
     isLoggedIn = true;
     res.render("landing", { companyData: emptyCompanyData, company2Data: emptyCompanyData, isLoggedIn: isLoggedIn });
   } else{
