@@ -28,9 +28,9 @@ interface History {
 interface FetchOptions {
     method: string;//Een mee te geven methode
     headers: {
-      nbbCbsoSubscriptionKey: string;//Een geldige subscriptiesleutel
-      xRequestId: string;//Een geldige aanvraag-id
-      accept: string;//Het type van geretourneerde data
+      "NBB-CBSO-Subscription-Key": string;//Een geldige subscriptiesleutel
+      "X-Request-Id": string;//Een geldige aanvraag-id
+      Accept: string;//Het type van geretourneerde data
     };
     timeout: number;//De time-out tijd van de API-oproep
 }
