@@ -4,6 +4,14 @@
     <main id="main-history">
         <section id="section-history">
             <h2>Zoekgeschiedenis</h2>
+            <div class="searchBox">
+                <input class="searchInput"type="text" name="" placeholder="Search">
+                <button class="searchButton" href="#">
+                    <i class="material-icons">
+                        search
+                    </i>
+                </button>
+            </div>
             <% for(const company of searchedCompanies) { %>
                 <a href="http://localhost:3000/history/<%- company.referencenumber %>">
                     <article>

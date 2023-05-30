@@ -158,11 +158,12 @@ app.get("/contact", (req: any, res: any) => {
     res.render("login");
   }
 });
+
 //Het evalueren van de actieve gebruiker na het ingeven van de inloggegevens
 app.post("/login", async (req: any, res: any) => {
   //De inloggegevens ophalen
   activeUser = { 
-    username: req.body.email,
+    username: req.body.username,
     password: req.body.password
   }
   const correctUserdata: User | null = await client.db("NBB").collection("Users").findOne<User>({ name: activeUser.username });//De correcte gebruikergegevens
