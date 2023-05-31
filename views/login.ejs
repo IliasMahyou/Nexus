@@ -16,7 +16,7 @@
   </head>
   <body id="body-login">
     <!--Logingebied-->
-    <div id="div-login">
+    <div id="log">
       <h1>Welkom terug</h1>
       <p>Vul uw gegevens in</p>
       <!--Loginformulier-->
@@ -28,19 +28,19 @@
         }
       </script> 
       <form name="frmLogin" action="/login" method="post">
-        <div class="div-login--group">
+        <div class="login-form__div">
           <label for="email">Gebruikersnaam</label>
           <i class="bx bxs-user"></i>
           <input type="text" name="username" placeholder="Uw gebruikersnaam" required/>
         </div>
-        <div class="div-login--group">
+        <div class="login-form__div">
           <label for="password">Wachtwoord</label>
           <i class="bx bxs-lock"></i>
           <input type="password" name="password" placeholder="Uw wachtwoord" required/>
         </div>
         <%# Als de gebruiker verkeerde inloggegevens meegaf, dan krijgt de gebruiker een foutmelding te zien. %>
         <% if (locals.noSuccses) { %>
-          <span id="span-login--error">Verkeerde gebruikersnaam of wachtwoord.</span>
+          <span id="log-err">Verkeerde gebruikersnaam of wachtwoord.</span>
         <% } %>
         <input type="submit" value="Log In"/>
       </form>
