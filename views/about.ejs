@@ -1,9 +1,14 @@
-<% const activePage = "Over ons"; %> <%- include('partials/heading',
-{activePage: activePage}) %> <%- include('partials/nav', {activePage:
-activePage}) %>
-<header id="header-about">
+<%# De actieve pagina %>
+<% const activePage = "Over ons"; %> 
+
+<%# Inladen van de metadata van de webpagina %>
+<%- include('partials/heading', { activePage: activePage }) %>
+<%# Navigatie inladen %>
+<%- include('partials/nav', { activePage: activePage }) %>
+<!--Hoofding-->
+<header id="about-header">
   <article>
-    <h1 class="titleAbout">Over ons</h1>
+    <h1>Over ons</h1>
     <p>
       Nexus is een toonaangevende specialist in het ontwerpen van innovatieve
       webapplicaties. Met ons toegewijde team van IT-professionals streven we
@@ -13,56 +18,43 @@ activePage}) %>
     </p>
   </article>
 </header>
-<main id="main-about">
+<main id="about">
+  <!--Team-->
   <section>
-    <h2 class="darkH">Ontmoet het team</h2>
+    <h2>Ontmoet het team</h2>
     <div id="members">
-      <article class="member">
-        <img
-          src="./img/profile-anthony.jpg"
-          alt=" Individuele foto van Anthony Hellemans."
-        />
-        <div class="member-name">
+      <article class="members__article">
+        <img src="./img/profile-anthony.jpg" alt=" Individuele foto van Anthony Hellemans."/>
+        <div class="members__div--hover">
           <h3>Anthony Hellemans</h3>
         </div>
       </article>
-      <article class="member">
-        <img
-          src="./img/profile-ilias.jpg"
-          alt="Individuele foto van Ilias Mahyou."
-        />
-        <div class="member-name">
+      <article class="members__article">
+        <img src="./img/profile-ilias.jpg" alt="Individuele foto van Ilias Mahyou."/>
+        <div class="members__div--hover">
           <h3>Ilias Mahyou</h3>
         </div>
       </article>
-      <article class="member">
-        <img
-          src="./img/profile-milan.jpg"
-          alt="Individuele foto van Milan Mareels."
-        />
-        <div class="member-name">
+      <article class="members__article">
+        <img src="./img/profile-milan.jpg" alt="Individuele foto van Milan Mareels."/>
+        <div class="members__div--hover">
           <h3>Milan Mareels</h3>
         </div>
       </article>
-      <article class="member">
-        <img
-          src="./img/profile-renzo.jpg"
-          alt="Individuele foto van Renzo Declerck."
-        />
-        <div class="member-name">
+      <article class="members__article">
+        <img src="./img/profile-renzo.jpg" alt="Individuele foto van Renzo Declerck."/>
+        <div class="members__div--hover">
           <h3>Renzo Declerck</h3>
         </div>
       </article>
-      <article class="member">
-        <img
-          src="./img/profile-warre.jpg"
-          alt="Individuele foto van Warre Bogaerts."
-        />
-        <div class="member-name">
+      <article class="members__article">
+        <img src="./img/profile-warre.jpg" alt="Individuele foto van Warre Bogaerts."/>
+        <div class="members__div--hover">
           <h3>Warre Bogaerts</h3>
         </div>
       </article>
     </div>
   </section>
 </main>
+<%# Voet inladen %>
 <%- include('partials/footer'); %>
