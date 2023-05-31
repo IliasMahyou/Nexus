@@ -2,9 +2,9 @@
 <% const activePage = "Zoekgeschiedenis" %>
 
 <%# Inladen van de metadata van de webpagina %>
-<%- include('partials/heading', {activePage: activePage}) %>
+<%- include('partials/heading', { activePage: activePage }) %>
 <%# Navigatie inladen %>
-<%- include('partials/nav', {activePage: activePage}) %>
+<%- include('partials/nav', { activePage: activePage }) %>
     <main id="history">
         <!--Zoekgeschiedenis-->
         <section id="search-history">
@@ -86,4 +86,5 @@
            </table> 
         </section>
     </main>
- <%- include('partials/footer'); %>
+<%# Voet inladen %>
+<%- include('partials/footer'); %>
