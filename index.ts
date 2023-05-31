@@ -207,6 +207,46 @@ app.post("/home", async (req: any, res: any) => {
   }
 });
 
+app.post('/history', async (req: any, res: any) => {
+  const search = req.body.searchTerm;//De ingegeven zoekterm
+  const searchTerm: string = search.toLowerCase().trim();//De zoekopdracht
+  const userHistory: WithId<Document>[] = await fetchHistory(activeUser.username);//De zoekgeschiedenis van de ingelogde gebruiker
+  //Voor elke zoekopdracht in de zoekgeschiedenis van de ingelogde gebruiker wordt het opgezochte bedrijf opgehaald en bijgehouden
+  for (const search of userHistory) {
+    const company: WithId<Document> | null = await fetchCompany(search.referencenumber);//Het opgezochte bedrijf uit de zoekopdracht
+    //Als de data van het opgezochte bedrijf kan worden gevonden, dan wordt er verder geëvalueerd
+    if (company != null) {
+
+      if (searchTerm != "") {
+        //Als de bedrijfsnaam de zoekterm bevat, dan wordt deze opgehaald en bijgehouden
+        if (company.name.toLowerCase().includes(searchTerm)) {
+          companiesList.push({
+            address: company.address,
+            debts: company.debts,
+            depositDate: company.depositDate,
+            equities: company.equities,
+            name: company.name,
+            profit: company.profit,
+            referencenumber: company.referencenumber
+          });
+        }
+      } else {
+        companiesList.push({
+          address: company.address,
+          debts: company.debts,
+          depositDate: company.depositDate,
+          equities: company.equities,
+          name: company.name,
+          profit: company.profit,
+          referencenumber: company.referencenumber
+        });
+      }
+    }
+  }
+  res.render("history", { searchedCompanies: companiesList, company: emptyCompanyData });
+  companiesList = [];
+})
+
 //Lokale server laten luisteren
 app.listen(app.get("port"), () => {
   console.log("[server] http://localhost:" + app.get("port"));

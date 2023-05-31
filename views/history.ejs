@@ -1,17 +1,29 @@
+<%# De actieve pagina %>
 <% const activePage = "Zoekgeschiedenis" %>
+
+<%# Inladen van de metadata van de webpagina %>
 <%- include('partials/heading', {activePage: activePage}) %>
+<%# Navigatie inladen %>
 <%- include('partials/nav', {activePage: activePage}) %>
-    <main id="main-history">
-        <section id="section-history">
+    <main id="history">
+        <!--Zoekgeschiedenis-->
+        <section id="search-history">
             <h2>Zoekgeschiedenis</h2>
-            <div class="searchBox">
-                <input class="searchInput"type="text" name="" placeholder="Search">
-                <button class="searchButton" href="#">
-                    <i class="material-icons">
-                        search
-                    </i>
+            <!--Zoekbalk-->
+            <script>
+                //Als het scherm wordt herladen, dan wordt de pagina teruggebracht in zijn vorige staat
+                //BRON: https://itpresent.com/web/javascript/stop_resubmit_html_form_refresh.php
+                if (window.history.replaceState) { 
+                  window.history.replaceState(null, null, window.location.href)
+                }
+            </script> 
+            <form class="search-box__div" action="/history" method="post">
+                <input class="search-box__input" type="text" name="searchTerm" placeholder="Search">
+                <button class="search-box__button" type="submit" onclick="this.form.submit()">
+                    <i class="material-icons"></i>
                 </button>
-            </div>
+            </form>
+            <%# Voor elk bedrijf uit de zoekgeschiedenis, wordt de naam en het adres vertoond %>
             <% for(const company of searchedCompanies) { %>
                 <a href="http://localhost:3000/history/<%- company.referencenumber %>">
                     <article>
@@ -22,8 +34,9 @@
                 </a>
             <% } %>
         </section>
-        <section id="section-companyInfo">
-           <table id="table-companyInfo">
+        <!--Bedrijfsinfo-->
+        <section id="company-info">
+           <table>
                 <caption><%- company.name %></caption>
                 <tr>
                     <th scope="row">Ondernemingsnummer:</th>
@@ -40,17 +53,19 @@
                 <tr>
                     <th scope="row">Eigen vermogen:</th>
                     <td>
-                    <% if(company.equities === 0) { %>
-                        <%- "" %>
-                    <% } else { %>
-                        <%- company.equities %>
-                    <% } %>
+                        <%# Als de eigen vermogen van het bedrijf 0 EUR bedraagt, dan wordt het niet getoond, anders wel %>
+                        <% if (company.equities === 0) { %>
+                            <%- "" %>
+                        <% } else { %>
+                            <%- company.equities %>
+                        <% } %>
                     </td>
                 </tr>
                 <tr>
                     <th scope="row">Schulden:</th>
                     <td>
-                        <% if(company.debts === 0) { %>
+                       %# Als de schulden van het bedrijf 0 EUR bedraagt, dan wordt het niet getoond, anders wel %> 
+                        <% if (company.debts === 0) { %>
                             <%- "" %>
                         <% } else { %>
                             <%- company.debts %>
@@ -60,6 +75,7 @@
                 <tr>
                     <th scope="row">Winst:</th>
                     <td>
+                        <%# Als de winst van het bedrijf 0 EUR bedraagt, dan wordt het niet getoond, anders wel %>
                         <% if(company.profit === 0) { %>
                             <%- "" %>
                         <% } else { %>
