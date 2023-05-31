@@ -65,6 +65,7 @@ async function firstApiCall(companyData: Company): Promise<string> {
       }
     }
   }
+  //Als er geen data is gevonden, blijft de bedragenlink leeg
   if (!found) {
     accountingDataUrl = "";
   }
