@@ -40,7 +40,7 @@
         </div>
         <%# Als de gebruiker verkeerde inloggegevens meegaf, dan krijgt de gebruiker een foutmelding te zien. %>
         <% if (locals.noSuccses) { %>
-          <span id="log-err">Verkeerde gebruikersnaam of wachtwoord.</span>
+          <div class="log-err">Verkeerde gebruikersnaam of wachtwoord.</div>
         <% } %>
         <input type="submit" value="Log In"/>
       </form>

@@ -165,7 +165,7 @@
               <% if (company2Data.debts != 0) { %>
                 <%# Als de bedrijfswinst van het ene bedrijf gelijk, verschillend of groter is dan dat van het ander bedrijf, dan wordt visueel aangeduid %>
                 <% if (company2Data.profit == companyData.profit) { %>
-                  <span class="comparison-results__span--greater">&euro;&nbsp;<%= company2Data.profit %></span>
+                  <span class="comparison-results__span--equal">&euro;&nbsp;<%= company2Data.profit %></span>
                 <% } else if (company2Data.profit > companyData.profit) { %>
                   <span class="comparison-results__span--greater">&euro;&nbsp;<%= company2Data.profit %></span>
                 <% } else { %>
@@ -179,5 +179,5 @@
     </div>
   </section>
 </main>
-<# Voet inladen %>
+<%# Voet inladen %>
 <%- include('partials/footer'); %>

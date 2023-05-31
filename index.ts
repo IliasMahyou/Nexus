@@ -183,21 +183,21 @@ app.post("/home", async (req: any, res: any) => {
   let company2Data: Company = emptyCompanyData;//De data van het andere bedrijf
   const referencenumberCompany1: string = req.body.company1 as string;//Het ene ingegeven ondernemingsnummer
   const referencenumberCompany2: string = req.body.company2 as string;//Het andere ingegeven ondernemingsnummer
-  //Als de gebruiker een ondernemingsnummer leeg laat of tweemaal dezelfde ingeef, dan wordt er een foutmelding meegegeven, anders wordt de bedrijfsdata opgehaald
+  //Als de gebruiker een ondernemingsnummer leeg laat of tweemaal dezelfde ingeeft, dan wordt er een foutmelding meegegeven, anders wordt de bedrijfsdata opgehaald
   if (referencenumberCompany1 == "" || referencenumberCompany2 == "") {
     res.render("home", { companyData: emptyCompanyData, company2Data: emptyCompanyData, succses: "Vul twee ondernemingsnummers in" });
   } else if (referencenumberCompany1 == referencenumberCompany2) {
     res.render("home", { companyData: emptyCompanyData, company2Data: emptyCompanyData, succses: "Vul twee verschillende ondernemingsnummers in" });
   } else {
     companyData = await getCompanyData(referencenumberCompany1);
-    //Als de ene onderneming genoeg data heeft, wordt de zoekopdracht opgeslagen
+    //Als de ene onderneming genoeg data heeft, dan wordt de zoekopdracht opgeslagen
     if (companyData.address != "No data found") {
       const searchCompanyData: History = { username: activeUser.username, referencenumber: companyData.referencenumber };//De zoekopdracht van het ene bedrijf
       addToHistory(searchCompanyData);
       addCompany(companyData);
     }
     company2Data = await getCompanyData(referencenumberCompany2);
-    //Als de andere onderneming niet genoeg data heeft, zal dit worden gezegd aan de gebruiker
+    //Als de andere onderneming genoeg data heeft, dan wordt de zoekopdracht opgeslagen
     if (company2Data.address != "No data found" ) {
       const searchCompany2Data: History = { username: activeUser.username, referencenumber: company2Data.referencenumber };//De zoekopdracht van het andere bedrijf
       addToHistory(searchCompany2Data);

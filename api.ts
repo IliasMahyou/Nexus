@@ -8,7 +8,7 @@ const apiKey: string = "5bca88bca6c74941af1a74c459833c52";//De API-sleutel
 const requestId: string = `${uuidv4()}`;//De aanvraag-Id
 
 /*Variabelen*/
-let accountingDataUrl: string;//De link nodig voor de bedragendata op te halen
+let accountingDataUrl: string = "";//De link nodig voor de bedragendata op te halen
 
 /*Functies*/
 //Zoekt naar een bedrijf met een API-oproep
@@ -48,7 +48,7 @@ async function firstApiCall(companyData: Company): Promise<string> {
           accountingDataUrl = responseData[i].AccountingDataURL;
         }
         companyData.depositDate = responseData[i].DepositDate;
-        companyData.name = responseData[i].EnterpriseName || "No data found";
+        companyData.name = responseData[i].EnterpriseName;
         found = true;
         break;
       }
@@ -64,6 +64,9 @@ async function firstApiCall(companyData: Company): Promise<string> {
         checkResponseData("2019-01-01");
       }
     }
+  }
+  if (!found) {
+    accountingDataUrl = "";
   }
   return accountingDataUrl;
 }
@@ -92,8 +95,8 @@ async function secondApiCall(accountingDataUrl:string,companyData: Company): Pro
     companyData.profit = 0;
     return companyData;
   }
-  const response = await fetch(accountingDataUrl, fetchOptions);//Het antwoord van de API-oproep
-  const data = await response.json();//Het antwoord van de API-oproep in JSON-formaat
+  const response: any = await fetch(accountingDataUrl, fetchOptions);//Het antwoord van de API-oproep
+  const data: any = await response.json();//Het antwoord van de API-oproep in JSON-formaat
   //Als er geen straat of huisnummer te vinden is, dan wordt het adres van het bedrijf als niet gevonden gelabeld, anders wordt het adres ingevuld
   if (data.Address.Street == undefined || data.Address.Number == undefined) {
     companyData.address = "No data found";
