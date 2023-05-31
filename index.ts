@@ -206,7 +206,7 @@ app.post("/home", async (req: any, res: any) => {
     res.render("home", { companyData: companyData, company2Data: company2Data, succses: "Vul twee geldige ondernemingsnummers in" });
   }
 });
-
+//Het ophalen van de zoekgeschidenis, rekening houdend met de eventuele zoekopdracht
 app.post('/history', async (req: any, res: any) => {
   const search = req.body.searchTerm;//De ingegeven zoekterm
   const searchTerm: string = search.toLowerCase().trim();//De zoekopdracht
@@ -216,9 +216,9 @@ app.post('/history', async (req: any, res: any) => {
     const company: WithId<Document> | null = await fetchCompany(search.referencenumber);//Het opgezochte bedrijf uit de zoekopdracht
     //Als de data van het opgezochte bedrijf kan worden gevonden, dan wordt er verder geëvalueerd
     if (company != null) {
-
+      //Als de gebruiker een zoekterm heeft ingegeven, dan wordt er verder geëvalueerd, anders wordt de volledige zoekgeschiedenis opgehaald
       if (searchTerm != "") {
-        //Als de bedrijfsnaam de zoekterm bevat, dan wordt deze opgehaald en bijgehouden
+        //Als de bedrijfsnaam de zoekterm bevat, dan wordt deze opgehaald en bijgehouden, anders wordt de volledige zoekgeschiedenis opgehaald
         if (company.name.toLowerCase().includes(searchTerm)) {
           companiesList.push({
             address: company.address,
