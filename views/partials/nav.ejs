@@ -1,28 +1,56 @@
+<!--Navigatiebalk-->
 <nav>
   <div id="nav-left">
     <ul class="menu">
-      <% const style = "class=" + "active"; let homeStyle = ''; let historyStyle
-      = ''; let aboutStyle = ''; let contactStyle = ''; switch(activePage) {
-      case "Home": homeStyle = style; break; case "Zoekgeschiedenis":
-      historyStyle = style; break; case "Over ons": aboutStyle = style; break;
-      case "Contact": contactStyle = style; break; }%>
-      <li class="menuItem"><a href="home" <%= homeStyle %>>Home</a></li>
-      <li class="menuItem">
+
+      <%# De stijlregel voor een actieve pagina %>
+      <% const style = "class=" + 'page__a--active'; %>
+      <%# De stijlregel voor de homepagina %> 
+      <% let homeStyle = ''; %>
+      <%# De stijlregel voor de historiekpagina %> 
+      <% let historyStyle = ''; %>
+      <%# De stijlregel voor de over ons-pagina %>
+      <% let aboutStyle = ''; %>
+      <%# De stijlregel voor de contactpagina %>
+      <% let contactStyle = ''; %>
+      <%# Per pagina wordt de stijlregel voor een actieve pagina, aan de pagina die op dat moment bekijken wordt %>
+      <% switch (activePage) {
+        case "Home": 
+          homeStyle = style;
+          break;
+        case "Zoekgeschiedenis":
+          historyStyle = style;
+          break;
+        case "Over ons": 
+          aboutStyle = style;
+          break;
+        case "Contact": 
+          contactStyle = style;
+          break; 
+      } %>
+
+      <li class="menu__li">
+        <a href="home" <%= homeStyle %>>Home</a>
+      </li>
+      <li class="menu__li">
         <a href="history" <%= historyStyle %>>Zoekgeschiedenis</a>
       </li>
-      <li class="menuItem"><a href="about" <%= aboutStyle %>>Over ons</a></li>
-      <li class="menuItem">
+      <li class="menu__li">
+        <a href="about" <%= aboutStyle %>>Over ons</a>
+      </li>
+      <li class="menu__li">
         <a href="contact" <%= contactStyle %>>Contact</a>
       </li>
     </ul>
-    <button class="hamburger">
-      <!-- material icons https://material.io/resources/icons/ -->
+    <!--Hamburgermenu-->
+    <!--BRON: https://material.io/resources/icons/-->
+    <button class="menu__button--mobile">
       <i class="menuIcon material-icons">menu</i>
       <i class="closeIcon material-icons">close</i>
     </button>
   </div>
-
   <div id="nav-right">
+    
     <div class="translator">
       <ul>
         <li>
