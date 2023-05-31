@@ -1,6 +1,12 @@
-<% const activePage = "Home"; %> <%- include('partials/heading', {activePage:
-activePage}) %> <%- include('partials/nav', {activePage: activePage}) %>
-<header id="header-home">
+<%# De actieve pagina %>
+<% const activePage = "Home"; %>
+
+<%# Inladen van de metadata van de webpagina %>
+<%- include('partials/heading', { activePage: activePage }) %>
+<%# Navigatie inladen %>
+<%- include('partials/nav', { activePage: activePage }) %>
+<!--Hoofding-->
+<header id="home-header">
   <article>
     <h1>Nexus</h1>
     <p>
@@ -15,52 +21,38 @@ activePage}) %> <%- include('partials/nav', {activePage: activePage}) %>
     </p>
   </article>
 </header>
-<main id="main-home">
-  <section id="comparison-tool">
-    <h1 class="titleHome">Vergelijkingstool</h1>
-    <% if(locals.succses){%> <% if(companyData.name == "" || company2Data.name
-    == ""){ %>
-    <span id="errNoReferencenumber">Vul twee geldige ondernemingsnummers in</span>
-    <%}%> <% } %>
-   <script>
-        if (window.history.replaceState) { window.history.replaceState(null, null, window.location.href)};//https://itpresent.com/web/javascript/stop_resubmit_html_form_refresh.php
-   </script> 
-    <form
-      action="/home" 
-      name="frmComparison"
-      class="comparison-form"
-      method="post"
-    >
-      <input
-        placeholder="0123123123"
-        type="text"
-        id="company1"
-        name="company1"
-        maxlength="10"
-      />
-      <button
-        type="input"
-        class="compare-button"
-        id="btnCompare"
-        onclick="this.classList.toggle('button--loading')"
-      > <!-- Bron -> https://dev.to/dcodeyt/create-a-button-with-a-loading-spinner-in-html-css-1c0h -->
+<main id="home">
+  <!--Vergelijkingstool-->
+  <section id="home__comparison">
+    <h1>Vergelijkingstool</h1>
+    <%# Als er iets fout ging met het ophalen van de bedrijfsdata, dan wordt er verder geëvalueerd %>
+    <% if (locals.succses) { %>
+      <%# Als er geen bedrijfsnamen zijn gevonden, dan zal er een foutmelding verschijnen %>
+      <% if (companyData.name == "" || company2Data.name == "") { %>
+        <span id="home__comparison-error">Vul twee geldige ondernemingsnummers in</span>
+      <% } %> 
+    <% } %>
+    <script>
+      //Als het scherm wordt herladen, dan wordt de pagina teruggebracht in zijn vorige staat
+      //BRON: https://itpresent.com/web/javascript/stop_resubmit_html_form_refresh.php
+      if (window.history.replaceState) { 
+        window.history.replaceState(null, null, window.location.href)
+      }
+    </script> 
+    <form action="/home" name="frmComparison" id="comparison__tool" method="post">
+      <input placeholder="0123123123" type="text" name="company1" maxlength="10"/>
+      <!--BRON: https://dev.to/dcodeyt/create-a-button-with-a-loading-spinner-in-html-css-1c0h-->
+      <button type="input" class="button" onclick="this.classList.toggle('button--loading')">
         <span class="button__text">Vergelijk</span>
       </button>
-      <input
-        placeholder="0123123123"
-        type="text"
-        id="company2-input"
-        name="company2"
-        maxlength="10"
-
-      />
+      <input placeholder="0123123123" type="text" id="company2-input" name="company2" maxlength="10"/>
     </form>
-    <div class="comparison-results">
+    <div id="comparison-results">
       <div id="company1-data">
         <table>
           <tr>
             <th>Naam:</th>
-            <td><% if(companyData){ %> <%= companyData.name %> <% } %></td>
+            <td><%= companyData.name %></td>
           </tr>
           <tr>
             <th>Adres:</th>
@@ -73,28 +65,49 @@ activePage}) %> <%- include('partials/nav', {activePage: activePage}) %>
           <tr>
             <th>Eigen vermogen:</th>
             <td>
-              <% if(companyData.equities != 0){ if(companyData.equities == company2Data.equities) { %>
-                <span class="equalAmounts">€ <%= companyData.equities %></span><% } else if(companyData.equities > company2Data.equities){ %>
-              <span class="greeN">€ <%= companyData.equities %></span><% } else { %>
-              <span class="reD">€ <%= companyData.equities %></span> <% } } %>
+              <%# Als het eigen vermogen van het ene bedrijf, verschild van 0, dan wordt er verder geëvalueerd %>
+              <% if (companyData.equities != 0) { %>
+                <%# Als het eigen vermogen van het ene bedrijf gelijk, verschillend of groter is dan dat van het ander bedrijf, dan wordt dit visueel aangeduid %>
+                <% if (companyData.equities == company2Data.equities) { %>
+                  <span class="comparison-results__span--equal">&euro;&nbsp;<%= companyData.equities %></span>
+                <% } else if (companyData.equities > company2Data.equities) { %>
+                  <span class="comparison-results__span--greater">&euro;&nbsp;<%= companyData.equities %></span>
+                <% } else { %>
+                  <span class="comparison-results__span--lesser">&euro;&nbsp;<%= companyData.equities %></span>
+                <% } %>
+              <% } %>
             </td>
           </tr>
           <tr>
             <th>Schulden:</th>
             <td>
-              <% if(companyData.debts != 0){ if(companyData.debts == company2Data.debts){ %>
-                <span class="equalAmounts">€ <%= companyData.debts %></span> <% } else if(companyData.debts < company2Data.debts){ %>
-              <span class="greeN">€ <%= companyData.debts %></span> <% } else { %>
-              <span class="reD">€ <%= companyData.debts %></span> <% } } %>
+              <%# Als de schulden van het ene bedrijf, verschild van 0, dan wordt er verder geëvalueerd %>
+              <% if (companyData.debts != 0) { %>
+                <%# Als de schulden van het ene bedrijf gelijk, verschillend of groter is dan dat van het ander bedrijf, dan wordt dit visueel aangeduid %>
+                <% if (companyData.debts == company2Data.debts) { %>
+                  <span class="comparison-results__span--equal">&euro;&nbsp;<%= companyData.debts %></span>
+                <% } else if (companyData.debts < company2Data.debts) { %>
+                  <span class="comparison-results__span--greater">&euro;&nbsp;<%= companyData.debts %></span>
+                <% } else { %>
+                  <span class="comparison-results__span--lesser">&euro;&nbsp;<%= companyData.debts %></span>
+                <% } %> 
+              <% } %>
             </td>
           </tr>
           <tr>
             <th>Bedrijfswinst:</th>
             <td>
-              <% if(companyData.profit != 0){ if(companyData.profit == company2Data.profit){ %>
-                <span class="equalAmounts">€ <%= companyData.profit %></span> <% } else if(companyData.profit > company2Data.profit) { %>
-              <span class="greeN">€ <%= companyData.profit %></span> <% } else { %>
-              <span class="reD">€ <%= companyData.profit %></span> <% } } %>
+              <%# Als de bedrijfswinst van het ene bedrijf, verschild van 0, dan wordt er verder geëvalueerd %>
+              <% if (companyData.profit != 0) { %>
+                <%# Als de bedrijfswinst van het ene bedrijf gelijk, verschillend of groter is dan dat van het ander bedrijf, dan wordt visueel aangeduid %>
+              <% if (companyData.profit == company2Data.profit) { %>
+                <span class="comparison-results__span--equal">&euro;&nbsp;<%= companyData.profit %></span>
+              <% } else if (companyData.profit > company2Data.profit) { %>
+                <span class="comparison-results__span--greater">&euro;&nbsp;<%= companyData.profit %></span>
+              <% } else { %>
+                <span class="comparison-results__span--lesser">&euro;&nbsp;<%= companyData.profit %></span>
+              <% } %>
+            <% } %>
             </td>
           </tr>
         </table>
@@ -116,28 +129,49 @@ activePage}) %> <%- include('partials/nav', {activePage: activePage}) %>
           <tr>
             <th>Eigen vermogen:</th>
             <td>
-              <% if(company2Data.equities != 0){ if(company2Data.equities == companyData.equities){ %>
-                <span class="equalAmounts">€ <%= company2Data.equities %></span> <% } else if(company2Data.equities > companyData.equities) { %> 
-              <span class="greeN">€ <%= company2Data.equities %></span> <% } else { %> 
-              <span class="reD">€ <%= company2Data.equities %></span> <% } } %>
+              <%# Als het eigen vermogen van het ene bedrijf, verschild van 0, dan wordt er verder geëvalueerd %>
+              <% if (company2Data.equities != 0) { %>
+                <%# Als het eigen vermogen van het ene bedrijf gelijk, verschillend of groter is dan dat van het ander bedrijf, dan wordt visueel aangeduid %>
+                <% if (company2Data.equities == companyData.equities) { %>
+                  <span class="comparison-results__span--equal">&euro;&nbsp;<%= company2Data.equities %></span>
+                <% } else if (company2Data.equities > companyData.equities) { %> 
+                  <span class="comparison-results__span--greater">&euro;&nbsp;<%= company2Data.equities %></span>
+                <% } else { %> 
+                  <span class="comparison-results__span--lesser">&euro;&nbsp;<%= company2Data.equities %></span>
+                <% } %>
+              <% } %>
             </td>
           </tr>
           <tr>
             <th>Schulden:</th>
             <td>
-              <% if(company2Data.debts != 0){ if(company2Data.debts == companyData.debts){ %>
-                <span class="equalAmounts">€ <%= company2Data.debts %></span> <% } else if(company2Data.debts < companyData.debts) { %>
-              <span class="greeN">€ <%= company2Data.debts %></span> <% } else { %>
-              <span class="reD">€ <%= company2Data.debts %></span> <% } } %>
+              <%# Als de schulden van het ene bedrijf, verschild van 0, dan wordt er verder geëvalueerd %>
+              <% if (company2Data.debts != 0) { %>
+                <%# Als de schulden van het ene bedrijf gelijk, verschillend of groter is dan dat van het ander bedrijf, dan wordt visueel aangeduid %>
+                <% if (company2Data.debts == companyData.debts) { %>
+                  <span class="comparison-results__span--equal">&euro;&nbsp;<%= company2Data.debts %></span>
+                <% } else if (company2Data.debts < companyData.debts) { %>
+                  <span class="comparison-results__span--greater">&euro;&nbsp;<%= company2Data.debts %></span>
+                <% } else { %>
+                  <span class="comparison-results__span--lesser">&euro;&nbsp;<%= company2Data.debts %></span>
+                <% } %>
+              <% } %>
             </td>
           </tr>
           <tr>
             <th>Bedrijfswinst:</th>
             <td>
-              <% if(company2Data.profit != 0){ if(company2Data.profit == companyData.profit){ %>
-                <span class="greeN">€ <%= company2Data.profit %></span> <% } else if(company2Data.profit > companyData.profit) { %>
-              <span class="greeN">€ <%= company2Data.profit %></span> <% } else { %>
-              <span class="reD">€ <%= company2Data.profit %></span> <% }} %>
+              <%# Als de bedrijfswinst van het ene bedrijf, verschild van 0, dan wordt er verder geëvalueerd %>
+              <% if (company2Data.debts != 0) { %>
+                <%# Als de bedrijfswinst van het ene bedrijf gelijk, verschillend of groter is dan dat van het ander bedrijf, dan wordt visueel aangeduid %>
+                <% if (company2Data.profit == companyData.profit) { %>
+                  <span class="comparison-results__span--greater">&euro;&nbsp;<%= company2Data.profit %></span>
+                <% } else if (company2Data.profit > companyData.profit) { %>
+                  <span class="comparison-results__span--greater">&euro;&nbsp;<%= company2Data.profit %></span>
+                <% } else { %>
+                  <span class="comparison-results__span--lesser">&euro;&nbsp;<%= company2Data.profit %></span>
+                <% } %>
+             <% } %>
             </td>
           </tr>
         </table>
@@ -145,4 +179,5 @@ activePage}) %> <%- include('partials/nav', {activePage: activePage}) %>
     </div>
   </section>
 </main>
+<# Voet inladen %>
 <%- include('partials/footer'); %>

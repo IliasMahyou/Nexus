@@ -185,9 +185,9 @@ app.post("/home", async (req: any, res: any) => {
   const referencenumberCompany2: string = req.body.company2 as string;//Het andere ingegeven ondernemingsnummer
   //Als de gebruiker een ondernemingsnummer leeg laat of tweemaal dezelfde ingeef, dan wordt er een foutmelding meegegeven, anders wordt de bedrijfsdata opgehaald
   if (referencenumberCompany1 == "" || referencenumberCompany2 == "") {
-    res.render("home", { companyData: emptyCompanyData, company2Data: emptyCompanyData, noSuccses: "Vul twee ondernemingsnummers in" });
+    res.render("home", { companyData: emptyCompanyData, company2Data: emptyCompanyData, succses: "Vul twee ondernemingsnummers in" });
   } else if (referencenumberCompany1 == referencenumberCompany2) {
-    res.render("home", { companyData: emptyCompanyData, company2Data: emptyCompanyData, noSuccses: "Vul twee verschillende ondernemingsnummers in" });
+    res.render("home", { companyData: emptyCompanyData, company2Data: emptyCompanyData, succses: "Vul twee verschillende ondernemingsnummers in" });
   } else {
     companyData = await getCompanyData(referencenumberCompany1);
     //Als de ene onderneming genoeg data heeft, wordt de zoekopdracht opgeslagen

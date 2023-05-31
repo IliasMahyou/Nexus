@@ -146,7 +146,7 @@ footer {
 }
 
 /* Home page */
-#header-home {
+#home-header {
   grid-area: header;
   background: linear-gradient(
       0deg,
@@ -161,7 +161,7 @@ footer {
   text-align: center;
 }
 
-#header-home article {
+#home-header article {
   margin: 0;
   position: relative;
   text-align: center;
@@ -173,17 +173,17 @@ footer {
   width: 50%;
 }
 
-#main-home {
+#home {
   height: 100%;
 }
-.greeN {
+.comparison-results__span--greater {
   color: green;
 }
-.reD {
+.comparison-results__span--lesser {
   color: red;
 }
 
-.compare-button { 
+.button { 
   position: relative;
   padding: 8px 16px;
   background: #009579;
@@ -193,7 +193,7 @@ footer {
   cursor: pointer;
 }
 
-.compare-button:active { /* Bron -> https://dev.to/dcodeyt/create-a-button-with-a-loading-spinner-in-html-css-1c0h */
+.button:active { /* Bron -> https://dev.to/dcodeyt/create-a-button-with-a-loading-spinner-in-html-css-1c0h */
   background: #007a63;
 }
 
@@ -233,7 +233,7 @@ footer {
   }
 }
 
-#comparison-tool {
+#home__comparison {
   margin: 50px auto;
   max-width: 60%;
   display: flex;
@@ -242,33 +242,33 @@ footer {
   line-height: 1.5;
 }
 
-#comparison-tool h1 {
+#home__comparison h1 {
   margin-bottom: 30px;
 }
 
-.comparison-form {
+#comparison__tool {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
 }
 
-.comparison-form div {
+#comparison__tool div {
   display: flex;
   flex-direction: column;
 }
 
-.comparison-form input {
+#comparison__tool input {
   padding: 5px;
   width: 15vw;
   height: 30px;
 }
 
-.comparison-form::placeholder {
+#comparison__tool::placeholder {
   color: var(--nexus-purple);
   opacity: 50%;
 }
 
-.comparison-form .compare-button {
+#comparison__tool .button {
   padding: 5px 20px;
   min-width: 150px;
   background-color: var(--nexus-blue);
@@ -280,7 +280,7 @@ footer {
   font-size: 12pt;
 }
 
-.comparison-form .compare-button:hover {
+#comparison__tool .button:hover {
   background-color: var(--nexus-dark-purple);
 }
 
@@ -289,13 +289,13 @@ footer {
   color: var(--nexus-dark-purple);
 }
 
-.comparison-results {
+#comparison-results {
   display: flex;
   justify-content: space-between;
   margin: 20px 0;
 }
 
-.comparison-results div {
+#comparison-results div {
   width: 50%;
 }
 
@@ -309,21 +309,21 @@ footer {
   border-left: 1px solid var(--nexus-blue);
 }
 
-.comparison-results table {
+#comparison-results table {
   border-collapse: collapse;
   width: 100%;
 }
 
-.comparison-results th {
+#comparison-results th {
   text-align: left;
 }
 
-.comparison-results td {
+#comparison-results td {
   text-align: right;
   padding: 8px 0 8px 8px;
 }
 
-#errNoReferencenumber {
+#home__comparison-error {
   text-align: center;
   background-color: rgba(255, 0, 0, 0.2);
   border-style: solid;
@@ -371,7 +371,7 @@ dialog {
   width: 300px;
   padding: 20px;
   border-style:  solid;
-  border-color: red;
+  border-color: comparison-results__span--lesser;
   background-color: rgba(255, 0, 0, 0.8);
   color: white;
   border-radius: 5px;
@@ -509,7 +509,7 @@ figure img:hover {
 }
 
 /* Loginpagina */
-#login-body {
+#body-login {
   height: 100vh;
   display: flex;
   align-items: center;
@@ -525,7 +525,7 @@ figure img:hover {
     background-position-x: 50%;
   }
 }
-#login-box {
+#log {
   width: 400px;
   height: min-content;
   padding: 40px;
@@ -535,28 +535,28 @@ figure img:hover {
   box-sizing: border-box;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
-#login-box h1 {
+#log h1 {
   font-size: 2.2rem;
   margin: 0;
 }
-#login-box p {
+#log p {
   color: #404040;
   margin-top: 4px;
   font-size: 1.2rem;
 }
-#login-box form {
+#log form {
   text-align: left;
   margin-top: 30px;
 }
-#login-box form .form-group {
+#log form .login-form__div {
   margin: 18px 0;
 }
-#login-box form .form-group label {
+#log form .login-form__div label {
   display: block;
   font-size: 20px;
   color: #101010;
 }
-#login-box form .form-group input {
+#log form .login-form__div input {
   width: 100%;
   height: 40px;
   margin-top: 6px;
@@ -568,29 +568,29 @@ figure img:hover {
   color: #404040;
   transition: 0.3s;
 }
-#login-box form .form-group input:focus {
+#log form .login-form__div input:focus {
   border-color: #124ce7;
   box-shadow: 0 0 12px #bbd3ff;
 }
-#login-box form .form-group input:valid {
+#log form .login-form__div input:valid {
   border-color: #124ce7;
   background: #e4edff;
 }
-#login-box form .form-group i {
+#log form .login-form__div i {
   position: absolute;
   color: #404040;
   font-size: 20px;
   transform: translateX(12px) translateY(16px);
 }
-#login-box form .forgot {
+#log form .forgot {
   cursor: pointer;
   color: #3784ff;
   font-size: 18px;
 }
-#login-box form .forgot:hover {
+#log form .forgot:hover {
   color: #124ce7;
 }
-#login-box form input[type="submit"] {
+#log form input[type="submit"] {
   cursor: pointer;
   width: 100%;
   height: 46px;
@@ -601,9 +601,9 @@ figure img:hover {
   background: linear-gradient(0deg, var(--nexus-purple), var(--nexus-blue));
   border: 0;
 }
-.login-fout {
+#log-err {
   text-align: center;
-  color: red;
+  color: comparison-results__span--lesser;
 }
 
 /* History page */
@@ -878,7 +878,7 @@ figure img:hover {
   transition: 0.3s ease-out;
 }
 
-.equalAmounts {
+.comparison-results__span--equal {
   color: black;
 }
 
@@ -918,7 +918,7 @@ figure img:hover {
   color: var(--nexus-light-blue);
 }
 
-.dark .titleHome {
+.dark #home__comparison h1 {
   color: var(--nexus-light-blue);
 }
 
@@ -1056,11 +1056,11 @@ figure img:hover {
 
 /* Media queries */
 @media screen and (max-width: 776px) {
-  #header-home {
+  #home-header {
     height: 25vw;
   }
   
-  #header-home p {
+  #home-header p {
     display: none;
   }
 
@@ -1082,59 +1082,59 @@ figure img:hover {
     display: none;
   }
 
-  #main-home {
+  #home {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
   }
 
-  #comparison-tool {
+  #home__comparison {
     min-width: 80%;
     margin: 20px auto;
   }
 
-  .comparison-form {
+  #comparison__tool {
     display: flex;
     flex-direction: column;
   }
 
-  .comparison-form div {
+  #comparison__tool div {
     margin-bottom: 10px;
   }
 
-  .comparison-form input {
+  #comparison__tool input {
     margin-bottom: 10px;
     width: auto;
   }
 
-  .comparison-form #company2-input {
+  #comparison__tool #company2-input {
     order: 2;
   }
 
-  .comparison-form .compare-button {
+  #comparison__tool .button {
     order: 3;
     height: 45px;
   }
 
-  .comparison-results {
+  #comparison-results {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  .comparison-results #company1-data,
-  .comparison-results #company2-data {
+  #comparison-results #company1-data,
+  #comparison-results #company2-data {
     padding: 20px;
     width: 100%;
     border: none;
   }
 
-  .comparison-results .company1-data {
+  #comparison-results .company1-data {
     order: 1;
   }
 
-  .comparison-results .company2-data {
+  #comparison-results .company2-data {
     order: 2;
   }
 
@@ -1224,4 +1224,53 @@ figure img:hover {
     padding-bottom: 1rem;
     font-size: 1rem;
   }
+}
+@media screen and (max-width: 900px) {
+
+  #section-history {
+
+    margin-top: 4%;
+
+    padding: 10px;
+
+    height: 50%;
+
+    width: 80%;
+
+  }
+
+  #section-companyInfo {
+
+    padding: 10px;
+
+    height: 40%;
+
+    width: 80%;
+
+    margin-bottom: 5%;
+
+  }
+
+ 
+
+  #table-companyInfo {
+
+    line-height: 1.5rem;
+
+    text-align: center;
+
+    margin: 0 auto;
+
+  }
+
+ 
+
+  #table-companyInfo caption {
+
+    padding-bottom: 1rem;
+
+    font-size: 1rem;
+
+  }
+
 }
