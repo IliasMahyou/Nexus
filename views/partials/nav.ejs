@@ -1,7 +1,7 @@
 <!--Navigatiebalk-->
 <nav>
   <div id="nav-left">
-    <ul class="menu">
+    <ul class="nav__menu">
 
       <%# De stijlregel voor een actieve pagina %>
       <% const style = "class=" + 'nav__a--active'; %>
@@ -44,9 +44,9 @@
     </ul>
     <!--Hamburgermenu-->
     <!--BRON: https://material.io/resources/icons/-->
-    <button class="menu__button--mobile">
-      <i class="menuIcon material-icons">menu</i>
-      <i class="closeIcon material-icons">close</i>
+    <button class="menu__button--mobile" onclick="toggleMenu()">
+      <i class="icon--open material-icons">menu</i>
+      <i class="icon--close material-icons">close</i>
     </button>
   </div>
   <div id="nav-right">

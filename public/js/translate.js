@@ -33,11 +33,13 @@ let comparisonErr;//De foutmelding van de vergelijkingstool
 let btnCompare;//De vergelijkingsknop
 let th;//Alle tabeltussentitels
 let h2;//De ondertitel in de huidige pagina
-let btnSubmit;////De indienknop
+let address;//Het adres van Nexus
 let name;//Het naamveld in het contactformulier
+let mailaddress;//Het e-mailadresveld in het contactformulier
 let subject;//Het onderwerpveld in het contactformulier
 let message;//Het berichtveld in het contactformulier
 let search;//De zoekbalktekst
+let btnSubmit;//De indienknop
 
 //Als de gebruiker zich bevindt op een van onderstaande pagina's, dan worden de vertalingen van die pagina opgehaald
 switch (currentPage) {
@@ -49,7 +51,7 @@ switch (currentPage) {
     data = {
       dutch: {
         lang: "nl",
-        h1: "Vergelijkingstool",
+        h1: "Nexus",
         para: "Welkom bij Nexus, waar we ons richten op het leveren van innovatieve en nuttige tools om het leven van onze klanten gemakkelijker te maken. Onderaan de pagina vindt u een unieke vergelijkingstool waarmee de jaarrekeningen van twee bedrijven met elkaar vergeleken kunnen worden. Deze tool is ontwikkeld om u te helpen weloverwogen beslissingen te nemen bij het beoordelen van de financiële gezondheid van bedrijven. Onze vergelijkingstool is eenvoudig in gebruik en biedt u snel en nauwkeurig inzicht in de financiële prestaties van de bedrijven die u vergelijkt.",
         h2: "Vergelijkingstool",
         comparisonErr: "Vul twee ondernemingsnummers in",
@@ -71,7 +73,7 @@ switch (currentPage) {
       },
       english: {
         lang: "en",
-        h1: "Comparison tool",
+        h1: "Nexus",
         para: "Welcome to Nexus, where we focus on providing innovative and useful tools to make our customers' lives easier. At the bottom of the page you will find a unique comparison tool with which the annual accounts of two companies can be compared. This tool is designed to help you make informed decisions when assessing the financial health of companies. Our comparison tool is easy to use and gives you a quick and accurate insight into the financial performance of the companies you compare.",
         h2: "Comparison tool",
         comparisonErr: "Enter two company numbers",
@@ -93,7 +95,7 @@ switch (currentPage) {
       },
       french: {
         lang: "fr",
-        h1: "Outil de comparaison",
+        h1: "Nexus",
         para: "Bienvenue chez Nexus, où nous nous concentrons sur la fourniture d'outils innovants et utiles pour faciliter la vie de nos clients. En bas de page, vous trouverez un outil de comparaison unique avec lequel les comptes annuels de deux entreprises peuvent être comparés. Cet outil est conçu pour vous aider à prendre des décisions éclairées lors de l'évaluation de la santé financière des entreprises. Notre outil de comparaison est facile à utiliser et vous donne un aperçu rapide et précis de la performance financière des entreprises que vous comparez.",
         comparisonErr: "Entrez deux numéros d'entreprise",
         h2: "Outil de comparaison",
@@ -139,15 +141,19 @@ switch (currentPage) {
     };
     break;
   case '/contact':
-    btnSubmit = document.getElementsByClassName('submit__button')[0];
+    address = document.getElementById('address');
     name = document.getElementById('name');
+    mailaddress = document.getElementById('email');
     subject = document.getElementById('subject');
     message = document.getElementById('message');
+    btnSubmit = document.getElementsByClassName('submit__button')[0];
     data = {
       dutch: {
         lang: "nl",
         h1: "Contacteer ons",
+        address: "Ellermanstraat 33, 2060 Antwerpen",
         name: "Naam",
+        mailaddress: "E-mailadres",
         subject: "Onderwerp",
         message: "Bericht",
         btnSubmit: "Verzend"
@@ -155,7 +161,9 @@ switch (currentPage) {
       english: {
         lang: "en",
         h1: "Contact us",
+        address: "Ellermanstraat 33, 2060 Antwerp",
         name: "Name",
+        mailaddress: "Email address",
         subject: "Subject",
         message: "Message",
         btnSubmit: "Submit"
@@ -163,7 +171,9 @@ switch (currentPage) {
       french: {
         lang: "fr",
         h1: "Contactez-nous",
+        address: "Ellermanstraat 33, 2060 Anviers",
         name: "Nom",
+        mailaddress: "Adresse e-mail",
         subject: "Sujet",
         message: "Message",
         btnSubmit: "Envoyez"
@@ -271,7 +281,9 @@ function updateLanguage(selectedLanguage) {
       break;
     case '/contact':
       h1.textContent = langPackage.h1;
+      address.textContent = langPackage.address;
       name.setAttribute('placeholder', langPackage.name);
+      mailaddress.setAttribute('placeholder', langPackage.mailaddress);
       subject.setAttribute('placeholder', langPackage.subject);
       message.setAttribute('placeholder', langPackage.message);
       btnSubmit.setAttribute('value', langPackage.btnSubmit);
