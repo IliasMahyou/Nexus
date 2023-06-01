@@ -4,7 +4,7 @@
     <ul class="menu">
 
       <%# De stijlregel voor een actieve pagina %>
-      <% const style = "class=" + 'page__a--active'; %>
+      <% const style = "class=" + 'nav__a--active'; %>
       <%# De stijlregel voor de homepagina %> 
       <% let homeStyle = ''; %>
       <%# De stijlregel voor de historiekpagina %> 
@@ -50,27 +50,33 @@
     </button>
   </div>
   <div id="nav-right">
-    
-    <div class="translator">
+    <!--Vertaalknop-->
+    <div id="translator">
       <ul>
         <li>
-          <a href="#" class="talen">NL</a>
-          <ul class="dropdown">
+          <a href="#" id="lang">NL</a>
+          <!--Vertaalknop-dropdownmenu-->
+          <ul class="translator__ul--dropdown">
             <li>
-              <a href="#" language="dutch" class="active"
-                ><span class="fi fi-nl"></span
-              ></a>
+              <a href="#" class=".nav__a--active" onclick="updateLanguage('nl')">
+                <span class="fi fi-nl"></span>
+              </a>
             </li>
             <li>
-              <a href="#" language="english"><span class="fi fi-us"></span></a>
+              <a href="#" onclick="updateLanguage('en')">
+                <span class="fi fi-us"></span>
+              </a>
             </li>
             <li>
-              <a href="#" language="french"><span class="fi fi-fr"></span></a>
+              <a href="#" onclick="updateLanguage('fr')">
+                <span class="fi fi-fr"></span>
+              </a>
             </li>
           </ul>
         </li>
       </ul>
     </div>
+    <!--Donker/Licht-modusknop-->
     <input type="checkbox" id="toggle" />
     <label class="toggle" for="toggle">
       <i class="bx bxs-sun"></i>
