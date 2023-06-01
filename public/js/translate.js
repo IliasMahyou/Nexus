@@ -1,6 +1,6 @@
 /*Constanten*/
 const langs = document.querySelectorAll('translator__ul--dropdown a');//Het talenmenu
-const nav = document.getElementsByClassName('menu__li a');//De navigatielinken
+const nav = document.querySelectorAll('.menu__li a');//De navigatielinken
 const lang = document.getElementById('lang');//De huidige paginataal
 const para = document.getElementsByTagName('p')[0];//De paragraaf in de huidige pagina
 const h1 = document.getElementsByTagName('h1')[0];//De hoofdtitel van de huidige pagina
@@ -220,7 +220,7 @@ switch (currentPage) {
 /*Functies*/
 //Vertaalt de huidige pagina
 function updateLanguage(selectedLanguage) {
-  let langPackage;//De opgevraagde vertalingen voor de huidige webpagina
+  let langPackage;//De opgevraagde vertalingen voor de huidige webpagina  
   //Afhankelijk van de gekozen taalkeuze wordt de taalkeuze opgeslagen navigatie toepasselijk vertaald
   switch (selectedLanguage) {
     case 'nl':
