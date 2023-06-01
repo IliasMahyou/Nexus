@@ -32,7 +32,7 @@ let data = {};//De vertaling van de huidige pagina
 let comparisonErr;//De foutmelding van de vergelijkingstool
 let btnCompare;//De vergelijkingsknop
 let th;//Alle tabeltussentitels
-let h2;//De subtitel in de huidige pagina
+let h2;//De ondertitel in de huidige pagina
 let btnSubmit;////De indienknop
 let name;//Het naamveld in het contactformulier
 let subject;//Het onderwerpveld in het contactformulier
@@ -221,6 +221,8 @@ switch (currentPage) {
 //Vertaalt de huidige pagina
 function updateLanguage(selectedLanguage) {
   let langPackage;//De opgevraagde vertalingen voor de huidige webpagina  
+  //De taalkeuze in lokale opslag opslaan
+  localStorage.setItem("language", selectedLanguage);
   //Afhankelijk van de gekozen taalkeuze wordt de taalkeuze opgeslagen navigatie toepasselijk vertaald
   switch (selectedLanguage) {
     case 'nl':
@@ -284,3 +286,7 @@ function updateLanguage(selectedLanguage) {
       break;
   }
 }
+
+
+//De pagina vertalen met de taalkeuze
+updateLanguage(localStorage.getItem("language"))
