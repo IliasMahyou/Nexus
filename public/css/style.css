@@ -189,6 +189,9 @@ nav ul li a {
 .body--dark #contact-info p {
   color: white;
 }
+.body--dark #contact-info a {
+  color: white;
+}
 .body--dark #contact-info i {
   color: var(--nexus-light-blue);
 }
