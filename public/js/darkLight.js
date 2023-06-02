@@ -1,8 +1,8 @@
 /*Constanten*/
 const body = document.getElementsByTagName('body')[0];//De pagina
 const toggle = document.getElementById('toggle');//De kleurmodusknop
-const sunIcon = document.getElementsByClassName(".bxs-sun")[0];//Het zon-icoontje
-const moonIcon = document.getElementsByClassName(".bx-moon")[0];//Het maan-icoontje
+const sunIcon = document.getElementsByClassName("bxs-sun")[0];//Het zon-icoontje
+const moonIcon = document.getElementsByClassName("bx-moon")[0];//Het maan-icoontje
 const savedMode = localStorage.getItem("mode");//De huidige kleurmodus
 
 /*Functies*/
@@ -16,8 +16,8 @@ function enableDarkMode() {
 //Deactiveert donkere modus en bewaart deze keuze
 function disableDarkMode() {
   body.classList.remove("body--dark");
-  sunIcon.className = "bx bxs-sun";
-  moonIcon.className = "bx bx-moon";
+  sunIcon.className = "bx bx-sun";
+  moonIcon.className = "bx bxs-moon";
   localStorage.setItem("mode", "light");
 }
 
