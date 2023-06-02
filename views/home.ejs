@@ -29,7 +29,7 @@
     <% if (locals.succses) { %>
       <%# Als er geen bedrijfsnamen zijn gevonden, dan zal er een foutmelding verschijnen %>
       <% if (companyData.name == "" || company2Data.name == "") { %>
-        <span id="home__comparison-error">Vul twee geldige ondernemingsnummers in</span>
+        <span id="home__comparison-error"><%= succses %></span>
       <% } %> 
     <% } %>
     <script>
