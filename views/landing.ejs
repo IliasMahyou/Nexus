@@ -1,119 +1,189 @@
 <!DOCTYPE html>
 <html lang="nl-BE">
   <head>
+    <!--Metadata-->
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- CSS -->
-    <link rel="stylesheet" href="./css/style.css" /><link
-      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <link rel="icon" type="image/x-icon" href="/img/Logo.PNG" />
-    <script type="text/javascript" src="./js/darkLight.js" defer></script>
-  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!--Stijlbladen-->
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"/>
+    <!--Pagina-icoon-->
+    <link rel="icon" type="image/x-icon" href="/img/logo.png"/>
+    <!--Paginatitel-->
     <title>Landing Page</title>
   </head>
-  <body id="body-landing" class="light">
+  <body id="body-landing">
+    <!--Navigatiebalk-->
     <nav>
-      <div>
-        <img class="logo-landing" src="./img/logo.png" alt="Logo-Nexus" />
-      </div>
-      <% if(!isLoggedIn) { %>
-      <a href="login"><button class="login-button">Meld aan</button></a>
+      <!--Logo-->
+      <img class="img-landing" src="/img/logo.png" alt="Het Nexus-logo."/>
+      <%# Als de gebruiker niet is ingelogd, dan wordt de aanmeldingsknop getoond, anders de afmeldingsknop %>
+      <% if (!isLoggedIn) { %>
+        <!-- Aanmeldingsknop-->
+        <a href="login"><button class="nav__button--login">Meld aan</button></a>
       <% } else { %>
-        <a href="logout"><button class="login-button">Meld af</button></a>
-      <% } %> 
+        <!--Afmeldingsknop-->
+        <a href="logout"><button class="nav__button--login">Meld af</button></a>
+      <% } %>
     </nav>
-
-    <main id="main-landing">
+    <main id="landing">
+      <!--Fortnite-project-->
       <article class="project">
         <figure>
-          <img <% if(!isLoggedIn) { %> onclick="document.getElementById('dialogFortnite').classList.toggle('dialog--visible')" <% } %> src="./img/Fortnite.png" width="400px" height="300px"
-          <% if(isLoggedIn){ %>
-            style="opacity: 0.2;"
-          <% } %> />
+          <img
+            <%# Als de gebruiker niet is ingelogd, dan wordt een foutmelding getoond bij het proberen openen van het Fortnite-project %> 
+            <% if (!isLoggedIn) { %> 
+              onclick="document.getElementById('dialogFortnite').classList.toggle('dialog--visible')" 
+            <% } %> 
+            src="/img/fortnite.png" width="400px" height="300px"
+            <%# Als de gebruiker is ingelogd, dan wordt de toegang naar het Fortnite-project verzadigt %>
+            <% if (isLoggedIn) { %>
+              style="opacity: 0.2;"
+            <% } %>
+          >
           <figcaption>Fortnite</figcaption>
         </figure>
         <dialog id="dialogFortnite">
-          <p>Log eerst in!</p>
+          <p>
+            Log eerst in!
+          </p>
         </dialog>
       </article>
-
+      <!--Fifa-project-->
       <article class="project">
         <figure>
-          <img <% if(!isLoggedIn) { %> onclick="document.getElementById('dialogFifa').classList.toggle('dialog--visible')" <% } %> src="./img/fifa.png" width="400px" height="300px"
-          <% if(isLoggedIn){ %>
-            style="opacity: 0.2;"
-          <% } %> />
+          <img
+            <%# Als de gebruiker niet is ingelogd, dan wordt een foutmelding getoond bij het proberen openen van het Fifa-project %> 
+            <% if (!isLoggedIn) { %> 
+              onclick="document.getElementById('dialogFifa').classList.toggle('dialog--visible')" 
+            <% } %> 
+            src="/img/Fifa.png" width="400px" height="300px"
+            <%# Als de gebruiker is ingelogd, dan wordt de toegang naar het Fifa-project verzadigt %>
+            <% if (isLoggedIn) { %>
+              style="opacity: 0.2;"
+            <% } %>
+          >
           <figcaption>Fifa</figcaption>
         </figure>
         <dialog id="dialogFifa">
-          <p>Log eerst in!</p>
+          <p>
+            Log eerst in!
+          </p>
         </dialog>
       </article>
-
+      <!--MTG-project-->
       <article class="project">
         <figure>
-          <img <% if(!isLoggedIn) { %> onclick="document.getElementById('dialogMTG').classList.toggle('dialog--visible')" <% } %> src="./img/MTG.png" width="400px" height="300px" 
-          <% if(isLoggedIn){ %>
-            style="opacity: 0.2;"
-          <% } %> />
+          <img
+            <%# Als de gebruiker niet is ingelogd, dan wordt een foutmelding getoond bij het proberen openen van het MTG-project %> 
+            <% if (!isLoggedIn) { %> 
+              onclick="document.getElementById('dialogMTG').classList.toggle('dialog--visible')" 
+            <% } %> 
+            src="/img/mtg.png" width="400px" height="300px"
+            <%# Als de gebruiker is ingelogd, dan wordt de toegang naar het MTG-project verzadigt %>
+            <% if (isLoggedIn) { %>
+              style="opacity: 0.2;"
+            <% } %>
+          >
           <figcaption>MTG</figcaption>
         </figure>
         <dialog id="dialogMTG">
-          <p>Log eerst in!</p>
+          <p>
+            Log eerst in!
+          </p>
         </dialog>
       </article>
-
+      <!--Pokemon-project-->
       <article class="project">
         <figure>
-          <img <% if(!isLoggedIn) { %> onclick="document.getElementById('dialogPokemon').classList.toggle('dialog--visible')" <% } %> src="./img/pokemon.png" width="400px" height="300px"
-          <% if(isLoggedIn){ %>
-            style="opacity: 0.2;"
-          <% } %> />
+           <img
+            <%# Als de gebruiker niet is ingelogd, dan wordt een foutmelding getoond bij het proberen openen van het Pokemon-project %> 
+            <% if (!isLoggedIn) { %> 
+              onclick="document.getElementById('dialogPokemon').classList.toggle('dialog--visible')" 
+            <% } %> 
+            src="/img/Pokemon.png" width="400px" height="300px"
+            <%# Als de gebruiker is ingelogd, dan wordt de toegang naar het Pokemon-project verzadigt %>
+            <% if (isLoggedIn) { %>
+              style="opacity: 0.2;"
+            <% } %>
+          >
           <figcaption>Pokemon</figcaption>
         </figure>
         <dialog id="dialogPokemon">
-          <p>Log eerst in!</p>
+          <p>
+            Log eerst in!
+          </p>
         </dialog>
       </article>
-
+      <!--NBB-project-->
       <article class="project">
         <figure>
-          <% if(isLoggedIn) { %> <a href="home"> <% } %>
-            <img <% if(!isLoggedIn) { %> onclick="document.getElementById('dialogNBB').classList.toggle('dialog--visible')" <% } %> src="./img/NBB.png" width="400px" height="300px"/>
-          <% if(isLoggedIn) { %> </a> <% } %>
+          <%# Als de gebruiker is ingelogd, dan kan de gebruiker het NBB-project openen (d1) %>
+          <% if (isLoggedIn) { %> 
+            <a href="home">
+          <% } %>
+          <img
+            <%# Als de gebruiker niet is ingelogd, dan wordt een foutmelding getoond bij het proberen openen van het NBB-project %> 
+            <% if (!isLoggedIn) { %> 
+              onclick="document.getElementById('dialogNBB').classList.toggle('dialog--visible')" 
+            <% } %> 
+            src="/img/nbb.png" width="400px" height="300px"
+          >
+          <%# Als de gebruiker is ingelogd, dan kan de gebruiker het NBB-project openen (d2) %>
+          <% if (isLoggedIn) { %>
+            </a>
+          <% } %>
           <figcaption>NBB</figcaption>
         </figure>
         <dialog id="dialogNBB">
-          <p>Log eerst in!</p>
+          <p>
+            Log eerst in!
+          </p>
         </dialog>
       </article>
-
+      <!--LegoMasters-project--->
       <article class="project">
         <figure>
-          <img <% if(!isLoggedIn) { %> onclick="document.getElementById('dialogLegoMasters').classList.toggle('dialog--visible')" <% } %> src="./img/lego-masters.png" width="400px" height="300px"
-          <% if(isLoggedIn){ %>
-            style="opacity: 0.2;"
-          <% } %>/>
+          <img
+            <%# Als de gebruiker niet is ingelogd, dan wordt een foutmelding getoond bij het proberen openen van het Lego Masters-project %> 
+            <% if (!isLoggedIn) { %> 
+              onclick="document.getElementById('dialogLegoMasters').classList.toggle('dialog--visible')" 
+            <% } %> 
+            src="/img/lego-masters.png" width="400px" height="300px"
+            <%# Als de gebruiker is ingelogd, dan wordt de toegang naar het Lego Masters-project verzadigt %>
+            <% if (isLoggedIn) { %>
+              style="opacity: 0.2;"
+            <% } %>
+          >
           <figcaption>LegoMasters</figcaption>
         </figure>
         <dialog id="dialogLegoMasters">
-          <p>Log eerst in!</p>
+          <p>.
+            Log eerst in!
+          </p>
         </dialog>
       </article>
-
+      <!--LOTR-project-->
       <article class="project">
         <figure>
-          <img <% if(!isLoggedIn) { %> onclick="document.getElementById('dialogLoTR').classList.toggle('dialog--visible')" <% } %> src="./img/lord-of-the-rings.png" width="400px" height="300px"
-          <% if(isLoggedIn){ %>
-            style="opacity: 0.2;"
-          <% } %> />
+          <img
+            <%# Als de gebruiker niet is ingelogd, dan wordt een foutmelding getoond bij het proberen openen van het LoTR-project %> 
+            <% if (!isLoggedIn) { %> 
+              onclick="document.getElementById('dialogLoTR').classList.toggle('dialog--visible')" 
+            <% } %> 
+            src="/img/lotr.png" width="400px" height="300px"
+            <%# Als de gebruiker is ingelogd, dan wordt de toegang naar het LoTR-project verzadigt %>
+            <% if (isLoggedIn) { %>
+              style="opacity: 0.2;"
+            <% } %>
+          >
           <figcaption>LoTR</figcaption>
         </figure>
         <dialog id="dialogLoTR">
-          <p>Log eerst in!</p>
+          <p>
+            Log eerst in!
+          </p>
         </dialog>
       </article>
     </main>

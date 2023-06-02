@@ -1,24 +1,15 @@
 /*Importatie*/
-import express from "express"; //Express()
-import ejs from "ejs";
-import bcrypt from "bcrypt";
-import { getCompanyData } from "./api";
-import { User, Company } from "./types";
-import {
-  userExist,
-  fetchHistory,
-  fetchCompany,
-  connect,
-  exit,
-  addToHistory,
-  addCompany,
-  inHistory,
-  client,
-} from "./db";
-import { WithId, Document } from "mongodb";
+import express from "express"; //Express-functies
+import ejs from "ejs";//EJS-templating
+import bcrypt from "bcrypt";//Encryptiemethoden
+import { getCompanyData } from "./api";//Te gebruiken API-functies
+import { User, Company, History } from "./types";//Te gebruiken interfaces
+import { fetchHistory, fetchCompany, connect, addToHistory, addCompany, client } from "./db";//Te gebruiken databankfuncties
+import { WithId, Document } from "mongodb";//Te gebruiken MongoDb-interfaces
 
 /*Constantedeclaraties*/
-const app = express(); //Express-app maken
+const app = express(); //Express-applicatie
+//Een "leeg" bedrijf
 const emptyCompanyData: Company = {
   name: "",
   referencenumber: "",
@@ -29,119 +20,58 @@ const emptyCompanyData: Company = {
   profit: 0,
 };
 
-/*Variabelendeclaraties*/
-let activeUser: User = {name: "", password: ""}; //De ingelogde gebruiker
-let companiesList: Company[] = [];
-let user: User;
-let isLoggedIn: Boolean = false;
-/*Synchrone functies*/
-app.set("view engine", "ejs"); //EJS-templating instelen
-app.set("port", 3000); //Luisterende poort: 3000
-app.use(express.json({ limit: "1mb" }));
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static("public")); //Statische assets leesbaar maken
+/*Variabeledeclaraties*/
+//De ingelogde gebruiker
+let activeUser: User = { 
+  username: "",
+  password: ""
+};
+let companiesList: Company[] = [];//De lijst met de door ingelogde gebruiker opgezochte bedrijven
+let isLoggedIn: Boolean = false;//Als de actieve gebruiker al dan niet is ingelogd
 
-// Index/landing //
-app.get("/", (req: any, res: any) => res.render("landing", {isLoggedIn: isLoggedIn})); //landing.ejs inladen bij '/'
+/*Functiedefinities*/
+//EJS-templating instellen
+app.set("view engine", "ejs");
+//Statische assets inladen
+app.use(express.static("public"));
+//Datagrootte van verkregen JSON-bestanden op een limiet zetten van 1 mb
+app.use(express.json({ limit: "1mb" }))
+//Request-objecten laten uitlezen als string
+app.use(express.urlencoded({ extended: true }))
+//Poort 3000 als luisterende poort instellen
+app.set("port", 3000);
 
-// login //
-app.get("/login", (req: any, res: any) => {
-  res.render("login");
-}); //login.ejs inladen bij '/login'
-app.post("/login", async (req, res) => {
-  activeUser = { name: req.body.email, password: req.body.password };
-  let dbUser = await client.db("NBB").collection("Users").findOne({ name: activeUser.name });
-        if(dbUser == null){
-          res.render("login", { succses: "Wrong username or password." });
-        }else{
-            const hash = await bcrypt.compare(activeUser.password,dbUser.password);
-            if(hash){
-              isLoggedIn = true;
-              res.render("landing", {
-                companyData: emptyCompanyData,
-                company2Data: emptyCompanyData,
-                isLoggedIn: isLoggedIn
-              }); 
-              }else{
-                res.render("login", { succses: "Wrong username or password." });
-            }
-        }
-});
-app.get("/logout", (req, res) => {
-  activeUser = {name: "", password: ""};
+//De landingpagina openen bij het starten van de webapplicatie en bij de URL: '/'
+app.get("/", (req: any, res: any) => res.render("landing", { isLoggedIn: isLoggedIn} ));
+//De loginpagina openen bij de URL: '/login'
+app.get("/login", (req: any, res: any) => res.render("login"));
+//De gebruiker uitloggen en terugbrengen naar de logoutpagina
+app.get("/logout", (req: any, res: any) => {
+  activeUser = {
+    username: "", 
+    password: ""
+  };
   isLoggedIn = false;
-    res.render("landing", {
-      companyData: emptyCompanyData,
-      company2Data: emptyCompanyData,
-      isLoggedIn: isLoggedIn
-    });
+  res.render("landing", { companyData: emptyCompanyData, company2Data: emptyCompanyData, isLoggedIn: isLoggedIn });
 });
-
-// Home //
-app.get("/home", (req, res) => {
-  if (activeUser.name != "") {
-    res.render("home", {
-      companyData: emptyCompanyData,
-      company2Data: emptyCompanyData,
-    }); //home.ejs inladen bij '/home'
+//Gebruikersrechten controleren bij de URL: '/home'
+app.get("/home", (req: any, res: any) => {
+  //Als de gebruiker is ingelogd dan wordt de gebruiker doorverwezen naar de homepagina, anders naar de loginpagina
+  if (activeUser.username != "") {
+    res.render("home", { companyData: emptyCompanyData, company2Data: emptyCompanyData });
   } else {
     res.render("login");
   }
 });
-app.post("/home", async (req, res) => {
-  let companyData = emptyCompanyData;
-  let company2Data = emptyCompanyData;
-  const referencenumberCompany1: string = req.body.company1 as string;
-  const referencenumberCompany2: string = req.body.company2 as string;
-  if (referencenumberCompany1 == "" || referencenumberCompany2 == "") {
-    res.render("home", {
-      companyData: emptyCompanyData,
-      company2Data: emptyCompanyData,
-      succses: "Vul twee ondernemingsnummers in",
-    });
-  }
-  else if (referencenumberCompany1 == referencenumberCompany2) {
-    res.render("home", {
-      companyData: emptyCompanyData,
-      company2Data: emptyCompanyData,
-      succses: "Vul twee verschillende ondernemingsnummers in",
-    });
-  }
-  else {
-    companyData = await getCompanyData(referencenumberCompany1);
-    if (companyData.address != "No data found") {
-      const searchCompanyData = {
-        username: activeUser.name,
-        referencenumber: companyData.referencenumber,
-      };
-      addToHistory(searchCompanyData);
-      addCompany(companyData);
-    }
-
-    company2Data = await getCompanyData(referencenumberCompany2);
-    if (company2Data.address != "No data found" ){
-      const searchCompany2Data = {
-        username: activeUser.name,
-        referencenumber: company2Data.referencenumber,
-      };
-      addToHistory(searchCompany2Data);
-      addCompany(company2Data);
-    }
-
-  res.render("home", {
-    companyData: companyData,
-    company2Data: company2Data,
-    succses: "Vul twee geldige ondernemingsnummers in",
-  }); //home.ejs inladen bij '/home' na de input van de gebruiker
-  }
-});
-
-// History //
+//Gebruikersrechten controleren bij de URL: '/history'
 app.get("/history", async (req: any, res: any) => {
-  if (activeUser.name != "") {
-    const userHistory = await fetchHistory(activeUser.name);
+  //Als de gebruiker is ingelogd dan wordt de gebruiker doorverwezen naar de historiekpagina, anders naar de loginpagina
+  if (activeUser.username != "") {
+    const userHistory: WithId<Document>[] = await fetchHistory(activeUser.username);//De zoekgeschiedenis van de ingelogde gebruiker
+    //Voor elke zoekopdracht in de zoekgeschiedenis van de ingelogde gebruiker wordt het opgezochte bedrijf opgehaald en bijgehouden
     for (const search of userHistory) {
-      const company = await fetchCompany(search.referencenumber);
+      const company: WithId<Document> | null = await fetchCompany(search.referencenumber);//Het opgezochte bedrijf uit de zoekopdracht
+      //Als de data van het opgezochte bedrijf kan worden gevonden, dan wordt deze opgehaald en bijgehouden
       if (company != null) {
         companiesList.push({
           address: company.address,
@@ -150,24 +80,25 @@ app.get("/history", async (req: any, res: any) => {
           equities: company.equities,
           name: company.name,
           profit: company.profit,
-          referencenumber: company.referencenumber,
+          referencenumber: company.referencenumber
         });
       }
     }
-    res.render("history", {
-      searchedCompanies: companiesList,
-      company: emptyCompanyData,
-    });
+    res.render("history", { searchedCompanies: companiesList, company: emptyCompanyData });
     companiesList = [];
-  } else {
+  } else{
     res.render("login");
   }
-}); //history.ejs inladen bij '/history'
-app.get("/history/:referencenumber", async (req, res) => {
-  if (activeUser.name != "") {
-    const userHistory = await fetchHistory(activeUser.name);
+});
+//Gebruikersrechten controleren bij de URL: '/history/' gevolgd door een ondernemingsnummer
+app.get("/history/:referencenumber", async (req: any, res: any) => {
+  //Als de gebruiker is ingelogd dan wordt de zoekgeschiedenis ingeladen, anders wordt de gebruiker teruggestuurd naar de loginpagina
+  if (activeUser.username != "") {
+    const userHistory: WithId<Document>[] = await fetchHistory(activeUser.username);//De zoekgeschiedenis van de ingelogde gebruiker
+    //Voor elke zoekopdracht in de zoekgeschiedenis van de ingelogde gebruiker wordt het opgezochte bedrijf opgehaald en bijgehouden
     for (const search of userHistory) {
-      const company = await fetchCompany(search.referencenumber);
+      const company: WithId<Document> | null = await fetchCompany(search.referencenumber);//Het opgezochte bedrijf uit de zoekopdracht
+      //Als de data van het opgezochte bedrijf kan worden gevonden, dan wordt deze opgehaald en bijgehouden
       if (company != null) {
         companiesList.push({
           address: company.address,
@@ -176,19 +107,17 @@ app.get("/history/:referencenumber", async (req, res) => {
           equities: company.equities,
           name: company.name,
           profit: company.profit,
-          referencenumber: company.referencenumber,
+          referencenumber: company.referencenumber
         });
       }
     }
-    const spotlightCompanyOrLink = await fetchCompany(req.params.referencenumber);
+    const spotlightCompanyOrLink: WithId<Document> | null = await fetchCompany(req.params.referencenumber);//De data van het geselecteerde bedrijf
+    //Als de dat van het geselecteerd bedrijf kan worden gevonden, dan wordt deze meegegeven, en anders wordt er naar naar de meegegeven pagina doorverwezen
     if (spotlightCompanyOrLink != null) {
-      res.render("history", {
-        searchedCompanies: companiesList,
-        company: spotlightCompanyOrLink,
-      });
+      res.render("history", { searchedCompanies: companiesList, company: spotlightCompanyOrLink });
       companiesList = [];
     } else {
-      switch (req.params.referencenumber) {
+      switch(req.params.referencenumber){
         case "home":
           res.redirect("/home");
           companiesList = [];
@@ -210,25 +139,117 @@ app.get("/history/:referencenumber", async (req, res) => {
   } else {
     res.render("login");
   }
-}); //history.ejs opnieuw inladen na een selectie uit de zoekgeschiedenis
-
+});
+//Gebruikersrechten controleren bij de URL: '/about'
 app.get("/about", (req: any, res: any) => {
-  if (activeUser.name != "") {
+  //Als de gebruiker is ingelogd, dan wordt de over ons-pagina geladen, anders de loginpagina
+  if (activeUser.username != "") {
     res.render("about");
   } else {
     res.render("login");
   }
-}); //about.ejs inladen bij '/about'
+});
+//Gebruikersrechten controleren bij de URL: '/contact'
 app.get("/contact", (req: any, res: any) => {
-  if (activeUser.name != "") {
+  //Als de gebruiker is ingelogd, dan wordt de contactpagina geladen, anders de loginpagina
+  if (activeUser.username != "") {
     res.render("contact");
   } else {
     res.render("login");
   }
-}); //contact.ejs inladen bij '/contact'
+});
 
+//Het evalueren van de actieve gebruiker na het ingeven van de inloggegevens
+app.post("/login", async (req: any, res: any) => {
+  //De inloggegevens ophalen
+  activeUser = { 
+    username: req.body.username,
+    password: req.body.password
+  }
+  const correctUserdata: User | null = await client.db("NBB").collection("Users").findOne<User>({ name: activeUser.username });//De correcte gebruikergegevens
+  const correctPw: string = correctUserdata !== null ? correctUserdata.password : "";//Het correcte wachtwoord
+  const isMatch: Boolean = await bcrypt.compare(activeUser.password, correctPw);//Als het ingegeven wachtwoord al dan niet correct is
+  //Als het wachtwoord overeenkomt (en de gebruiker dus bestaat), dan wordt erz, anders wordt er een foutmelding meegegeven
+  if (isMatch) {
+    isLoggedIn = true;
+    res.render("landing", { companyData: emptyCompanyData, company2Data: emptyCompanyData, isLoggedIn: isLoggedIn });
+  } else {
+    res.render("login", { noSuccses: "Verkeerde gebruikersnaam of wachtwoord." });
+  }
+});
+//Het ophalen van de gevraagde data nadat de ingelogde gebruiker de vergelijkingstool gebruikt heeft
+app.post("/home", async (req: any, res: any) => {
+  let companyData: Company = emptyCompanyData;//De data van het ene bedrijf
+  let company2Data: Company = emptyCompanyData;//De data van het andere bedrijf
+  const referencenumberCompany1: string = req.body.company1 as string;//Het ene ingegeven ondernemingsnummer
+  const referencenumberCompany2: string = req.body.company2 as string;//Het andere ingegeven ondernemingsnummer
+  //Als de gebruiker een ondernemingsnummer leeg laat of tweemaal dezelfde ingeeft, dan wordt er een foutmelding meegegeven, anders wordt de bedrijfsdata opgehaald
+  if (referencenumberCompany1 == "" || referencenumberCompany2 == "") {
+    res.render("home", { companyData: emptyCompanyData, company2Data: emptyCompanyData, succses: "Vul twee ondernemingsnummers in" });
+  } else if (referencenumberCompany1 == referencenumberCompany2) {
+    res.render("home", { companyData: emptyCompanyData, company2Data: emptyCompanyData, succses: "Vul twee verschillende ondernemingsnummers in" });
+  } else {
+    companyData = await getCompanyData(referencenumberCompany1);
+    //Als de ene onderneming genoeg data heeft, dan wordt de zoekopdracht opgeslagen
+    if (companyData.address != "No data found") {
+      const searchCompanyData: History = { username: activeUser.username, referencenumber: companyData.referencenumber };//De zoekopdracht van het ene bedrijf
+      addToHistory(searchCompanyData);
+      addCompany(companyData);
+    }
+    company2Data = await getCompanyData(referencenumberCompany2);
+    //Als de andere onderneming genoeg data heeft, dan wordt de zoekopdracht opgeslagen
+    if (company2Data.address != "No data found" ) {
+      const searchCompany2Data: History = { username: activeUser.username, referencenumber: company2Data.referencenumber };//De zoekopdracht van het andere bedrijf
+      addToHistory(searchCompany2Data);
+      addCompany(company2Data);
+    }
+    res.render("home", { companyData: companyData, company2Data: company2Data, succses: "Vul twee geldige ondernemingsnummers in" });
+  }
+});
+//Het ophalen van de zoekgeschidenis, rekening houdend met de eventuele zoekopdracht
+app.post('/history', async (req: any, res: any) => {
+  const search = req.body.searchTerm;//De ingegeven zoekterm
+  const searchTerm: string = search.toLowerCase().trim();//De zoekopdracht
+  const userHistory: WithId<Document>[] = await fetchHistory(activeUser.username);//De zoekgeschiedenis van de ingelogde gebruiker
+  //Voor elke zoekopdracht in de zoekgeschiedenis van de ingelogde gebruiker wordt het opgezochte bedrijf opgehaald en bijgehouden
+  for (const search of userHistory) {
+    const company: WithId<Document> | null = await fetchCompany(search.referencenumber);//Het opgezochte bedrijf uit de zoekopdracht
+    //Als de data van het opgezochte bedrijf kan worden gevonden, dan wordt er verder geëvalueerd
+    if (company != null) {
+      //Als de gebruiker een zoekterm heeft ingegeven, dan wordt er verder geëvalueerd, anders wordt de volledige zoekgeschiedenis opgehaald
+      if (searchTerm != "") {
+        //Als de bedrijfsnaam de zoekterm bevat, dan wordt deze opgehaald en bijgehouden, anders wordt de volledige zoekgeschiedenis opgehaald
+        if (company.name.toLowerCase().includes(searchTerm)) {
+          companiesList.push({
+            address: company.address,
+            debts: company.debts,
+            depositDate: company.depositDate,
+            equities: company.equities,
+            name: company.name,
+            profit: company.profit,
+            referencenumber: company.referencenumber
+          });
+        }
+      } else {
+        companiesList.push({
+          address: company.address,
+          debts: company.debts,
+          depositDate: company.depositDate,
+          equities: company.equities,
+          name: company.name,
+          profit: company.profit,
+          referencenumber: company.referencenumber
+        });
+      }
+    }
+  }
+  res.render("history", { searchedCompanies: companiesList, company: emptyCompanyData });
+  companiesList = [];
+})
+
+//Lokale server laten luisteren
 app.listen(app.get("port"), () => {
   console.log("[server] http://localhost:" + app.get("port"));
   console.log("0446486050\n0415675385");
   connect();
-}); //Lokale server starten
+});

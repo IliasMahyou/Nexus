@@ -1,48 +1,39 @@
-import { ObjectId } from "mongodb";
+/*Importatie*/
+import { ObjectId } from "mongodb";//Het ObjectId-type
 
-export interface Company{
-    _id?:ObjectId,
-    name:string,
-    referencenumber:string,
-    address:string,
-    depositDate: string,
-    equities:number,
-    debts:number,
-    profit:number,
+/*Interfaces*/
+//Een bedrijf
+interface Company {
+    _id?:ObjectId,//Het automatisch gegeven id wanneer het bedrijf wordt opgeslagen in de databank
+    name:string,//De naam van het bedrijf
+    referencenumber:string,//Het ondernemingsnummer van het bedrijf
+    address:string,//Het adres van het bedrijf
+    depositDate: string,//De datum van neerlegging van de opgehaalde bedragen
+    equities:number,//Het eigen vermogen van het bedrijf
+    debts:number,//De schulden van het bedrijf
+    profit:number,//De winst van het bedrijf
 }
-
-export interface User{
-    name:string,
-    password:string,
+//Een gebruiker
+interface User {
+    username:string,//De gebruikersnaam van de gebruiker
+    password:string,//Het wachtwoord van de gebruiker
 }
-
-export interface History{
-    _id?:ObjectId,
-    username:string,
-    referencenumber:string,
+//Een zoekopdracht
+interface History {
+    _id?:ObjectId,//Het automatisch gegeven id wanneer de zoekopdracht wordt opgeslagen in de databank
+    username:string,//De gebruikersnaam van de gebruiker die de zoekopdracht verrichtte
+    referencenumber:string,//Het ondernemingsnummer van het bedrijf die de gebruiker opzocht
 }
-
-export interface fetchOptions {
-    method: string;
+//Een set van ophaalopties voor de API-oproep
+interface FetchOptions {
+    method: string;//Een mee te geven methode
     headers: {
-      "NBB-CBSO-Subscription-Key": string;
-      "X-Request-Id": string;
-      Accept: string;
+      "NBB-CBSO-Subscription-Key": string;//Een geldige subscriptiesleutel
+      "X-Request-Id": string;//Een geldige aanvraag-id
+      Accept: string;//Het type van geretourneerde data
     };
-    timeout: number;
+    timeout: number;//De time-out tijd van de API-oproep
 }
 
-export interface Balance {
-    equity: number;
-    currentAssets: number;
-    shortTermDebts: number;
-    totalPassive: number;
-    profit: number;
-    depositDate: string;
-}
-
-export interface Formules {
-    liquiditeit: number;
-    solvabiliteit: number;
-    rentabiliteit: number;
-}
+/*Exporatie*/
+export { Company, User, History, FetchOptions }//De te gebruiken interfaces
