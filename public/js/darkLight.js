@@ -11,7 +11,7 @@ function enableDarkMode() {
   body.classList.add("body--dark");
   sunIcon.className = "bx bx-sun";
   moonIcon.className = "bx bxs-moon";
-  localStorage.setItem("mode", "body--dark");
+  localStorage.setItem("mode", "dark");
 }
 //Deactiveert donkere modus en bewaart deze keuze
 function disableDarkMode() {

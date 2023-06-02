@@ -13,7 +13,7 @@
     <!--Paginatitel-->
     <title>Landing Page</title>
   </head>
-  <body id="body-landing" class="light">
+  <body id="body-landing">
     <!--Navigatiebalk-->
     <nav>
       <!--Logo-->
@@ -21,13 +21,13 @@
       <%# Als de gebruiker niet is ingelogd, dan wordt de aanmeldingsknop getoond, anders de afmeldingsknop %>
       <% if (!isLoggedIn) { %>
         <!-- Aanmeldingsknop-->
-        <a href="login"><button class="login-button">Meld aan</button></a>
+        <a href="login"><button class="nav__button--login">Meld aan</button></a>
       <% } else { %>
         <!--Afmeldingsknop-->
-        <a href="logout"><button class="login-button">Meld af</button></a>
+        <a href="logout"><button class="nav__button--login">Meld af</button></a>
       <% } %>
     </nav>
-    <main id="main-landing">
+    <main id="landing">
       <!--Fortnite-project-->
       <article class="project">
         <figure>
