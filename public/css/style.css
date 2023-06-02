@@ -27,15 +27,13 @@ body {
     "footer footer footer footer footer";
   grid-template-rows: auto auto 1fr auto;
 }
-h1, h2 {
-  text-transform: uppercase;
-}
 main {
   grid-area: main;
   height: 100%;
 }
-main h1 {
+main h1, #home h2 {
   color: var(--nexus-dark-purple);
+  text-transform: uppercase;
   letter-spacing: 0.1rem;
 }
 main button {
@@ -610,7 +608,6 @@ text-align: center;
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
   height: 60%;
-
 }
 #company-info table {
   width: 25vw;
@@ -621,6 +618,7 @@ text-align: center;
   margin-top: 15px;
   padding-bottom: 3rem;
   font-size: 1.5rem;
+  font-weight: 600;
 }
 #company-info table th {
   text-align: left;
@@ -628,6 +626,7 @@ text-align: center;
 #company-info table td {
   text-align: right;
 }
+
 /*Zoekbalk*/
 .search-box__div {
   position: relative;
@@ -788,6 +787,12 @@ text-align: center;
   color: var(--nexus-dark-purple);
   text-transform: uppercase;
   letter-spacing: 0.4rem;
+}
+#contact-info address {
+  font-style: normal;
+}
+address a {
+  color: var(--nexus-purple);
 }
 #contact-info p {
   margin: 0 4rem 1rem;
