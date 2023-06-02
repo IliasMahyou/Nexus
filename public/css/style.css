@@ -180,7 +180,7 @@ nav ul li a {
 .body--dark {
   color: var(--nexus-light-blue);
 }
-.body--dark #home__comparison h1 {
+.body--dark #home__comparison h2 {
   color: var(--nexus-light-blue);
 }
 .body--dark #contact-info h1 {

@@ -265,7 +265,31 @@ function updateLanguage(selectedLanguage) {
       para.textContent = langPackage.para;
       //Als er een foutmelding is, dan wordt deze ook vertaald
       if (comparisonErr != null) {
-        comparisonErr.textContent = langPackage.comparisonErr;
+        if(comparisonErr.textContent == "Vul twee ondernemingsnummers in"){
+          if(langPackage.lang == "nl"){
+            comparisonErr.textContent = "Vul twee ondernemingsnummers in";
+          }else if(langPackage.lang == "en"){
+            comparisonErr.textContent = "Fill in two company numbers";
+          }else if(langPackage.lang == "fr"){
+            comparisonErr.textContent = "Remplissez deux numéros d'entreprise";
+          }
+        }else if(comparisonErr.textContent == "Vul twee verschillende ondernemingsnummers in"){
+          if(langPackage.lang == "nl"){
+            comparisonErr.textContent = "Vul twee verschillende ondernemingsnummers in";
+          }else if(langPackage.lang == "en"){
+            comparisonErr.textContent = "Fill in two different company numbers";
+          }else if(langPackage.lang == "fr"){
+            comparisonErr.textContent = "Remplissez deux numéros d'entreprise différents";
+          }
+        }else if(comparisonErr.textContent == "Vul twee geldige ondernemingsnummers in"){
+          if(langPackage.lang == "nl"){
+            comparisonErr.textContent = "Vul twee geldige ondernemingsnummers in";
+          }else if(langPackage.lang == "en"){
+            comparisonErr.textContent = "Fill in two valid company numbers";
+          }else if(langPackage.lang == "fr"){
+            comparisonErr.textContent = "Remplissez deux numéros d'entreprise valides";
+          }
+        }
       }
       h2.textContent = langPackage.h2;
       btnCompare.textContent = langPackage.btnCompare;

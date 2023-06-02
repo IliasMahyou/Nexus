@@ -177,8 +177,10 @@ app.post("/login", async (req: any, res: any) => {
     res.render("login", { noSuccses: "Verkeerde gebruikersnaam of wachtwoord." });
   }
 });
+   
 //Het ophalen van de gevraagde data nadat de ingelogde gebruiker de vergelijkingstool gebruikt heeft
 app.post("/home", async (req: any, res: any) => {
+  let succses: string = "";
   let companyData: Company = emptyCompanyData;//De data van het ene bedrijf
   let company2Data: Company = emptyCompanyData;//De data van het andere bedrijf
   const referencenumberCompany1: string = req.body.company1 as string;//Het ene ingegeven ondernemingsnummer
