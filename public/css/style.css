@@ -49,6 +49,11 @@ footer {
   text-align: center;
 }
 
+footer a{
+  text-decoration: none;
+  color: white;
+}
+
 /*Navigatie*/
 nav {
   grid-area: nav;
@@ -903,6 +908,24 @@ address a {
   background-color: var(--nexus-dark-purple);
 }
 
+/* bronvermeldingen-page */
+#bronvermeldingen{
+  display: flex;
+  justify-content: center;
+  margin: 3rem;
+}
+
+#bronvermeldingen section{
+  padding: 7rem;
+}
+
+#bronvermeldingen a{
+  text-decoration: none;
+  font-size: 14pt;
+}
+
+
+
 /*Mediaqueries*/
 @media screen and (max-width: 776px) {
   #home-header {
@@ -1044,6 +1067,10 @@ address a {
     width: 100%;
     order: 2;
   }
+  #bronvermeldingen{
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 @media screen and (max-width: 900px) {
   #search-history {
@@ -1066,5 +1093,9 @@ address a {
   #company-info table caption {
     padding-bottom: 1rem;
     font-size: 1rem;
+  }
+  #bronvermeldingen{
+    flex-wrap: wrap;
+    margin: 0rem;
   }
 }

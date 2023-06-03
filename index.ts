@@ -45,6 +45,8 @@ app.set("port", 3000);
 app.get("/", (req: any, res: any) => res.render("landing", { isLoggedIn: isLoggedIn} ));
 //De loginpagina openen bij de URL: '/login'
 app.get("/login", (req: any, res: any) => res.render("login"));
+//De bronvermeldingenpagina openen bij de URL: '/bronvermeldingen'
+app.get("/bronvermeldingen", (req: any, res: any) => res.render("bronvermeldingen"));
 //De gebruiker uitloggen en terugbrengen naar de logoutpagina
 app.get("/logout", (req: any, res: any) => {
   activeUser = {
