@@ -249,6 +249,15 @@ app.post('/history', async (req: any, res: any) => {
   companiesList = [];
 })
 
+//De bronvermeldingenpagina openen bij de URL: '/bronvermeldingen'
+app.get("/bronvermeldingen", (req: any, res: any) =>{
+  if (activeUser.username != "") {
+    res.render("bronvermeldingen");
+  } else {
+    res.render("login");
+  }
+});
+
 //Lokale server laten luisteren
 app.listen(app.get("port"), () => {
   console.log("[server] http://localhost:" + app.get("port"));
