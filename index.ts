@@ -1,5 +1,5 @@
 /*Importatie*/
-import express from "express"; //Express-functies
+import express from "express";//Express-functies
 import ejs from "ejs";//EJS-templating
 import bcrypt from "bcrypt";//Encryptiemethoden
 import { getCompanyData } from "./api";//Te gebruiken API-functies
@@ -7,8 +7,8 @@ import { User, Company, History } from "./types";//Te gebruiken interfaces
 import { fetchHistory, fetchCompany, connect, addToHistory, addCompany, client } from "./db";//Te gebruiken databankfuncties
 import { WithId, Document } from "mongodb";//Te gebruiken MongoDb-interfaces
 
-/*Constantedeclaraties*/
-const app = express(); //Express-applicatie
+/*Constanten*/
+const app = express();//Express-applicatie
 //Een "leeg" bedrijf
 const emptyCompanyData: Company = {
   name: "",
@@ -20,7 +20,7 @@ const emptyCompanyData: Company = {
   profit: 0,
 };
 
-/*Variabeledeclaraties*/
+/*Variabelen*/
 //De ingelogde gebruiker
 let activeUser: User = { 
   username: "",
@@ -29,7 +29,6 @@ let activeUser: User = {
 let companiesList: Company[] = [];//De lijst met de door ingelogde gebruiker opgezochte bedrijven
 let isLoggedIn: Boolean = false;//Als de actieve gebruiker al dan niet is ingelogd
 
-/*Functiedefinities*/
 //EJS-templating instellen
 app.set("view engine", "ejs");
 //Statische assets inladen
@@ -158,6 +157,14 @@ app.get("/contact", (req: any, res: any) => {
     res.render("login");
   }
 });
+//De bronvermeldingenpagina openen bij de URL: '/sources'
+app.get("/sources", (req: any, res: any) =>{
+  if (activeUser.username != "") {
+    res.render("sources");
+  } else {
+    res.render("login");
+  }
+});
 
 //Het evalueren van de actieve gebruiker na het ingeven van de inloggegevens
 app.post("/login", async (req: any, res: any) => {
@@ -248,15 +255,6 @@ app.post('/history', async (req: any, res: any) => {
   res.render("history", { searchedCompanies: companiesList, company: emptyCompanyData });
   companiesList = [];
 })
-
-//De bronvermeldingenpagina openen bij de URL: '/bronvermeldingen'
-app.get("/bronvermeldingen", (req: any, res: any) =>{
-  if (activeUser.username != "") {
-    res.render("bronvermeldingen");
-  } else {
-    res.render("login");
-  }
-});
 
 //Lokale server laten luisteren
 app.listen(app.get("port"), () => {

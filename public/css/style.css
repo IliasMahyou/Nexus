@@ -634,59 +634,6 @@ text-align: center;
 #company-info table td {
   text-align: right;
 }
-/* SearchBar */
-/* Bron: https://codepen.io/omarsherifs/pen/KGLYYW */
-.searchBox {
-  position: relative;
-  left: 50%;
-  bottom: 10%;
-  transform:  translate(-50%,50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  height: 40px;
-  border-radius: 10px;
-  padding: 8px;
-}
-
-.searchBox:hover {
-  background-color:  rgba(0, 0, 0, 0.6);
-  transition: 0.6s;
-}
-.searchBox:hover .searchInput {
-  width: 150px;
-  padding: 0 6px;
-}
-
-.searchBox:hover .searchButton {
- cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.6);
-}
-
-.searchButton {
-  color: var(--nexus-blue);
-  float: right;
-  width: 40px;
-  height: 40px;
-  border-radius: 30%;
-  background-color: rgba(0, 0, 0, 0.4);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 0.6s;
-}
-
-.searchInput {
-  border:none;
-  background: none;
-  outline:none;
-  float:left;
-  padding: 0;
-  color: white;
-  font-size: 18px;
-  transition: 0.6s;
-  line-height: 40px;
-  width: 0px;
-}
-
 
 /*Zoekbalk*/
 .search-box__div {
@@ -908,23 +855,22 @@ address a {
   background-color: var(--nexus-dark-purple);
 }
 
-/* bronvermeldingen-page */
-#bronvermeldingen{
+/*Bronvermeldingen-pagina*/
+#sources h1{
+  text-align: center;
+}
+#sources div{
   display: flex;
   justify-content: center;
-  margin: 3rem;
+  flex-wrap: nowrap;
 }
-
-#bronvermeldingen section{
-  padding: 7rem;
+#sources section{
+  margin: 20px 50px;
 }
-
-#bronvermeldingen a{
+#sources a{
   text-decoration: none;
   font-size: 14pt;
 }
-
-
 
 /*Mediaqueries*/
 @media screen and (max-width: 776px) {
@@ -1067,10 +1013,6 @@ address a {
     width: 100%;
     order: 2;
   }
-  #bronvermeldingen{
-    flex-wrap: wrap;
-    justify-content: center;
-  }
 }
 @media screen and (max-width: 900px) {
   #search-history {
@@ -1094,8 +1036,10 @@ address a {
     padding-bottom: 1rem;
     font-size: 1rem;
   }
-  #bronvermeldingen{
+  #sources div{
     flex-wrap: wrap;
-    margin: 0rem;
+  }
+  #sources section{
+    width: 50%;
   }
 }

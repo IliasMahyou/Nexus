@@ -1,0 +1,90 @@
+<%# De actieve pagina %>
+<% const activePage = "Bronvermeldingen"; %>
+
+<%# Inladen van de metadata van de webpagina %>
+<%- include('partials/heading', { activePage: activePage }) %>
+<%# Navigatie inladen %>
+<%- include('partials/nav', { activePage: activePage }) %>
+<main id="sources">
+ <h1>Bronvermeldingen</h1>
+  <div>
+    <section>
+      <h2>Gebruikte librarys:</h2>
+      <a href="https://www.npmjs.com/package/@types/bcrypt" target="_blank">
+        <p>
+          Types/bcrypt
+        </p>
+      </a>
+      <a href="https://www.npmjs.com/package/@types/ejs" target="_blank">
+        <p>
+          Types/ejs
+        </p>
+      </a>
+      <a href="https://www.npmjs.com/package/@types/express" target="_blank">
+        <p>
+          Types/express
+        </p>
+      </a>
+      <a href="https://www.npmjs.com/package/@types/node" target="_blank">
+        <p>
+          Types/node
+        </p>
+      </a>
+      <a href="https://www.npmjs.com/package/@types/uuid" target="_blank">
+        <p>
+          Types/uuid
+        </p>
+      </a>
+      <a href="https://www.npmjs.com/package/crypto-js" target="_blank">
+        <p>
+          Crypto-js
+        </p>
+      </a>
+      <a href="https://www.npmjs.com/package/ejs" target="_blank">
+        <p>
+          Ejs
+        </p>
+      </a>
+      <a href="https://www.npmjs.com/package/express" target="_blank">
+        <p>
+          Express
+        </p>
+      </a>
+      <a href="https://www.npmjs.com/package/mongodb" target="_blank">
+        <p>
+          Mongodb
+        </p>
+      </a>
+    </section>
+    <section>
+      <h2>Gebruikte open source websites:</h2>
+      <a href="https://youtu.be/KNuR4YaHdUM" target="_blank">
+        <p>
+          Login Page
+        </p>
+      </a>
+      <a href="https://uiverse.io/niat786/perfect-warthog-57" target="_blank">
+        <p>
+          Landing Page button
+        </p>
+      </a>
+      <a href="https://dev.to/dcodeyt/create-a-button-with-a-loading-spinner-in-html-css-1c0h" target="_blank">
+        <p>
+          Loading button effect
+        </p>
+      </a>
+      <a href="https://dev.to/ljcdev/easy-hamburger-menu-with-js-2do0" target="_blank">
+        <p>
+          Hamburger Menu
+        </p>
+      </a>
+      <a href="https://youtu.be/bBRx5sewIqs" target="_blank">
+        <p>
+          Dark/Light togle
+        </p>
+      </a>
+    </section>
+  </div> 
+</main>
+<%# Voet inladen %>
+<%- include('partials/footer'); %>

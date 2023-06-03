@@ -4,6 +4,7 @@ const nav = document.querySelectorAll('.menu__li a');//De navigatielinken
 const lang = document.getElementById('lang');//De huidige paginataal
 const para = document.getElementsByTagName('p')[0];//De paragraaf in de huidige pagina
 const h1 = document.getElementsByTagName('h1')[0];//De hoofdtitel van de huidige pagina
+const footer = document.getElementById('sourcelink');//De voetlink
 const currentPage = window.location.pathname;//Het huidig paginapad
 //De Nederlandstalige navigatielinken
 const navNL = [
@@ -26,6 +27,9 @@ const navFR = [
   "À propos de nous",
   "Contact"
 ];
+const footerNL = "Bronvermeldingen";//De Nederlandstalige voetlink
+const footerEN = "Source references";//De Engelstalige voetlink
+const footerFR = "Sources d'informations";//De Franstalige voetlink
 
 /*Variabelen*/
 let data = {};//De vertaling van de huidige pagina
@@ -180,6 +184,32 @@ switch (currentPage) {
       }
     };
     break;
+    case '/sources':
+      h2 = document.getElementsByTagName('h2');
+      data = {
+        dutch: {
+          h1: "Bronvermeldingen",
+          h2: [
+            "Gebruikte libraries:",
+            "Gebruikte open source code:"
+          ]
+        },
+        english: {
+          h1: "Source references",
+          h2: [
+            "Used libraries:",
+            "Used open source code:"
+          ]
+        },
+        french: {
+          h1: "Sources d'informations",
+          h2: [
+            "Libraries utilisées:",
+            "Logiciel libre utilisées:"
+          ]
+        }
+      }
+      break;
   default:
     search = document.getElementById('search');
     th = document.getElementsByTagName('th');
@@ -233,7 +263,7 @@ function updateLanguage(selectedLanguage) {
   let langPackage;//De opgevraagde vertalingen voor de huidige webpagina  
   //De taalkeuze in lokale opslag opslaan
   localStorage.setItem("language", selectedLanguage);
-  //Afhankelijk van de gekozen taalkeuze wordt de taalkeuze opgeslagen navigatie toepasselijk vertaald
+  //Afhankelijk van de gekozen taalkeuze wordt de taalkeuze opgeslagen navigatie en voet toepasselijk vertaald
   switch (selectedLanguage) {
     case 'nl':
       langPackage = data.dutch;
@@ -241,6 +271,7 @@ function updateLanguage(selectedLanguage) {
       for (let i = 0; i < nav.length; i++) {
         nav[i].textContent = navNL[i];
       }
+      footer.textContent = footerNL;
       break;
     case 'en':
       langPackage = data.english;
@@ -248,6 +279,7 @@ function updateLanguage(selectedLanguage) {
       for (let i = 0; i < nav.length; i++) {
         nav[i].textContent = navEN[i];
       }
+      footer.textContent = footerEN;
       break;
     case 'fr':
       langPackage = data.french;
@@ -255,6 +287,7 @@ function updateLanguage(selectedLanguage) {
       for (let i = 0; i < nav.length; i++) {
         nav[i].textContent = navFR[i];
       }
+      footer.textContent = footerFR;
       break;
   }
   lang.textContent = langPackage.lang;
@@ -311,6 +344,13 @@ function updateLanguage(selectedLanguage) {
       subject.setAttribute('placeholder', langPackage.subject);
       message.setAttribute('placeholder', langPackage.message);
       btnSubmit.setAttribute('value', langPackage.btnSubmit);
+      break;
+    case '/sources':
+      h1.textContent = langPackage.h1;
+      //Voor elke ondertitel wordt deze vertaalt
+      for (let i = 0; i < h2.length; i++) {
+        h2[i].textContent = langPackage.h2[i];
+      }
       break;
     default:
       h1.textContent = langPackage.h1;
